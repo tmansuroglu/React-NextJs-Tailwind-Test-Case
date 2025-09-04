@@ -38,31 +38,45 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Project Structure
 ```
 src/
-├── app/                              # App Router for routes, layouts, and API
-│   ├── layout.js                     # Root layout (Server Component, static)
-│   ├── page.js                       # Default page (e.g., static homepage)
-│   ├── page-1/                       # Example page route (e.g., server-side)
-│   │   └── page.js                   # Page component
-│   ├── api/                          # API Route Handlers
-│   │   ├── api-1/                    # Example API endpoint (/api/api-1)
-│   │   │   └── route.js              # Route Handler
-│   │   └── api-2/                    # Example API endpoint (/api/api-2)
-│   │       └── route.js              # Route Handler
-│   └── globals.css                   # Optional: Global CSS (imported in layout.js)
-├── components/                       # Feature-based components with colocated CSS
-│   ├── feature-1/                    # Example feature (e.g., interactive component)
-│   │   ├── feature-1.js              # Client Component ('use client')
-│   │   └── feature-1.module.css      # Colocated CSS Module
-│   ├── feature-2/                    # Example feature (e.g., static component)
-│   │   ├── feature-2.js              # Server Component
-│   │   └── feature-2.module.css      # Colocated CSS Module
-├── lib/                              # Utilities and data fetching
-│   ├── data.js                       # Server-side data fetching
-│   └── utils.js                      # General utility functions
-├── public/                           # Static assets (e.g., favicon, images)
-├── .env.local                        # Environment variables
-├── .gitignore                        # Git ignore for build artifacts
-├── next.config.mjs                   # Next.js configuration
-├── package.json                      # Dependencies and scripts
-└── README.md                         # Project documentation
+  ├── app/                            # App Router for routes, layouts, and API
+  │   ├── layout.tsx                  # Root layout (Server Component, static, TypeScript)
+  │   ├── layout.test.ts              # Optional: Test for layout
+  │   ├── page.tsx                    # Default page (e.g., static homepage, TypeScript)
+  │   ├── page.test.ts                # Optional: Test for default page
+  │   ├── page-1/                     # Example page route (e.g., server-side)
+  │   │   ├── page.tsx                # Page component (TypeScript)
+  │   │   └── page.test.ts            # Optional: Test for page-1
+  │   ├── api/                        # API Route Handlers
+  │   │   ├── api-1/                  # Example API endpoint (/api/api-1)
+  │   │   │   ├── route.ts            # Route Handler (TypeScript)
+  │   │   │   └── route.test.ts       # Optional: Test for api-1
+  │   │   └── api-2/                  # Example API endpoint (/api/api-2)
+  │   │       ├── route.ts            # Route Handler (TypeScript)
+  │   │       └── route.test.ts       # Optional: Test for api-2
+  │   └── globals.css                 # Optional: Global CSS (imported in layout.tsx)
+  ├── components/                     # Feature-based components with colocated CSS
+  │   ├── feature-1/                  # Example feature (e.g., interactive component)
+  │   │   ├── feature-1.tsx           # Client Component ('use client', TypeScript)
+  │   │   ├── feature-1.module.css    # Colocated CSS Module
+  │   │   └── feature-1.test.tsx      # Optional: Test for feature-1
+  │   ├── feature-2/                  # Example feature (e.g., static component)
+  │   │   ├── feature-2.tsx           # Server Component (TypeScript)
+  │   │   ├── feature-2.module.css    # Colocated CSS Module
+  │   │   └── feature-2.test.tsx      # Optional: Test for feature-2
+  ├── lib/                            # Utilities and data fetching
+  │   ├── data.ts                     # Server-side data fetching (TypeScript)
+  │   ├── data.test.ts                # Optional: Test for data
+  │   ├── utils.ts                    # General utility functions (TypeScript)
+  │   └── utils.test.ts               # Optional: Test for utils
+  ├── public/                         # Static assets (e.g., favicon, images)
+  ├── .env.local                      # Environment variables
+  ├── .gitignore                      # Git ignore for build artifacts
+  ├── next.config.ts                  # Next.js configuration (TypeScript)
+  ├── eslint.config.mjs               # ESLint configuration
+  ├── next-env.d.ts                   # TypeScript environment definitions
+  ├── package.json                    # Dependencies and scripts
+  ├── package-lock.json               # Lock file for dependencies
+  ├── postcss.config.mjs              # PostCSS configuration
+  ├── README.md                       # Project documentation
+  └── tsconfig.json                   # TypeScript configuration
 ```
