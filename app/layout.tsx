@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import TabLink from "./components/tab-link";
 import { Routes } from "./types/enums";
 import LogoLink from "./components/logo-link";
+import Image from "next/image";
 
 export default function RootLayout({
   children,
@@ -60,11 +61,17 @@ export default function RootLayout({
                 </ul>
                 <Link
                   href={`${pathBase}/${Routes.Login}`}
-                  className="btn-ghost font-xs-medium my-2 hidden xl:inline-block h-7"
+                  className="btn-ghost font-xs-medium my-2 h-7 hidden xl:flex xl:items-center xl:gap-2 "
                   aria-label={loginText}
                   aria-current={isLogin ? "page" : undefined}
                 >
-                  {loginText}
+                  <span> {loginText}</span>
+                  <Image
+                    src="/login.svg"
+                    width={12}
+                    height={12}
+                    alt="login icon"
+                  />
                 </Link>
               </div>
             </div>
