@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Routes } from "@/types/enums";
 import TabLink from "./components/tab-link";
-import { LogoLink } from "./components/logo-link/LogoLink";
+import LogoLink from "@/components/logo-link";
 
 export default function RootLayout({
   children,
