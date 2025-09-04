@@ -12,8 +12,57 @@
   --color-brand-primary-blue: #5a698c;
 }
 
+@utility font-xs {
+  @apply text-[14px] leading-[20px] font-normal;
+}
+@utility font-xs-medium {
+  @apply text-[14px] leading-[20px] font-[550];
+}
+@utility font-xs-bold {
+  @apply text-[14px] leading-[20px] font-[850];
+}
+@utility font-sm-medium {
+  @apply text-[16px] leading-[19px] font-[550];
+}
+@utility font-sm {
+  @apply text-[16px] leading-[24px] font-normal;
+}
+@utility font-sm-bold {
+  @apply text-[16px] leading-[24px] font-[850];
+}
+@utility font-md {
+  @apply text-[18px] leading-[28px] font-normal;
+}
+@utility font-md-plus {
+  @apply text-[21px] leading-[32px] font-normal;
+}
+@utility font-md-plus-medium {
+  @apply text-[21px] leading-[32px] font-[550];
+}
+@utility font-md-plus-bold {
+  @apply text-[21px] leading-[32px] font-[850];
+}
+@utility font-lg {
+  @apply text-[28px] leading-[40px] font-[850];
+}
+@utility font-xl {
+  @apply text-[38px] leading-[38px] font-bold;
+}
+@utility font-xl-plus {
+  @apply text-[38px] leading-[52px] font-[850];
+}
+@utility font-2xl {
+  @apply text-[50px] leading-[52px] font-bold;
+}
+@utility font-2xl-wide {
+  @apply text-[58px] leading-[60px] font-bold;
+}
+@utility font-3xl {
+  @apply text-[77px] leading-[80px] font-bold;
+}
+
 @utility btn-base {
-  @apply inline-block box-border px-3 py-1 rounded-sm border-[1px] no-underline cursor-pointer;
+  @apply inline-block px-3 py-1 rounded-sm border-[1px] no-underline cursor-pointer;
   @apply focus:outline-none;
 }
 
