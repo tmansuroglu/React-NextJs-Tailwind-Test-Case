@@ -35,48 +35,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Project Structure
-```
-src/
-  ├── app/                            # App Router for routes, layouts, and API
-  │   ├── layout.tsx                  # Root layout (Server Component, static, TypeScript)
-  │   ├── layout.test.ts              # Optional: Test for layout
-  │   ├── page.tsx                    # Default page (e.g., static homepage, TypeScript)
-  │   ├── page.test.ts                # Optional: Test for default page
-  │   ├── page-1/                     # Example page route (e.g., server-side)
-  │   │   ├── page.tsx                # Page component (TypeScript)
-  │   │   └── page.test.ts            # Optional: Test for page-1
-  │   ├── api/                        # API Route Handlers
-  │   │   ├── api-1/                  # Example API endpoint (/api/api-1)
-  │   │   │   ├── route.ts            # Route Handler (TypeScript)
-  │   │   │   └── route.test.ts       # Optional: Test for api-1
-  │   │   └── api-2/                  # Example API endpoint (/api/api-2)
-  │   │       ├── route.ts            # Route Handler (TypeScript)
-  │   │       └── route.test.ts       # Optional: Test for api-2
-  │   └── globals.css                 # Optional: Global CSS (imported in layout.tsx)
-  ├── components/                     # Feature-based components with colocated CSS
-  │   ├── feature-1/                  # Example feature (e.g., interactive component)
-  │   │   ├── feature-1.tsx           # Client Component ('use client', TypeScript)
-  │   │   ├── feature-1.module.css    # Colocated CSS Module
-  │   │   └── feature-1.test.tsx      # Optional: Test for feature-1
-  │   ├── feature-2/                  # Example feature (e.g., static component)
-  │   │   ├── feature-2.tsx           # Server Component (TypeScript)
-  │   │   ├── feature-2.module.css    # Colocated CSS Module
-  │   │   └── feature-2.test.tsx      # Optional: Test for feature-2
-  ├── lib/                            # Utilities and data fetching
-  │   ├── data.ts                     # Server-side data fetching (TypeScript)
-  │   ├── data.test.ts                # Optional: Test for data
-  │   ├── utils.ts                    # General utility functions (TypeScript)
-  │   └── utils.test.ts               # Optional: Test for utils
-  ├── public/                         # Static assets (e.g., favicon, images)
-  ├── .env.local                      # Environment variables
-  ├── .gitignore                      # Git ignore for build artifacts
-  ├── next.config.ts                  # Next.js configuration (TypeScript)
-  ├── eslint.config.mjs               # ESLint configuration
-  ├── next-env.d.ts                   # TypeScript environment definitions
-  ├── package.json                    # Dependencies and scripts
-  ├── package-lock.json               # Lock file for dependencies
-  ├── postcss.config.mjs              # PostCSS configuration
-  ├── README.md                       # Project documentation
-  └── tsconfig.json                   # TypeScript configuration
-```
+// TODO: add favicon
+// TODO: add font
+// TODO: add tests
