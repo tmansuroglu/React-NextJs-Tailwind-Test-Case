@@ -36,7 +36,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ## Project Structure
-
+```
 src/
 ├── app/                              # App Router for routes, layouts, and API
 │   ├── layout.js                     # Root layout (Server Component, static)
@@ -65,3 +65,4 @@ src/
 ├── next.config.mjs                   # Next.js configuration
 ├── package.json                      # Dependencies and scripts
 └── README.md                         # Project documentation
+```
