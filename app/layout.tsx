@@ -21,7 +21,6 @@ export default function RootLayout({
   const loginText = isBusiness ? "Partner Login" : "Driver Login";
   const logoText = isBusiness ? "for business" : "for drivers";
 
-  // TODO: write tests
   return (
     <html lang="en">
       <body>
