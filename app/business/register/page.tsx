@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Routes } from "../../types/enums";
 import {
+  POST_CODES,
   RegisterBusinessFormFields,
   useEventHandlers,
   useFormProps,
@@ -11,6 +12,7 @@ import {
 import { FormProvider } from "react-hook-form";
 import FormTextInput from "../../components/form-text-input";
 import FormCheckboxInput from "../../components/form-checkbox-input";
+import FormAutoCompleteComboBox from "../../components/form-auto-complete-combo-box";
 
 // TODO: missing meta data
 
@@ -121,6 +123,24 @@ export default function BusinessRegisterPage() {
                         className="w-auto h-auto"
                       />
                       <span>Email Address</span>
+                    </>
+                  }
+                />
+                <FormAutoCompleteComboBox
+                  name={RegisterBusinessFormFields.PostCode}
+                  items={POST_CODES}
+                  labelClassName={LABEL_CLASS_NAME}
+                  placeholder="Start typing to match your address"
+                  label={
+                    <>
+                      <Image
+                        src="/house.svg"
+                        height={19}
+                        width={16}
+                        alt="mail icon"
+                        className="w-auto h-auto"
+                      />
+                      <span>Postcode</span>
                     </>
                   }
                 />

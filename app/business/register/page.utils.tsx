@@ -57,11 +57,10 @@ const validationSchema = z
       .min(5, "Email must be at least 5 characters")
       .max(255, "Email must not exceed 255 characters")
       .regex(emailRegex, "Invalid email format"),
-    // TODO: missing fields
-    // [RegisterBusinessFormFields.PostCode]: alphaNumericString.max(
-    //   30,
-    //   "Postcode must not exceed 30 characters"
-    // ),
+    [RegisterBusinessFormFields.PostCode]: alphaNumericString.max(
+      30,
+      "Postcode must not exceed 30 characters"
+    ),
     [RegisterBusinessFormFields.PayLater]: z.boolean(),
     [RegisterBusinessFormFields.PayNow]: z.boolean(),
   })
@@ -70,7 +69,7 @@ const validationSchema = z
       data[RegisterBusinessFormFields.PayLater] ||
       data[RegisterBusinessFormFields.PayNow],
     {
-      path: [RegisterBusinessFormFields.PayLater], // Applies error at the root level or can target a specific field
+      path: [RegisterBusinessFormFields.PayLater],
       message:
         "At least one payment option (Pay Later or Pay Now) must be selected",
     }
@@ -80,7 +79,7 @@ const validationSchema = z
       data[RegisterBusinessFormFields.PayLater] ||
       data[RegisterBusinessFormFields.PayNow],
     {
-      path: [RegisterBusinessFormFields.PayNow], // Applies error at the root level or can target a specific field
+      path: [RegisterBusinessFormFields.PayNow],
       message:
         "At least one payment option (Pay Later or Pay Now) must be selected",
     }
@@ -93,10 +92,9 @@ const DEFAULT_VALUES: DefaultValues<FormValues> = {
   [RegisterBusinessFormFields.Company]: "",
   [RegisterBusinessFormFields.Email]: "",
   [RegisterBusinessFormFields.MobilePhone]: "",
-  // TODO: missing fields
   [RegisterBusinessFormFields.PayLater]: false,
   [RegisterBusinessFormFields.PayNow]: false,
-  // [RegisterBusinessFormFields.PostCode]: "",
+  [RegisterBusinessFormFields.PostCode]: "",
 };
 
 export const useFormProps = () =>
@@ -143,3 +141,14 @@ export const useEventHandlers = ({
 
   return { handleOnSubmit, handlePayNowChange, handlePayLaterChange };
 };
+
+export const POST_CODES = [
+  { value: "N61BA" },
+  { value: "E17AA" },
+  { value: "SW1A1AA" },
+  { value: "M11AE" },
+  { value: "B11BB" },
+  { value: "L18JQ" },
+  { value: "G11AB" },
+  { value: "EH11YZ" },
+];
