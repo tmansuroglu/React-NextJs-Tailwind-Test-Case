@@ -74,9 +74,7 @@ export function FormTextInput({
           ) : null}
         </span>
       </div>
-      {!!fieldError && (
-        <span className="text-error font-xxs w-full">{fieldError}</span>
-      )}
+      {!!fieldError && <span className="error-text w-full">{fieldError}</span>}
     </div>
   );
 }

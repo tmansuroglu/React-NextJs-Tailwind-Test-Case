@@ -94,7 +94,7 @@ export function FormCheckboxInput({
       </label>
       {/* TODO: this repeats too many times */}
       {Boolean(!!fieldErrorMessage && !hideErrorText) && (
-        <span className="text-error font-xxs">{fieldErrorMessage}</span>
+        <span className="error-text">{fieldErrorMessage}</span>
       )}
     </div>
   );

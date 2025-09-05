@@ -154,7 +154,7 @@ export default function BusinessRegisterPage() {
                     />
                   </div>
                   {!!payError && (
-                    <div className="text-error font-xxs mt-2">{payError}</div>
+                    <div className="error-text mt-2">{payError}</div>
                   )}
                 </div>
 

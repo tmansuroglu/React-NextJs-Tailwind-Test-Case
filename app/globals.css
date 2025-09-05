@@ -117,4 +117,8 @@
     @apply hover:text-brand-primary-gray hover:border-brand-primary-gray;
     @apply active:text-brand-primary-orange active:border-brand-primary-orange;
   }
+
+  .error-text {
+    @apply text-error font-xxs;
+  }
 }
