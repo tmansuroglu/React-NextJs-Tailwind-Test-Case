@@ -12,6 +12,7 @@
 // TODO: some svgs are just for different color. make configurations to change svg color
 // TODO: move away from object props to primitive props
 // TODO: repetitive components
+// TODO: improve accesibility
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
