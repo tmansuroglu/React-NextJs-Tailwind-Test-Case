@@ -161,7 +161,7 @@ export default function BusinessRegisterPage() {
                       LabelProps={{
                         children: "PayLater",
                       }}
-                      HiddenInputProps={{
+                      InputProps={{
                         name: RegisterBusinessFormFields.PayLater,
                         onChange: (e) => {
                           setValue(
@@ -183,7 +183,7 @@ export default function BusinessRegisterPage() {
                       LabelProps={{
                         children: "PayNow",
                       }}
-                      HiddenInputProps={{
+                      InputProps={{
                         name: RegisterBusinessFormFields.PayNow,
                         onChange: (e) => {
                           setValue(

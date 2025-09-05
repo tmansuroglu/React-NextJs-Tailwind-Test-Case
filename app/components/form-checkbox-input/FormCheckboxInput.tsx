@@ -6,19 +6,19 @@ import { useController, useFormContext } from "react-hook-form";
 
 type FormCheckboxInputProps = {
   LabelProps?: LabelHTMLAttributes<HTMLLabelElement>;
-  HiddenInputProps: InputHTMLAttributes<HTMLInputElement> & { name: string };
+  InputProps: InputHTMLAttributes<HTMLInputElement> & { name: string };
   hideErrorText?: boolean;
 };
 
 export function FormCheckboxInput({
-  HiddenInputProps,
+  InputProps,
   LabelProps,
   hideErrorText,
 }: FormCheckboxInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({
     control,
-    name: HiddenInputProps.name,
+    name: InputProps.name,
   });
 
   const {
@@ -37,7 +37,7 @@ export function FormCheckboxInput({
   return (
     <div>
       <label
-        htmlFor={HiddenInputProps.name}
+        htmlFor={InputProps.name}
         className={`
   relative block text-sm font-medium 
   px-4 py-3 rounded-[27px] border no-underline cursor-pointer text-left min-w-32 font-sm outline-0
@@ -55,12 +55,12 @@ export function FormCheckboxInput({
         <span>{labelChildren}</span>
         <input
           type="checkbox"
-          name={HiddenInputProps.name}
-          id={HiddenInputProps.name}
+          name={InputProps.name}
+          id={InputProps.name}
           className="hidden"
           onChange={(e) => {
-            const onChange = HiddenInputProps.onChange || onFieldChange;
-            const onBlur = HiddenInputProps.onBlur || onFieldBlur;
+            const onChange = InputProps.onChange || onFieldChange;
+            const onBlur = InputProps.onBlur || onFieldBlur;
 
             onChange(e);
             onBlur(e);
