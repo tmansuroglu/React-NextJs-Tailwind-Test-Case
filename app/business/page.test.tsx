@@ -6,7 +6,7 @@ describe("BusinessPage", () => {
     render(<BusinessPage />);
     const mainElement = screen.getByRole("main");
     expect(mainElement).toBeInTheDocument();
-    expect(mainElement).toHaveTextContent("For Business Page");
+    expect(screen.getByTestId("hero-section")).toBeVisible();
   });
 
   it("has correct metadata title", () => {

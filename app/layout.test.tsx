@@ -159,9 +159,12 @@ describe("RootLayout", () => {
     expect(loginLink).toHaveClass(
       "btn-ghost",
       "font-xs-medium",
+      "my-2",
       "h-7",
       "hidden",
-      "xl:inline-block"
+      " xl:flex",
+      "xl:items-center",
+      "xl:gap-2"
     );
     const registerLink = screen.getByRole("link", { name: /register/i });
     expect(registerLink).toHaveClass(

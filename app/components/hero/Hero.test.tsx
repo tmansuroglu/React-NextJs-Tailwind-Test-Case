@@ -16,7 +16,6 @@ describe("Hero", () => {
       "bg-[34%_100%]",
       "bg-no-repeat",
       "bg-cover",
-      "z-0",
       "flex",
       "items-center"
     );
