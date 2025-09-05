@@ -38,3 +38,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 // TODO: add favicon
 // TODO: add font
 // TODO: add tests
+// TODO: JSX is too cluttered
+// TODO: HERO pixels are wrong
+// TODO: error handling

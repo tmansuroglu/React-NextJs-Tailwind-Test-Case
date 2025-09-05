@@ -16,6 +16,7 @@
   --color-brand-secondary-gray: #545454;
   --color-brand-tertiary-gray: #737373;
   --color-brand-primary-blue: #5a698c;
+  --color-error: #dc3545;
 }
 
 @utility font-xs {
