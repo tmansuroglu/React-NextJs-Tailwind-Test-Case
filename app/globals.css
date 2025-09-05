@@ -83,6 +83,13 @@
   @apply bg-brand-primary-green text-brand-secondary-black border-brand-primary-black;
   @apply hover:text-brand-primary-white;
   @apply active:bg-brand-secondary-black active:text-brand-primary-white;
+
+  &.disabled,
+  &[disabled] {
+    @apply bg-gray-400 text-gray-600 border-gray-400;
+    @apply cursor-not-allowed;
+    @apply hover:text-gray-600 hover:bg-gray-400 active:bg-gray-400;
+  }
 }
 
 @layer component {
