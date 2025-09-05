@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.1",
+    "downshift": "9.0.10",
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
