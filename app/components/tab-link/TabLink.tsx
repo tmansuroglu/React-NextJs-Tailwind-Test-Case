@@ -25,7 +25,7 @@ export function TabLink({
       {highlight && (
         <span
           aria-hidden
-          className="bg-brand-primary-orange h-1 absolute left-4 right-4 bottom-0 rounded-t-2xl"
+          className="bg-brand-primary-orange h-1 absolute left-4 right-4 -bottom-[1px] rounded-t-2xl"
           {...HighlightProps}
         />
       )}

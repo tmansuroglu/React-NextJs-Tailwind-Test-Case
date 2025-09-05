@@ -31,11 +31,11 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <header>
+        <header className="relative z-50">
           <nav
             role="navigation"
             aria-label="Main navigation"
-            className="bg-brand-primary-orange"
+            className="bg-brand-primary-orange rounded-b-2xl"
           >
             <div className="bg-brand-secondary-black rounded-b-2xl">
               <div className="flex justify-between container mx-auto">
@@ -61,7 +61,7 @@ export default function RootLayout({
                 </ul>
                 <Link
                   href={`${pathBase}/${Routes.Login}`}
-                  className="btn-ghost font-xs-medium my-2 h-7 hidden xl:flex xl:items-center xl:gap-2 "
+                  className="btn-ghost font-xs-medium my-2 h-7 hidden xl:flex xl:items-center xl:gap-2"
                   aria-label={loginText}
                   aria-current={isLogin ? "page" : undefined}
                 >
@@ -94,7 +94,9 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <div id="main-content">{children}</div>
+        <div id="main-content" className="z-10">
+          {children}
+        </div>
       </body>
     </html>
   );

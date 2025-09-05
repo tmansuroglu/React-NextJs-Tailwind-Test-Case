@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-sm: 36rem;
+  --breakpoint-md: 45rem;
+  --breakpoint-lg: 60rem;
+  --breakpoint-xl: 72rem;
+  --breakpoint-2xl: 90rem;
+  --color-brand-opacity-gray: #414b6eb2;
   --color-brand-primary-orange: #ff733c;
   --color-brand-primary-green: #32be50;
   --color-brand-secondary-black: #1b1b1b;
@@ -82,7 +88,7 @@
   .btn-primary-over-rounded {
     @apply btn-base btn-primary-style;
 
-    @apply rounded-[27px] px-4;
+    @apply rounded-[27px] px-4 py-3;
   }
 
   .btn-ghost {
