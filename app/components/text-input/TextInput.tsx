@@ -1,25 +1,42 @@
+"use client";
+
 import Image from "next/image";
 import { HTMLAttributes, InputHTMLAttributes } from "react";
+import { useController, useFormContext } from "react-hook-form";
 
 type TextInputProps = {
   LabelProps?: HTMLAttributes<HTMLLabelElement>;
-  InputProps?: InputHTMLAttributes<HTMLInputElement>;
+  InputProps: InputHTMLAttributes<HTMLInputElement> & { name: string };
 };
 
 export function TextInput({ LabelProps, InputProps }: TextInputProps) {
-  // TODO: change these
-  const error = false;
-  const success = true;
+  const { control } = useFormContext();
+  const { field, fieldState } = useController({
+    control,
+    name: InputProps.name,
+  });
+
+  const { value, onBlur, onChange, ref } = field;
+  const { error, isTouched, invalid } = fieldState;
+
+  const fieldError = error?.message;
+  const success = !invalid && isTouched;
+
   return (
     <div className="relative">
       <label
         className="text-sm font-medium text-brand-secondary-black"
+        htmlFor={InputProps.id || InputProps.name}
         {...LabelProps}
       />
       <input
+        ref={ref}
         type="text"
-        className={`w-full px-4 py-3 border rounded-[27px] text-sm mt-2 ${
-          error
+        value={value}
+        onBlur={onBlur}
+        onChange={onChange}
+        className={`w-full px-4 py-3 border rounded-[27px] text-sm mt-2 outline-0 ${
+          !!fieldError
             ? "border-error"
             : success
             ? "border-brand-primary-green"
@@ -36,7 +53,7 @@ export function TextInput({ LabelProps, InputProps }: TextInputProps) {
             className="w-4 h-4"
             alt="success icon"
           />
-        ) : error ? (
+        ) : !!fieldError ? (
           <Image
             src="/error.svg"
             width={16}
@@ -46,9 +63,9 @@ export function TextInput({ LabelProps, InputProps }: TextInputProps) {
           />
         ) : null}
       </span>
-      {error && (
+      {!!fieldError && (
         <span className="absolute text-error text-sm left-0 font-xxs -bottom-6 w-full">
-          Test error
+          {fieldError}
         </span>
       )}
     </div>
