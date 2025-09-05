@@ -1,7 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { DefaultValues, useForm } from "react-hook-form";
+import { ChangeEventHandler } from "react";
+import {
+  DefaultValues,
+  SubmitHandler,
+  useForm,
+  UseFormSetValue,
+  UseFormTrigger,
+} from "react-hook-form";
 import { z } from "zod";
 
 const REQUIRED = "Required";
@@ -99,3 +106,40 @@ export const useFormProps = () =>
     mode: "onBlur",
     reValidateMode: "onBlur",
   });
+
+type UseEventHandlersOptions = {
+  setValue: UseFormSetValue<FormValues>;
+  trigger: UseFormTrigger<FormValues>;
+};
+
+export const useEventHandlers = ({
+  setValue,
+  trigger,
+}: UseEventHandlersOptions) => {
+  const handleOnSubmit: SubmitHandler<FormValues> = (values, e) => {
+    e?.preventDefault();
+    // TODO: add handler
+    console.log("values", values);
+  };
+
+  const handlePayLaterChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setValue(RegisterBusinessFormFields.PayLater, e.target.checked, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+
+    trigger(RegisterBusinessFormFields.PayNow);
+  };
+  const handlePayNowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setValue(RegisterBusinessFormFields.PayNow, e.target.checked, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+
+    trigger(RegisterBusinessFormFields.PayLater);
+  };
+
+  return { handleOnSubmit, handlePayNowChange, handlePayLaterChange };
+};

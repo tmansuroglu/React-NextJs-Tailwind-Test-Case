@@ -10,6 +10,8 @@
 // TODO: ts errors
 // TODO: copy paste code => especially for style
 // TODO: some svgs are just for different color. make configurations to change svg color
+// TODO: move away from object props to primitive props
+// TODO: repetitive components
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 

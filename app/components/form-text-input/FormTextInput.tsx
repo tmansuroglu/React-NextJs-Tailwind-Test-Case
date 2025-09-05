@@ -1,19 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import { InputHTMLAttributes, LabelHTMLAttributes } from "react";
+import { HTMLInputTypeAttribute, ReactNode } from "react";
 import { useController, useFormContext } from "react-hook-form";
 
 type FormTextInputProps = {
-  LabelProps?: LabelHTMLAttributes<HTMLLabelElement>;
-  InputProps: InputHTMLAttributes<HTMLInputElement> & { name: string };
+  label?: ReactNode;
+  labelClassName?: string;
+  name: string;
+  type?: HTMLInputTypeAttribute;
 };
 
-export function FormTextInput({ LabelProps, InputProps }: FormTextInputProps) {
+export function FormTextInput({
+  label,
+  name,
+  labelClassName,
+  type = "text",
+}: FormTextInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({
     control,
-    name: InputProps.name,
+    name,
   });
 
   const { value, onBlur, onChange, ref } = field;
@@ -25,15 +32,18 @@ export function FormTextInput({ LabelProps, InputProps }: FormTextInputProps) {
   return (
     <div>
       <label
-        className="text-sm font-medium text-brand-secondary-black"
-        htmlFor={LabelProps?.htmlFor || InputProps.id || InputProps.name}
-        {...LabelProps}
-      />
+        className={`text-sm font-medium text-brand-secondary-black ${labelClassName}`}
+        htmlFor={name}
+      >
+        {label}
+      </label>
       <div className="relative">
         <input
           ref={ref}
-          type="text"
+          type={type}
           value={value}
+          name={name}
+          id={name}
           onBlur={onBlur}
           onChange={onChange}
           className={`w-full px-4 py-3 border rounded-[27px] text-sm mt-2 outline-0 ${
@@ -43,7 +53,6 @@ export function FormTextInput({ LabelProps, InputProps }: FormTextInputProps) {
               ? "border-brand-primary-green"
               : "border-brand-secondary-gray"
           }`}
-          {...InputProps}
         />
         <span className="absolute right-0 bottom-0 p-4 pointer-events-none">
           {success ? (

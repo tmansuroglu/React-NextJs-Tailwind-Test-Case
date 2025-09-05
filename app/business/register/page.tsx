@@ -4,29 +4,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { Routes } from "../../types/enums";
 import {
-  FormValues,
   RegisterBusinessFormFields,
+  useEventHandlers,
   useFormProps,
 } from "./page.utils";
-import { FormProvider, SubmitHandler } from "react-hook-form";
+import { FormProvider } from "react-hook-form";
 import FormTextInput from "../../components/form-text-input";
 import FormCheckboxInput from "../../components/form-checkbox-input";
 
 // TODO: missing meta data
-// export const metadata: Metadata = {
-//   title: "Bumper UK - Business Register Page",
-// };
 
 const LABEL_CLASS_NAME = "flex gap-1.5 items-center";
 
 export default function BusinessRegisterPage() {
   const formProps = useFormProps();
-
-  const onSubmit: SubmitHandler<FormValues> = (values, e) => {
-    e?.preventDefault();
-    // TODO: add handler
-    console.log("values", values);
-  };
 
   const { handleSubmit, formState, setValue, trigger } = formProps;
   const { isDirty, isValid, errors } = formState;
@@ -34,6 +25,9 @@ export default function BusinessRegisterPage() {
   const payError = errors[RegisterBusinessFormFields.PayLater]?.message;
 
   const isSubmitDisabled = !isDirty || !isValid;
+
+  const { handleOnSubmit, handlePayLaterChange, handlePayNowChange } =
+    useEventHandlers({ setValue, trigger });
 
   return (
     <main className="bg-brand-primary-blue -mt-24 pt-30 pb-8">
@@ -63,82 +57,72 @@ export default function BusinessRegisterPage() {
             Free to join, no monthly fees
           </p>
           <FormProvider {...formProps}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(handleOnSubmit)}>
               <div className="flex flex-col gap-8">
                 <FormTextInput
-                  InputProps={{ name: RegisterBusinessFormFields.Name }}
-                  LabelProps={{
-                    className: LABEL_CLASS_NAME,
-                    children: (
-                      <>
-                        <Image
-                          src="/person.svg"
-                          height={19}
-                          width={16}
-                          alt="person icon"
-                          className="w-auto h-auto"
-                        />
-                        <span>Name</span>
-                      </>
-                    ),
-                  }}
+                  name={RegisterBusinessFormFields.Name}
+                  labelClassName={LABEL_CLASS_NAME}
+                  label={
+                    <>
+                      <Image
+                        src="/person.svg"
+                        height={19}
+                        width={16}
+                        alt="person icon"
+                        className="w-auto h-auto"
+                      />
+                      <span>Name</span>
+                    </>
+                  }
                 />
                 <FormTextInput
-                  InputProps={{ name: RegisterBusinessFormFields.Company }}
-                  LabelProps={{
-                    className: LABEL_CLASS_NAME,
-                    children: (
-                      <>
-                        <Image
-                          src="/building.svg"
-                          height={19}
-                          width={16}
-                          alt="building icon"
-                          className="w-auto h-auto"
-                        />
-                        <span>Company</span>
-                      </>
-                    ),
-                  }}
+                  name={RegisterBusinessFormFields.Company}
+                  labelClassName={LABEL_CLASS_NAME}
+                  label={
+                    <>
+                      <Image
+                        src="/building.svg"
+                        height={19}
+                        width={16}
+                        alt="building icon"
+                        className="w-auto h-auto"
+                      />
+                      <span>Company</span>
+                    </>
+                  }
                 />
                 <FormTextInput
-                  InputProps={{ name: RegisterBusinessFormFields.MobilePhone }}
-                  LabelProps={{
-                    className: LABEL_CLASS_NAME,
-                    children: (
-                      <>
-                        <Image
-                          src="/phone.svg"
-                          height={19}
-                          width={16}
-                          className="w-auto h-auto"
-                          alt="phone icon"
-                        />
-                        <span>Mobile Phone Number</span>
-                      </>
-                    ),
-                  }}
+                  name={RegisterBusinessFormFields.MobilePhone}
+                  labelClassName={LABEL_CLASS_NAME}
+                  label={
+                    <>
+                      <Image
+                        src="/phone.svg"
+                        height={19}
+                        width={16}
+                        className="w-auto h-auto"
+                        alt="phone icon"
+                      />
+                      <span>Mobile Phone Number</span>
+                    </>
+                  }
                 />
                 <FormTextInput
-                  InputProps={{
-                    type: "email",
-                    name: RegisterBusinessFormFields.Email,
-                  }}
-                  LabelProps={{
-                    className: LABEL_CLASS_NAME,
-                    children: (
-                      <>
-                        <Image
-                          src="/mail.svg"
-                          height={19}
-                          width={16}
-                          alt="mail icon"
-                          className="w-auto h-auto"
-                        />
-                        <span>Email Address</span>
-                      </>
-                    ),
-                  }}
+                  name={RegisterBusinessFormFields.Email}
+                  type="email"
+                  labelClassName={LABEL_CLASS_NAME}
+                  label={
+                    <>
+                      <Image
+                        src="/mail.svg"
+                        height={19}
+                        width={16}
+                        alt="mail icon"
+                        className="w-auto h-auto"
+                      />
+                      <span>Email Address</span>
+                    </>
+                  }
                 />
                 <div>
                   <p className={LABEL_CLASS_NAME}>
@@ -158,47 +142,15 @@ export default function BusinessRegisterPage() {
                   <div className="flex flex-row gap-3 w-full relative mt-2">
                     <FormCheckboxInput
                       hideErrorText
-                      LabelProps={{
-                        children: "PayLater",
-                      }}
-                      InputProps={{
-                        name: RegisterBusinessFormFields.PayLater,
-                        onChange: (e) => {
-                          setValue(
-                            RegisterBusinessFormFields.PayLater,
-                            e.target.checked,
-                            {
-                              shouldDirty: true,
-                              shouldTouch: true,
-                              shouldValidate: true,
-                            }
-                          );
-
-                          trigger(RegisterBusinessFormFields.PayNow);
-                        },
-                      }}
+                      label="PayLater"
+                      name={RegisterBusinessFormFields.PayLater}
+                      onChange={handlePayLaterChange}
                     />
                     <FormCheckboxInput
                       hideErrorText
-                      LabelProps={{
-                        children: "PayNow",
-                      }}
-                      InputProps={{
-                        name: RegisterBusinessFormFields.PayNow,
-                        onChange: (e) => {
-                          setValue(
-                            RegisterBusinessFormFields.PayNow,
-                            e.target.checked,
-                            {
-                              shouldDirty: true,
-                              shouldTouch: true,
-                              shouldValidate: true,
-                            }
-                          );
-
-                          trigger(RegisterBusinessFormFields.PayLater);
-                        },
-                      }}
+                      label="PayNow"
+                      name={RegisterBusinessFormFields.PayNow}
+                      onChange={handlePayNowChange}
                     />
                   </div>
                   {!!payError && (

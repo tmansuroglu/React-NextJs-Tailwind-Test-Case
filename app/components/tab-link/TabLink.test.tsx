@@ -29,15 +29,11 @@ describe("TabLink", () => {
 
   it("applies highlight styles when highlighted", () => {
     render(
-      <TabLink
-        href={href}
-        highlight={true}
-        HighlightProps={{ "data-testid": "highlight-indicator" }}
-      >
+      <TabLink href={href} highlight={true}>
         {label}
       </TabLink>
     );
-    const link = screen.getByRole("tab", { name: label });
+    screen.getByRole("tab", { name: label });
     const highlight = screen.getByTestId("highlight-indicator");
     expect(highlight).toHaveClass(
       "bg-brand-primary-orange",
@@ -92,12 +88,7 @@ describe("TabLink", () => {
 
   it("renders highlight span with aria-hidden when highlighted", () => {
     render(
-      <TabLink
-        href={href}
-        highlight={true}
-        data-testid="tab-link"
-        HighlightProps={{ "data-testid": "highlight-indicator" }}
-      >
+      <TabLink href={href} highlight={true} data-testid="tab-link">
         {label}
       </TabLink>
     );
@@ -107,11 +98,7 @@ describe("TabLink", () => {
 
   it("does not render highlight span when not highlighted", () => {
     render(
-      <TabLink
-        href={href}
-        highlight={false}
-        HighlightProps={{ "data-testid": "highlight-indicator" }}
-      >
+      <TabLink href={href} highlight={false}>
         {label}
       </TabLink>
     );

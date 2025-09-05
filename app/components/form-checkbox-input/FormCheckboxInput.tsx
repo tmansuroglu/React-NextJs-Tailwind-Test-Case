@@ -1,24 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import { InputHTMLAttributes, LabelHTMLAttributes } from "react";
+import { ChangeEventHandler, ReactNode } from "react";
 import { useController, useFormContext } from "react-hook-form";
 
 type FormCheckboxInputProps = {
-  LabelProps?: LabelHTMLAttributes<HTMLLabelElement>;
-  InputProps: InputHTMLAttributes<HTMLInputElement> & { name: string };
   hideErrorText?: boolean;
+  name: string;
+  label?: ReactNode;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
 export function FormCheckboxInput({
-  InputProps,
-  LabelProps,
   hideErrorText,
+  name,
+  label,
+  onChange,
 }: FormCheckboxInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({
     control,
-    name: InputProps.name,
+    name,
   });
 
   const {
@@ -32,12 +34,15 @@ export function FormCheckboxInput({
 
   const isChecked = !!fieldValue;
 
-  const { children: labelChildren, ...restOfLabelProps } = LabelProps || {};
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    (onChange || onFieldChange)(e);
+    onFieldBlur();
+  };
 
   return (
     <div>
       <label
-        htmlFor={InputProps.name}
+        htmlFor={name}
         className={`
   relative block text-sm font-medium 
   px-4 py-3 rounded-[27px] border no-underline cursor-pointer text-left min-w-32 font-sm outline-0
@@ -50,21 +55,14 @@ export function FormCheckboxInput({
 `.trim()}
         ref={ref}
         tabIndex={0}
-        {...restOfLabelProps}
       >
-        <span>{labelChildren}</span>
+        <span>{label}</span>
         <input
           type="checkbox"
-          name={InputProps.name}
-          id={InputProps.name}
+          name={name}
+          id={name}
           className="hidden"
-          onChange={(e) => {
-            const onChange = InputProps.onChange || onFieldChange;
-            const onBlur = InputProps.onBlur || onFieldBlur;
-
-            onChange(e);
-            onBlur(e);
-          }}
+          onChange={handleChange}
         />
         <span className=" absolute right-3 bottom-0.5 -translate-y-full pointer-events-none">
           {!!fieldErrorMessage ? (
@@ -94,6 +92,7 @@ export function FormCheckboxInput({
           )}
         </span>
       </label>
+      {/* TODO: this repeats too many times */}
       {Boolean(!!fieldErrorMessage && !hideErrorText) && (
         <span className="text-error font-xxs">{fieldErrorMessage}</span>
       )}

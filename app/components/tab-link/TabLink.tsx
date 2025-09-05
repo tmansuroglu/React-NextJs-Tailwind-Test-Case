@@ -1,18 +1,12 @@
 import Link, { LinkProps } from "next/link";
-import { HTMLAttributes, ReactNode } from "react";
+import { ReactNode } from "react";
 
 type TabLinkProps = LinkProps & {
   children: ReactNode;
   highlight: boolean;
-  HighlightProps?: HTMLAttributes<HTMLSpanElement> & { "data-testid": string };
 };
 
-export function TabLink({
-  children,
-  highlight,
-  HighlightProps,
-  ...props
-}: TabLinkProps) {
+export function TabLink({ children, highlight, ...props }: TabLinkProps) {
   return (
     <Link
       {...props}
@@ -24,9 +18,9 @@ export function TabLink({
       {children}
       {highlight && (
         <span
+          data-testid="highlight-indicator"
           aria-hidden
           className="bg-brand-primary-orange h-1 absolute left-4 right-4 -bottom-[1px] rounded-t-2xl"
-          {...HighlightProps}
         />
       )}
     </Link>
