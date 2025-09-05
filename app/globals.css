@@ -19,6 +19,10 @@
   --color-error: #dc3545;
 }
 
+@utility font-xxs {
+  @apply text-[12px] leading-[16px] font-normal;
+}
+
 @utility font-xs {
   @apply text-[14px] leading-[20px] font-normal;
 }

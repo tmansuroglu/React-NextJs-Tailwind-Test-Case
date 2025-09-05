@@ -41,3 +41,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 // TODO: JSX is too cluttered
 // TODO: HERO pixels are wrong
 // TODO: error handling
+// TODO: bundle size analysis
