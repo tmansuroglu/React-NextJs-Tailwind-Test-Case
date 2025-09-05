@@ -1,19 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import {
-  HTMLAttributes,
-  InputHTMLAttributes,
-  LabelHTMLAttributes,
-} from "react";
+import { InputHTMLAttributes, LabelHTMLAttributes } from "react";
 import { useController, useFormContext } from "react-hook-form";
 
-type TextInputProps = {
+type FormTextInputProps = {
   LabelProps?: LabelHTMLAttributes<HTMLLabelElement>;
   InputProps: InputHTMLAttributes<HTMLInputElement> & { name: string };
 };
 
-export function TextInput({ LabelProps, InputProps }: TextInputProps) {
+export function FormTextInput({ LabelProps, InputProps }: FormTextInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({
     control,

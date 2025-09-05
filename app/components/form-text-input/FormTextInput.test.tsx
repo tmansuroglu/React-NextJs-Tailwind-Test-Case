@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { useController, useFormContext } from "react-hook-form";
-import { TextInput } from "./TextInput";
+import { TextInput } from "./FormTextInput";
 import Image from "next/image";
 
 // Mock Next.js Image component
