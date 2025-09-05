@@ -1,11 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { HTMLAttributes, InputHTMLAttributes } from "react";
+import {
+  HTMLAttributes,
+  InputHTMLAttributes,
+  LabelHTMLAttributes,
+} from "react";
 import { useController, useFormContext } from "react-hook-form";
 
 type TextInputProps = {
-  LabelProps?: HTMLAttributes<HTMLLabelElement>;
+  LabelProps?: LabelHTMLAttributes<HTMLLabelElement>;
   InputProps: InputHTMLAttributes<HTMLInputElement> & { name: string };
 };
 
@@ -26,7 +30,7 @@ export function TextInput({ LabelProps, InputProps }: TextInputProps) {
     <div className="relative">
       <label
         className="text-sm font-medium text-brand-secondary-black"
-        htmlFor={InputProps.id || InputProps.name}
+        htmlFor={LabelProps?.htmlFor || InputProps.id || InputProps.name}
         {...LabelProps}
       />
       <input
