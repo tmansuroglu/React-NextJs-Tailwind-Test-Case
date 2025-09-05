@@ -10,6 +10,7 @@ import {
 } from "./page.utils";
 import { FormProvider, SubmitHandler } from "react-hook-form";
 import FormTextInput from "../../components/form-text-input";
+import FormCheckboxInput from "../../components/form-checkbox-input";
 
 // TODO: missing meta data
 // export const metadata: Metadata = {
@@ -27,8 +28,10 @@ export default function BusinessRegisterPage() {
     console.log("values", values);
   };
 
-  const { handleSubmit, formState } = formProps;
-  const { isDirty, isValid } = formState;
+  const { handleSubmit, formState, setValue, trigger } = formProps;
+  const { isDirty, isValid, errors } = formState;
+
+  const payError = errors[RegisterBusinessFormFields.PayLater]?.message;
 
   const isSubmitDisabled = !isDirty || !isValid;
 
@@ -73,6 +76,7 @@ export default function BusinessRegisterPage() {
                           height={19}
                           width={16}
                           alt="person icon"
+                          className="w-auto h-auto"
                         />
                         <span>Name</span>
                       </>
@@ -90,6 +94,7 @@ export default function BusinessRegisterPage() {
                           height={19}
                           width={16}
                           alt="building icon"
+                          className="w-auto h-auto"
                         />
                         <span>Company</span>
                       </>
@@ -106,6 +111,7 @@ export default function BusinessRegisterPage() {
                           src="/phone.svg"
                           height={19}
                           width={16}
+                          className="w-auto h-auto"
                           alt="phone icon"
                         />
                         <span>Mobile Phone Number</span>
@@ -127,12 +133,79 @@ export default function BusinessRegisterPage() {
                           height={19}
                           width={16}
                           alt="mail icon"
+                          className="w-auto h-auto"
                         />
                         <span>Email Address</span>
                       </>
                     ),
                   }}
                 />
+                <div>
+                  <p className={LABEL_CLASS_NAME}>
+                    <Image
+                      src="/wrench.svg"
+                      height={19}
+                      width={16}
+                      alt="wrench icon"
+                      className="w-auto h-auto"
+                    />
+                    <span>What services are you interested in?</span>
+                  </p>
+                  <p className="font-xs text-brand-tertiary-gray">
+                    Please select the services you&apos;re interested in
+                    offering your customers
+                  </p>
+                  <div className="flex flex-row gap-3 w-full relative mt-2">
+                    <FormCheckboxInput
+                      hideErrorText
+                      LabelProps={{
+                        children: "PayLater",
+                      }}
+                      HiddenInputProps={{
+                        name: RegisterBusinessFormFields.PayLater,
+                        onChange: (e) => {
+                          setValue(
+                            RegisterBusinessFormFields.PayLater,
+                            e.target.checked,
+                            {
+                              shouldDirty: true,
+                              shouldTouch: true,
+                              shouldValidate: true,
+                            }
+                          );
+
+                          trigger(RegisterBusinessFormFields.PayNow);
+                        },
+                      }}
+                    />
+                    <FormCheckboxInput
+                      hideErrorText
+                      LabelProps={{
+                        children: "PayNow",
+                      }}
+                      HiddenInputProps={{
+                        name: RegisterBusinessFormFields.PayNow,
+                        onChange: (e) => {
+                          setValue(
+                            RegisterBusinessFormFields.PayNow,
+                            e.target.checked,
+                            {
+                              shouldDirty: true,
+                              shouldTouch: true,
+                              shouldValidate: true,
+                            }
+                          );
+
+                          trigger(RegisterBusinessFormFields.PayLater);
+                        },
+                      }}
+                    />
+                  </div>
+                  {!!payError && (
+                    <div className="text-error font-xxs mt-2">{payError}</div>
+                  )}
+                </div>
+
                 <div>
                   <button
                     className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center mb-5"
@@ -147,6 +220,7 @@ export default function BusinessRegisterPage() {
                       height={19}
                       alt=""
                       aria-hidden="true"
+                      className="w-auto h-auto"
                     />
                   </button>
                   <p className="flex items-center gap-1 font-sm text-brand-primary-black justify-center">
