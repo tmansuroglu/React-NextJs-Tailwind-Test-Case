@@ -27,7 +27,7 @@ export function FormTextInput({
   const { error, isTouched, invalid } = fieldState;
 
   const fieldError = error?.message;
-  const success = !invalid && isTouched;
+  const isSuccess = !invalid && isTouched;
 
   return (
     <div>
@@ -49,13 +49,13 @@ export function FormTextInput({
           className={`w-full px-4 py-3 border rounded-[27px] text-sm mt-2 outline-0 ${
             !!fieldError
               ? "border-error"
-              : success
+              : isSuccess
               ? "border-brand-primary-green"
               : "border-brand-secondary-gray"
           }`}
         />
         <span className="absolute right-0 bottom-0 p-4 pointer-events-none">
-          {success ? (
+          {isSuccess ? (
             <Image
               src="/success.svg"
               width={16}

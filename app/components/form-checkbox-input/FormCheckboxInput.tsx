@@ -46,6 +46,7 @@ export function FormCheckboxInput({
         className={`
   relative block text-sm font-medium 
   px-4 py-3 rounded-[27px] border no-underline cursor-pointer text-left min-w-32 font-sm outline-0
+  focus:outline
   ${
     isChecked
       ? "bg-brand-secondary-black text-brand-primary-white hover:bg-brand-secondary-gray hover:text-brand-primary-white"
@@ -92,7 +93,6 @@ export function FormCheckboxInput({
           )}
         </span>
       </label>
-      {/* TODO: this repeats too many times */}
       {Boolean(!!fieldErrorMessage && !hideErrorText) && (
         <span className="error-text">{fieldErrorMessage}</span>
       )}
