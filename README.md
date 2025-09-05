@@ -1,18 +1,20 @@
-// TODO: add favicon
-// TODO: add font
-// TODO: tests are too shallow
-// TODO: check performance metrics
-// TODO: JSX is too cluttered
-// TODO: HERO pixels are wrong
-// TODO: error handling
-// TODO: bundle size analysis
-// TODO: console warnings
-// TODO: ts errors
-// TODO: copy paste code => especially for style
-// TODO: some svgs are just for different color. make configurations to change svg color
-// TODO: move away from object props to primitive props
-// TODO: repetitive components
-// TODO: improve accesibility
+## TODOs
+
+- add favicon
+- add font
+- tests are too shallow
+- check performance metrics
+- JSX is too cluttered
+- HERO pixels are wrong
+- error handling
+- bundle size analysis
+- console warnings
+- ts errors
+- copy paste code => especially for style
+- some svgs are just for different color. make configurations to change svg color
+- move away from object props to primitive props
+- repetitive components
+- improve accesibility
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
