@@ -9,12 +9,14 @@ type FormTextInputProps = {
   labelClassName?: string;
   name: string;
   type?: HTMLInputTypeAttribute;
+  disabled?: boolean;
 };
 
 export function FormTextInput({
   label,
   name,
   labelClassName,
+  disabled,
   type = "text",
 }: FormTextInputProps) {
   const { control } = useFormContext();
@@ -39,6 +41,8 @@ export function FormTextInput({
       </label>
       <div className="relative">
         <input
+          aria-disabled={disabled}
+          disabled={disabled}
           ref={ref}
           type={type}
           value={value}
@@ -46,7 +50,7 @@ export function FormTextInput({
           id={name}
           onBlur={onBlur}
           onChange={onChange}
-          className={`w-full px-4 py-3 border rounded-[27px] font-sm mt-2 outline-0 ${
+          className={`w-full px-4 py-3 border rounded-[27px] font-sm mt-2 disabled:bg-brand-light-gray disabled:cursor-not-allowed outline-0 ${
             !!fieldError
               ? "border-error"
               : isSuccess

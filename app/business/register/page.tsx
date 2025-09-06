@@ -13,6 +13,8 @@ import { FormProvider } from "react-hook-form";
 import FormTextInput from "../../components/form-text-input";
 import FormCheckboxInput from "../../components/form-checkbox-input";
 import FormAutoCompleteComboBox from "../../components/form-auto-complete-combo-box";
+import { useState } from "react";
+import LoadingIndicator from "../../components/loading-indicator";
 
 // TODO: missing meta data
 
@@ -20,6 +22,7 @@ import FormAutoCompleteComboBox from "../../components/form-auto-complete-combo-
 const LABEL_CLASS_NAME = "flex gap-1.5 items-center";
 
 export default function BusinessRegisterPage() {
+  const [isLoading, setIsLoading] = useState(false);
   const formProps = useFormProps();
 
   const { handleSubmit, formState, setValue, trigger } = formProps;
@@ -27,15 +30,18 @@ export default function BusinessRegisterPage() {
 
   const payError = errors[RegisterBusinessFormFields.PayLater]?.message;
 
-  const isSubmitDisabled = !isDirty || !isValid;
+  const isSubmitDisabled = !isDirty || !isValid || isLoading;
 
   const { handleOnSubmit, handlePayLaterChange, handlePayNowChange } =
-    useEventHandlers({ setValue, trigger });
+    useEventHandlers({ setValue, trigger, setIsLoading });
 
   return (
     <main className="bg-brand-primary-blue -mt-24 pt-30 pb-8">
       <div className="container mx-auto px-4 relative pt-14 xl:pt-15">
-        <Link href="-1" className="inline-block p-4 absolute top-0 left-0">
+        <Link
+          href={Routes.Business}
+          className="inline-block p-4 absolute top-0 left-0"
+        >
           <Image
             src="/back-arrow.svg"
             alt="back navigation button"
@@ -64,6 +70,7 @@ export default function BusinessRegisterPage() {
               <div className="flex flex-col gap-8">
                 <FormTextInput
                   name={RegisterBusinessFormFields.Name}
+                  disabled={isLoading}
                   labelClassName={LABEL_CLASS_NAME}
                   label={
                     <>
@@ -80,6 +87,7 @@ export default function BusinessRegisterPage() {
                 />
                 <FormTextInput
                   name={RegisterBusinessFormFields.Company}
+                  disabled={isLoading}
                   labelClassName={LABEL_CLASS_NAME}
                   label={
                     <>
@@ -95,6 +103,7 @@ export default function BusinessRegisterPage() {
                   }
                 />
                 <FormTextInput
+                  disabled={isLoading}
                   name={RegisterBusinessFormFields.MobilePhone}
                   labelClassName={LABEL_CLASS_NAME}
                   label={
@@ -111,6 +120,7 @@ export default function BusinessRegisterPage() {
                   }
                 />
                 <FormTextInput
+                  disabled={isLoading}
                   name={RegisterBusinessFormFields.Email}
                   type="email"
                   labelClassName={LABEL_CLASS_NAME}
@@ -128,6 +138,7 @@ export default function BusinessRegisterPage() {
                   }
                 />
                 <FormAutoCompleteComboBox
+                  disabled={isLoading}
                   name={RegisterBusinessFormFields.PostCode}
                   items={POST_CODES}
                   labelClassName={LABEL_CLASS_NAME}
@@ -163,11 +174,13 @@ export default function BusinessRegisterPage() {
                   <div className="flex flex-row gap-3 w-full relative mt-2">
                     <FormCheckboxInput
                       hideErrorText
+                      disabled={isLoading}
                       label="PayLater"
                       name={RegisterBusinessFormFields.PayLater}
                       onChange={handlePayLaterChange}
                     />
                     <FormCheckboxInput
+                      disabled={isLoading}
                       hideErrorText
                       label="PayNow"
                       name={RegisterBusinessFormFields.PayNow}
@@ -178,7 +191,6 @@ export default function BusinessRegisterPage() {
                     <div className="error-text mt-2">{payError}</div>
                   )}
                 </div>
-
                 <div>
                   <button
                     className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center mb-5"
@@ -186,6 +198,7 @@ export default function BusinessRegisterPage() {
                     aria-label="Register your interest with Bumper"
                     disabled={isSubmitDisabled}
                   >
+                    {isLoading && <LoadingIndicator />}
                     <span>Register</span>
                     <Image
                       src="/arrow.svg"
@@ -200,7 +213,7 @@ export default function BusinessRegisterPage() {
                     Already registered?
                     <Link
                       className="text-brand-primary-green hover:underline"
-                      href={`${Routes.Business}${Routes.Login}`}
+                      href={Routes.Login}
                       aria-label="Log in to your Bumper account"
                     >
                       Log in

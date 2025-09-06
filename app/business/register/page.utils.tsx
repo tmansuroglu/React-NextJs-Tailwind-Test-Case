@@ -1,7 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChangeEventHandler } from "react";
+import { redirect } from "next/navigation";
+import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
 import {
   DefaultValues,
   SubmitHandler,
@@ -10,6 +11,7 @@ import {
   UseFormTrigger,
 } from "react-hook-form";
 import { z } from "zod";
+import { Routes } from "../../types/enums";
 
 const REQUIRED = "Required";
 
@@ -108,16 +110,29 @@ export const useFormProps = () =>
 type UseEventHandlersOptions = {
   setValue: UseFormSetValue<FormValues>;
   trigger: UseFormTrigger<FormValues>;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
 };
 
 export const useEventHandlers = ({
   setValue,
   trigger,
+  setIsLoading,
 }: UseEventHandlersOptions) => {
-  const handleOnSubmit: SubmitHandler<FormValues> = (values, e) => {
-    e?.preventDefault();
-    // TODO: add handler
-    console.log("values", values);
+  const handleOnSubmit: SubmitHandler<FormValues> = async (values, e) => {
+    try {
+      e?.preventDefault();
+      setIsLoading(true);
+
+      await fetch("/api/business/register", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch {
+      setIsLoading(false);
+      return alert("Failed to register the business");
+    }
+    redirect(Routes.List);
   };
 
   const handlePayLaterChange: ChangeEventHandler<HTMLInputElement> = (e) => {

@@ -13,6 +13,7 @@ type FormAutoCompleteComboBoxProps = {
   placeholder?: string;
   items: Selection[];
   name: string;
+  disabled?: boolean;
 };
 
 export function FormAutoCompleteComboBox({
@@ -21,6 +22,7 @@ export function FormAutoCompleteComboBox({
   placeholder,
   items,
   name,
+  disabled,
 }: FormAutoCompleteComboBoxProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({
@@ -81,8 +83,10 @@ export function FormAutoCompleteComboBox({
                       onBlur();
                     },
                     onFocus: () => openMenu(),
+                    disabled,
                     placeholder,
-                    className: `w-full pl-4 pr-10 py-3 border rounded-[27px] font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs ${
+                    "aria-disabled": disabled,
+                    className: `w-full pl-4 pr-10 py-3 border rounded-[27px] font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs disabled:bg-brand-light-gray ${
                       !!fieldErrorMessage
                         ? "border-error"
                         : isSuccess

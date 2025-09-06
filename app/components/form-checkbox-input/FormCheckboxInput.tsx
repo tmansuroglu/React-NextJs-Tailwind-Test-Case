@@ -9,6 +9,7 @@ type FormCheckboxInputProps = {
   name: string;
   label?: ReactNode;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  disabled?: boolean;
 };
 
 export function FormCheckboxInput({
@@ -16,6 +17,7 @@ export function FormCheckboxInput({
   name,
   label,
   onChange,
+  disabled,
 }: FormCheckboxInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({
@@ -35,6 +37,10 @@ export function FormCheckboxInput({
   const isChecked = !!fieldValue;
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (disabled) {
+      return;
+    }
+
     (onChange || onFieldChange)(e);
     onFieldBlur();
   };
@@ -43,10 +49,11 @@ export function FormCheckboxInput({
     <div>
       <label
         htmlFor={name}
+        aria-disabled={disabled}
         className={`
   relative block
-  px-4 py-3 rounded-[27px] border no-underline cursor-pointer text-left min-w-32 font-sm outline-0
-  focus:outline
+  px-4 py-3 rounded-[27px] border no-underline text-left min-w-32 font-sm outline-0
+  ${disabled ? "bg-brand-light-gray cursor-not-allowed" : "cursor-pointer"}
   ${
     isChecked
       ? "bg-brand-secondary-black text-brand-primary-white hover:bg-brand-secondary-gray hover:text-brand-primary-white"
@@ -58,6 +65,7 @@ export function FormCheckboxInput({
         tabIndex={0}
       >
         <span>{label}</span>
+        {/* // TODO: cant select it with keyboard */}
         <input
           type="checkbox"
           name={name}
