@@ -213,7 +213,7 @@ export default function BusinessRegisterPage() {
                     Already registered?
                     <Link
                       className="text-brand-primary-green hover:underline"
-                      href={Routes.Login}
+                      href={Routes.BusinessLogin}
                       aria-label="Log in to your Bumper account"
                     >
                       Log in

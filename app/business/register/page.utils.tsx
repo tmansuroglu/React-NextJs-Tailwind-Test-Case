@@ -132,7 +132,7 @@ export const useEventHandlers = ({
       setIsLoading(false);
       return alert("Failed to register the business");
     }
-    redirect(Routes.List);
+    redirect(Routes.BusinessList);
   };
 
   const handlePayLaterChange: ChangeEventHandler<HTMLInputElement> = (e) => {

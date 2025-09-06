@@ -16,9 +16,13 @@ export default function RootLayout({
   const pathname = usePathname();
 
   const isBusiness = pathname.startsWith(Routes.Business);
-  const isRegister = pathname.includes(Routes.Register);
-  const isLogin = pathname.includes(Routes.Login);
-  const pathBase = isBusiness ? Routes.Business : Routes.Driver;
+
+  const isRegisterPage =
+    pathname === Routes.DriverRegister || pathname === Routes.BusinessRegister;
+  const isLoginPage =
+    pathname === Routes.DriverLogin || pathname === Routes.BusinessLogin;
+  const isBusinessOrDriverPage =
+    pathname === Routes.Business || pathname === Routes.Driver;
   const loginText = isBusiness ? "Partner Login" : "Driver Login";
   const logoText = isBusiness ? "for business" : "for drivers";
 
@@ -63,7 +67,7 @@ export default function RootLayout({
                   href={isBusiness ? Routes.BusinessLogin : Routes.DriverLogin}
                   className="btn-ghost font-xs-medium my-2 h-7 hidden xl:flex xl:items-center xl:gap-2"
                   aria-label={loginText}
-                  aria-current={isLogin ? "page" : undefined}
+                  aria-current={isLoginPage ? "page" : undefined}
                 >
                   <span>{loginText}</span>
                   <Image
@@ -78,7 +82,7 @@ export default function RootLayout({
             <div className="flex items-center justify-between container mx-auto">
               <LogoLink
                 href={isBusiness ? Routes.Business : Routes.Driver}
-                aria-current={pathname === pathBase ? "page" : undefined}
+                aria-current={isBusinessOrDriverPage ? "page" : undefined}
                 context={logoText}
               >
                 {logoText}
@@ -89,7 +93,7 @@ export default function RootLayout({
                 }
                 aria-label="Register"
                 className="btn-primary font-xs xl:font-sm-plus-medium mr-4 xl:mr-0"
-                aria-current={isRegister ? "page" : undefined}
+                aria-current={isRegisterPage ? "page" : undefined}
               >
                 Register
               </Link>
