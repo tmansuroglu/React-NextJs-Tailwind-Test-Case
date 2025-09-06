@@ -2,7 +2,8 @@
 
 - add favicon
 - add font
-- tests are too shallow
+- Recheck tests added tests
+- Add missing tests
 - check performance metrics.
 - JSX is too cluttered
 - error handling

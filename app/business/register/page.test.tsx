@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import BusinessRegisterPage from "./page";
 
+// TODO: improve test
 describe("BusinessRegisterPage", () => {
   it("renders the main element with correct content", () => {
     render(<BusinessRegisterPage />);
