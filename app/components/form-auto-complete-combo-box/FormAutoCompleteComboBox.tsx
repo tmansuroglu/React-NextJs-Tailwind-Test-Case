@@ -16,6 +16,7 @@ type FormAutoCompleteComboBoxProps = {
   disabled?: boolean;
 };
 
+// TODO: create a seperate component for UI element only
 export function FormAutoCompleteComboBox({
   label,
   labelClassName,

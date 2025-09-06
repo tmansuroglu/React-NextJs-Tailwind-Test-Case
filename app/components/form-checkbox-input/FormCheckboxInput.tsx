@@ -12,6 +12,7 @@ type FormCheckboxInputProps = {
   disabled?: boolean;
 };
 
+// TODO: create a seperate component for UI element only
 export function FormCheckboxInput({
   hideErrorText,
   name,
