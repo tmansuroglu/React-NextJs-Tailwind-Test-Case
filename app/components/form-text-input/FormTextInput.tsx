@@ -28,10 +28,10 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
       {...props}
       className={`${
         !!fieldError
-          ? "border-error"
+          ? "!border-error"
           : isSuccess
-          ? "border-brand-primary-green"
-          : "border-brand-secondary-gray"
+          ? "!border-brand-primary-green"
+          : "!border-brand-secondary-gray"
       }`}
       inputSuffix={
         isSuccess ? (
