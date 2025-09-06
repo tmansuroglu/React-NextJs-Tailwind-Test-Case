@@ -13,6 +13,7 @@ type FormCheckboxInputProps = {
 };
 
 // TODO: create a seperate component for UI element only
+// TODO: improve accesibility
 export function FormCheckboxInput({
   hideErrorText,
   name,

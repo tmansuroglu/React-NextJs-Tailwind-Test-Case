@@ -17,6 +17,7 @@ type FormAutoCompleteComboBoxProps = {
 };
 
 // TODO: create a seperate component for UI element only
+// TODO: improve accesibility
 export function FormAutoCompleteComboBox({
   label,
   labelClassName,

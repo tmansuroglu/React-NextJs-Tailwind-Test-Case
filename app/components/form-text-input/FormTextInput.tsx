@@ -6,6 +6,7 @@ import Image from "next/image";
 
 type FormTextInputProps = TextInputProps & { name: string };
 
+// TODO: improve accesibility
 export function FormTextInput({ name, ...props }: FormTextInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({

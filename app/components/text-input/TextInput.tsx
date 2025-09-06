@@ -5,6 +5,7 @@ import {
   RefCallback,
 } from "react";
 
+// TODO: improve accesibility
 export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   LabelProps?: LabelHTMLAttributes<HTMLLabelElement>;
   inputSuffix?: ReactNode;
