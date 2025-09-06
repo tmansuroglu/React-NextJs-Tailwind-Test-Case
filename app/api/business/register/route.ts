@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { RegisterBusinessRequestPayload } from "../../../types/payload";
-import { readBusinesses, writeBusinesses } from "./route.utils";
+import { readBusinesses, writeBusinesses } from "../utils";
 
 export async function POST(request: Request) {
   try {
@@ -20,6 +20,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(responseData, { status: 201 });
   } catch (error) {
+    console.log("Failed to register business", error);
     return NextResponse.json(
       { success: false, message: "Registration failed" },
       { status: 400 }
