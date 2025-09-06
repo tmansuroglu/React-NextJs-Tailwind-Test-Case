@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Step } from "./Step"; // Adjust the import path as needed
+import { Step } from "./Step";
 
 describe("Step Component", () => {
   const defaultProps = {
@@ -11,7 +11,6 @@ describe("Step Component", () => {
   it("renders the step number, title, and description correctly", () => {
     render(<Step {...defaultProps} />);
 
-    // Check if the number is rendered in the circle
     const numberElement = screen.getByText(defaultProps.number.toString());
     expect(numberElement).toBeInTheDocument();
     expect(numberElement).toHaveClass(
@@ -20,12 +19,10 @@ describe("Step Component", () => {
     expect(numberElement).toHaveClass("bg-brand-primary-orange");
     expect(numberElement).toHaveClass("text-brand-secondary-black");
 
-    // Check if the title is rendered
     const titleElement = screen.getByText(defaultProps.title);
     expect(titleElement).toBeInTheDocument();
     expect(titleElement).toHaveClass("font-sm-bold text-brand-primary-black");
 
-    // Check if the description is rendered
     const descriptionElement = screen.getByText(defaultProps.description);
     expect(descriptionElement).toBeInTheDocument();
     expect(descriptionElement).toHaveClass("font-sm text-brand-primary-black");

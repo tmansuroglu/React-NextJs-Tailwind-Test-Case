@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { useController, useFormContext } from "react-hook-form";
 import { FormTextInput } from "./FormTextInput";
 
-// Mock react-hook-form hooks
 jest.mock("react-hook-form", () => ({
   useFormContext: jest.fn(),
   useController: jest.fn(),
@@ -16,7 +15,6 @@ describe("TextInput", () => {
     label: "Test Label",
   };
 
-  // Default mock setup for hooks
   const mockField = {
     value: "",
     onBlur: jest.fn(),
@@ -30,7 +28,6 @@ describe("TextInput", () => {
   };
 
   beforeEach(() => {
-    // Reset mocks before each test
     (useFormContext as jest.Mock).mockReturnValue({
       control: {},
     });

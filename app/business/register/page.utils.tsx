@@ -25,16 +25,13 @@ export enum RegisterBusinessFormFields {
   PayNow = "payNow",
 }
 
-// Custom validation for alphanumeric strings
 const alphaNumericString = z
   .string()
   .min(1, REQUIRED)
   .regex(/^[a-zA-Z0-9]+$/, "Must be alphanumeric");
 
-// Email regex (standard email format)
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-// Mobile phone regex: UK mobile number starting with 07 followed by 9 digits
 const mobilePhoneRegex = /^0(\s*)(7)(\s*)(\d(\s*)){9}$/;
 
 const validationSchema = z
