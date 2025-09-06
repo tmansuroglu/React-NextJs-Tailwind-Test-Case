@@ -105,10 +105,7 @@ describe("Hero", () => {
     const registerLink = screen.getByRole("link", {
       name: /register your interest with bumper/i,
     });
-    expect(registerLink).toHaveAttribute(
-      "href",
-      `${Routes.Business}${Routes.Register}`
-    );
+    expect(registerLink).toHaveAttribute("href", Routes.BusinessRegister);
     expect(registerLink).toHaveClass(
       "btn-primary-over-rounded",
       "font-sm",
@@ -131,10 +128,7 @@ describe("Hero", () => {
     const loginLink = screen.getByRole("link", {
       name: /log in to your bumper account/i,
     });
-    expect(loginLink).toHaveAttribute(
-      "href",
-      `${Routes.Business}${Routes.Login}`
-    );
+    expect(loginLink).toHaveAttribute("href", Routes.BusinessLogin);
     expect(loginLink).toHaveClass(
       "text-brand-primary-green",
       "hover:underline"

@@ -46,10 +46,10 @@ describe("RootLayout", () => {
     );
     expect(
       screen.getByRole("link", { name: /partner login/i })
-    ).toHaveAttribute("href", `${Routes.Business}/${Routes.Login}`);
+    ).toHaveAttribute("href", Routes.BusinessLogin);
     expect(screen.getByRole("link", { name: /register/i })).toHaveAttribute(
       "href",
-      `${Routes.Business}/${Routes.Register}`
+      Routes.BusinessRegister
     );
     expect(
       screen.getByRole("link", { name: /Bumper for business/i })
@@ -73,11 +73,11 @@ describe("RootLayout", () => {
     );
     expect(screen.getByRole("link", { name: /driver login/i })).toHaveAttribute(
       "href",
-      `${Routes.Driver}/${Routes.Login}`
+      Routes.DriverLogin
     );
     expect(screen.getByRole("link", { name: /register/i })).toHaveAttribute(
       "href",
-      `${Routes.Driver}/${Routes.Register}`
+      Routes.DriverRegister
     );
     expect(
       screen.getByRole("link", { name: /Bumper for drivers/i })
@@ -109,9 +109,7 @@ describe("RootLayout", () => {
   });
 
   it("applies aria-current to login link when active", () => {
-    (usePathname as jest.Mock).mockReturnValue(
-      `${Routes.Business}/${Routes.Login}`
-    );
+    (usePathname as jest.Mock).mockReturnValue(Routes.BusinessLogin);
     render(
       <RootLayout>
         <div>Test Content</div>
@@ -122,9 +120,7 @@ describe("RootLayout", () => {
   });
 
   it("applies aria-current to register link when active", () => {
-    (usePathname as jest.Mock).mockReturnValue(
-      `${Routes.Business}/${Routes.Register}`
-    );
+    (usePathname as jest.Mock).mockReturnValue(Routes.BusinessLogin);
     render(
       <RootLayout>
         <div>Test Content</div>

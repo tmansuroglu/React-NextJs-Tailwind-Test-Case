@@ -76,7 +76,7 @@ export function SubHero() {
       </div>
       <Link
         className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-fit mt-6"
-        href={`${Routes.Business}${Routes.Register}`}
+        href={Routes.BusinessRegister}
         aria-label="Register your interest with Bumper"
       >
         <span>Register your interest</span>

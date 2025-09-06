@@ -1,6 +1,11 @@
 export enum Routes {
   Business = "/business",
   Driver = "/driver",
-  Login = "/login",
-  Register = "/register",
+  BusinessLogin = "business/login",
+  BusinessRegister = "business/register",
+  BusinessList = "business/list",
+  DriverLogin = "driver/login",
+  DriverRegister = "driver/register",
+  Login = "login",
+  Register = "register",
 }

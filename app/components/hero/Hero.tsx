@@ -46,7 +46,7 @@ export function Hero() {
           </p>
           <Link
             className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-fit mt-6"
-            href={`${Routes.Business}${Routes.Register}`}
+            href={Routes.BusinessRegister}
             aria-label="Register your interest with Bumper"
           >
             <span>Register your interest</span>
@@ -62,7 +62,7 @@ export function Hero() {
             Already registered?
             <Link
               className="text-brand-primary-green hover:underline"
-              href={`${Routes.Business}${Routes.Login}`}
+              href={Routes.BusinessLogin}
               aria-label="Log in to your Bumper account"
             >
               Log in

@@ -60,12 +60,12 @@ export default function RootLayout({
                   </li>
                 </ul>
                 <Link
-                  href={`${pathBase}/${Routes.Login}`}
+                  href={isBusiness ? Routes.BusinessLogin : Routes.DriverLogin}
                   className="btn-ghost font-xs-medium my-2 h-7 hidden xl:flex xl:items-center xl:gap-2"
                   aria-label={loginText}
                   aria-current={isLogin ? "page" : undefined}
                 >
-                  <span> {loginText}</span>
+                  <span>{loginText}</span>
                   <Image
                     src="/login.svg"
                     width={12}
@@ -77,14 +77,16 @@ export default function RootLayout({
             </div>
             <div className="flex items-center justify-between container mx-auto">
               <LogoLink
-                href={pathBase}
+                href={isBusiness ? Routes.Business : Routes.Driver}
                 aria-current={pathname === pathBase ? "page" : undefined}
                 context={logoText}
               >
                 {logoText}
               </LogoLink>
               <Link
-                href={`${pathBase}/${Routes.Register}`}
+                href={
+                  isBusiness ? Routes.BusinessRegister : Routes.DriverRegister
+                }
                 aria-label="Register"
                 className="btn-primary font-xs xl:font-sm-plus-medium mr-4 xl:mr-0"
                 aria-current={isRegister ? "page" : undefined}
