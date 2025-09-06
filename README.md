@@ -3,8 +3,7 @@
 - add favicon
 - add font
 - Recheck tests added tests
-- Add missing tests
-- check performance metrics.
+- check performance metrics
 - JSX is too cluttered
 - error handling
 - console warnings
@@ -13,7 +12,6 @@
 - repetitive components
 - improve accesibility
 - check metadata
-- phone masking
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
