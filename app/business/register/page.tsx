@@ -132,11 +132,13 @@ export default function BusinessRegisterPage() {
                   }
                 />
                 <FormAutoCompleteComboBox
-                  disabled={isLoading}
+                  InputProps={{
+                    disabled: isLoading,
+                    placeholder: "Start typing to match your address",
+                  }}
                   name={RegisterBusinessFormFields.PostCode}
                   items={POST_CODES}
-                  labelClassName="flex gap-1.5 items-center"
-                  placeholder="Start typing to match your address"
+                  LabelProps={{ className: "flex gap-1.5 items-center" }}
                   label={
                     <>
                       <Image
