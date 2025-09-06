@@ -82,7 +82,7 @@ export function FormAutoCompleteComboBox({
                     },
                     onFocus: () => openMenu(),
                     placeholder,
-                    className: `w-full pl-4 pr-10 py-3 border rounded-[27px] text-sm mt-2 outline-0 placeholder:font-xxs xl:placeholder:font-xs ${
+                    className: `w-full pl-4 pr-10 py-3 border rounded-[27px] font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs ${
                       !!fieldErrorMessage
                         ? "border-error"
                         : isSuccess

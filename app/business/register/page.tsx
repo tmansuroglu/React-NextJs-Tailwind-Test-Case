@@ -16,6 +16,7 @@ import FormAutoCompleteComboBox from "../../components/form-auto-complete-combo-
 
 // TODO: missing meta data
 
+// TODO: remove this
 const LABEL_CLASS_NAME = "flex gap-1.5 items-center";
 
 export default function BusinessRegisterPage() {
@@ -33,29 +34,29 @@ export default function BusinessRegisterPage() {
 
   return (
     <main className="bg-brand-primary-blue -mt-24 pt-30 pb-8">
-      <Link href="-1" className="inline-block p-4 mb-2">
-        <Image
-          src="/back-arrow.svg"
-          alt="back navigation button"
-          width={20}
-          height={20}
-        />
-      </Link>
-      <div className="container mx-auto px-4">
-        <h1 className="font-lg text-brand-primary-white mb-2">
+      <div className="container mx-auto px-4 relative pt-14 xl:pt-15">
+        <Link href="-1" className="inline-block p-4 absolute top-0 left-0">
+          <Image
+            src="/back-arrow.svg"
+            alt="back navigation button"
+            width={20}
+            height={20}
+            className="xl:w-8 xl:h-8"
+          />
+        </Link>
+        <h1 className="font-lg xl:font-xl-plus text-brand-primary-white mb-2 xl:mb-5">
           Join our network
         </h1>
         <p className="text-brand-primary-white font-sm mb-8">
           Offer <strong>PayLater</strong> to split servicing and repair work
-          into monthly instalments - interest-free. Use PayNow to take secure
-          payments online.
+          into monthly instalments - interest-free. Use <strong>PayNow</strong>
+          to take secure payments online.
         </p>
-
-        <div className="bg-brand-primary-white rounded-[30px] px-4 py-6 border-[1px] border-brand-secondary-black">
-          <h2 className="font-sm-bold text-brand-primary-black mb-1">
+        <div className="bg-brand-primary-white rounded-[30px] px-4 py-6 xl:p-[45px] border-[1px] border-brand-secondary-black">
+          <h2 className="font-sm-bold xl:font-md-plus-bold text-brand-primary-black mb-1">
             Join our network
           </h2>
-          <p className="font-sm text-brand-primary-black mb-5">
+          <p className="font-sm xl:font-md-plus text-brand-primary-black mb-5">
             Free to join, no monthly fees
           </p>
           <FormProvider {...formProps}>
@@ -73,7 +74,7 @@ export default function BusinessRegisterPage() {
                         alt="person icon"
                         className="w-auto h-auto"
                       />
-                      <span>Name</span>
+                      <span className="font-sm-bold">Name</span>
                     </>
                   }
                 />
@@ -89,7 +90,7 @@ export default function BusinessRegisterPage() {
                         alt="building icon"
                         className="w-auto h-auto"
                       />
-                      <span>Company</span>
+                      <span className="font-sm-bold">Company</span>
                     </>
                   }
                 />
@@ -105,7 +106,7 @@ export default function BusinessRegisterPage() {
                         className="w-auto h-auto"
                         alt="phone icon"
                       />
-                      <span>Mobile Phone Number</span>
+                      <span className="font-sm-bold">Mobile Phone Number</span>
                     </>
                   }
                 />
@@ -122,7 +123,7 @@ export default function BusinessRegisterPage() {
                         alt="mail icon"
                         className="w-auto h-auto"
                       />
-                      <span>Email Address</span>
+                      <span className="font-sm-bold">Email Address</span>
                     </>
                   }
                 />
@@ -140,7 +141,7 @@ export default function BusinessRegisterPage() {
                         alt="mail icon"
                         className="w-auto h-auto"
                       />
-                      <span>Postcode</span>
+                      <span className="font-sm-bold">Postcode</span>
                     </>
                   }
                 />

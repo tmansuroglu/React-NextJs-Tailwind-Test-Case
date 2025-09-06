@@ -32,7 +32,7 @@ export function FormTextInput({
   return (
     <div>
       <label
-        className={`text-sm font-medium text-brand-secondary-black ${labelClassName}`}
+        className={`font-sm text-brand-secondary-black ${labelClassName}`}
         htmlFor={name}
       >
         {label}
@@ -46,7 +46,7 @@ export function FormTextInput({
           id={name}
           onBlur={onBlur}
           onChange={onChange}
-          className={`w-full px-4 py-3 border rounded-[27px] text-sm mt-2 outline-0 ${
+          className={`w-full px-4 py-3 border rounded-[27px] font-sm mt-2 outline-0 ${
             !!fieldError
               ? "border-error"
               : isSuccess

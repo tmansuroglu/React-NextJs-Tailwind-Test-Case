@@ -44,7 +44,7 @@ export function FormCheckboxInput({
       <label
         htmlFor={name}
         className={`
-  relative block text-sm font-medium 
+  relative block
   px-4 py-3 rounded-[27px] border no-underline cursor-pointer text-left min-w-32 font-sm outline-0
   focus:outline
   ${

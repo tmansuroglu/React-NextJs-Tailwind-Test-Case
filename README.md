@@ -3,18 +3,16 @@
 - add favicon
 - add font
 - tests are too shallow
-- check performance metrics
+- check performance metrics.
 - JSX is too cluttered
-- HERO pixels are wrong
 - error handling
-- bundle size analysis
 - console warnings
 - ts errors
-- copy paste code => especially for style
 - some svgs are just for different color. make configurations to change svg color
-- move away from object props to primitive props
 - repetitive components
 - improve accesibility
+- check metadata
+- phone masking
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
