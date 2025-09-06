@@ -18,9 +18,6 @@ import LoadingIndicator from "../../components/loading-indicator";
 
 // TODO: missing meta data
 
-// TODO: remove this
-const LABEL_CLASS_NAME = "flex gap-1.5 items-center";
-
 export default function BusinessRegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const formProps = useFormProps();
@@ -71,9 +68,9 @@ export default function BusinessRegisterPage() {
                 <FormTextInput
                   name={RegisterBusinessFormFields.Name}
                   disabled={isLoading}
-                  labelClassName={LABEL_CLASS_NAME}
                   label={
-                    <>
+                    // TODO: this repeats too many times
+                    <div className="flex gap-1.5 items-center">
                       <Image
                         src="/person.svg"
                         height={19}
@@ -82,15 +79,14 @@ export default function BusinessRegisterPage() {
                         className="w-auto h-auto"
                       />
                       <span className="font-sm-bold">Name</span>
-                    </>
+                    </div>
                   }
                 />
                 <FormTextInput
                   name={RegisterBusinessFormFields.Company}
                   disabled={isLoading}
-                  labelClassName={LABEL_CLASS_NAME}
                   label={
-                    <>
+                    <div className="flex gap-1.5 items-center">
                       <Image
                         src="/building.svg"
                         height={19}
@@ -99,15 +95,14 @@ export default function BusinessRegisterPage() {
                         className="w-auto h-auto"
                       />
                       <span className="font-sm-bold">Company</span>
-                    </>
+                    </div>
                   }
                 />
                 <FormTextInput
                   disabled={isLoading}
                   name={RegisterBusinessFormFields.MobilePhone}
-                  labelClassName={LABEL_CLASS_NAME}
                   label={
-                    <>
+                    <div className="flex gap-1.5 items-center">
                       <Image
                         src="/phone.svg"
                         height={19}
@@ -116,16 +111,15 @@ export default function BusinessRegisterPage() {
                         alt="phone icon"
                       />
                       <span className="font-sm-bold">Mobile Phone Number</span>
-                    </>
+                    </div>
                   }
                 />
                 <FormTextInput
                   disabled={isLoading}
                   name={RegisterBusinessFormFields.Email}
                   type="email"
-                  labelClassName={LABEL_CLASS_NAME}
                   label={
-                    <>
+                    <div className="flex gap-1.5 items-center">
                       <Image
                         src="/mail.svg"
                         height={19}
@@ -134,14 +128,14 @@ export default function BusinessRegisterPage() {
                         className="w-auto h-auto"
                       />
                       <span className="font-sm-bold">Email Address</span>
-                    </>
+                    </div>
                   }
                 />
                 <FormAutoCompleteComboBox
                   disabled={isLoading}
                   name={RegisterBusinessFormFields.PostCode}
                   items={POST_CODES}
-                  labelClassName={LABEL_CLASS_NAME}
+                  labelClassName="flex gap-1.5 items-center"
                   placeholder="Start typing to match your address"
                   label={
                     <>
@@ -157,7 +151,7 @@ export default function BusinessRegisterPage() {
                   }
                 />
                 <div>
-                  <p className={LABEL_CLASS_NAME}>
+                  <p className="flex gap-1.5 items-center">
                     <Image
                       src="/wrench.svg"
                       height={19}
