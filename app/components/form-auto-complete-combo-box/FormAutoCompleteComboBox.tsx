@@ -10,7 +10,6 @@ type FormAutoCompleteComboBoxProps = AutoCompleteComboBoxProps & {
   name: string;
 };
 
-// TODO: improve accesibility
 export function FormAutoCompleteComboBox({
   InputProps,
   name,
@@ -29,12 +28,16 @@ export function FormAutoCompleteComboBox({
   const fieldErrorMessage = error?.message;
   const isSuccess = !invalid && isTouched;
 
+  const errorId = `${name}-error-id`;
+
   return (
     <AutoCompleteComboBox
       defaultValue={value}
       onChange={onChange}
       InputProps={{
         ...InputProps,
+        "aria-describedby": errorId,
+        autoComplete: name,
         name,
         ref,
         onBlur,
@@ -52,6 +55,7 @@ export function FormAutoCompleteComboBox({
             height={16}
             className="w-4 h-4"
             alt="error icon"
+            aria-hidden
           />
         ) : isSuccess ? (
           <Image
@@ -60,12 +64,15 @@ export function FormAutoCompleteComboBox({
             height={16}
             className="w-4 h-4"
             alt="success icon"
+            aria-hidden
           />
         ) : null
       }
       caption={
         !!fieldErrorMessage && (
-          <span className="error-text ">{fieldErrorMessage}</span>
+          <span className="error-text" id={errorId}>
+            {fieldErrorMessage}
+          </span>
         )
       }
       {...props}
