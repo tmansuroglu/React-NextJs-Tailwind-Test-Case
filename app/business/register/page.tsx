@@ -23,11 +23,11 @@ export default function BusinessRegisterPage() {
   const formProps = useFormProps();
 
   const { handleSubmit, formState, setValue, trigger } = formProps;
-  const { isDirty, isValid, errors } = formState;
+  const { errors } = formState;
 
   const payError = errors[RegisterBusinessFormFields.PayLater]?.message;
 
-  const isSubmitDisabled = !isDirty || !isValid || isLoading;
+  const isSubmitDisabled = isLoading;
 
   const { handleOnSubmit, handlePayLaterChange, handlePayNowChange } =
     useEventHandlers({ setValue, trigger, setIsLoading });

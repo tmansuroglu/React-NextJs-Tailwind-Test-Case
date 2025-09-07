@@ -7,3 +7,9 @@ export enum Routes {
   DriverLogin = "/driver/login",
   DriverRegister = "/driver/register",
 }
+
+export enum SearchParams {
+  Page = "page",
+  PageSize = "pageSize",
+  CompanyName = "company",
+}
