@@ -11,6 +11,7 @@ type FormCheckboxInputProps = {
   label?: ReactNode;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   disabled?: boolean;
+  ariaDescribedBy?: string;
 };
 
 // TODO: create a seperate component for UI element only
@@ -21,6 +22,7 @@ export function FormCheckboxInput({
   label,
   onChange,
   disabled,
+  ariaDescribedBy,
 }: FormCheckboxInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({
@@ -50,6 +52,7 @@ export function FormCheckboxInput({
 
   return (
     <CheckboxInput
+      ariaDescribedBy={ariaDescribedBy}
       label={label}
       name={name}
       onChange={handleChange}

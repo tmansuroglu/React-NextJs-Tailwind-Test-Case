@@ -17,6 +17,7 @@ export type CheckboxInputProps = {
   label: ReactNode;
   onChange: ChangeEventHandler<HTMLInputElement>;
   defaultIsChecked?: boolean;
+  ariaDescribedBy?: string;
 };
 
 export function CheckboxInput({
@@ -28,6 +29,7 @@ export function CheckboxInput({
   onChange,
   LabelProps,
   defaultIsChecked = false,
+  ariaDescribedBy,
 }: CheckboxInputProps) {
   const [isChecked, setIsChecked] = useState(defaultIsChecked);
 
@@ -55,6 +57,7 @@ export function CheckboxInput({
           type="checkbox"
           name={name}
           id={name}
+          aria-describedby={ariaDescribedBy}
           className="hidden"
           onChange={(e) => {
             setIsChecked(e.target.checked);
