@@ -90,16 +90,16 @@ export function AutoCompleteComboBox({
               {isOpen && (
                 <ul
                   {...getMenuProps({
+                    "aria-live": "polite",
                     className:
                       "border absolute bottom-0 left-0 right-0 z-50 bg-brand-primary-white transform translate-y-full rounded-[20px] max-h-52 overflow-y-auto custom-scrollbar py-1",
                   })}
                 >
                   {filteredItems.length > 0 ? (
                     filteredItems.map((item, index) => (
-                      // eslint-disable-next-line react/jsx-key
                       <li
+                        key={item.value}
                         {...getItemProps({
-                          key: item.value,
                           index,
                           item,
                           className: "font-sm-medium p-2.5",
@@ -117,7 +117,10 @@ export function AutoCompleteComboBox({
                       </li>
                     ))
                   ) : (
-                    <li className="font-sm-medium p-2.5 text-brand-tertiary-gray">
+                    <li
+                      role="status"
+                      className="font-sm-medium p-2.5 text-brand-tertiary-gray"
+                    >
                       No Result
                     </li>
                   )}
