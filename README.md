@@ -1,8 +1,6 @@
 ## TODOs
 
 - Recheck tests added tests
-- improve accesibility
-- JSX is too cluttered
 - console warnings
 - ts errors
 - error handling
