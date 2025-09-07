@@ -12,7 +12,6 @@ import LabeledIcon from "../../components/labeled-icon";
 
 // TODO: add meta data
 
-// TODO: add virtualization
 export default function ListPage() {
   const searchParams = useSearchParams();
 
@@ -123,6 +122,7 @@ export default function ListPage() {
               onClick={handleLoadMore}
               disabled={isLoading}
               aria-busy={isLoading}
+              data-testid="load-more"
               aria-label="Load More"
               className="rounded font-sm cursor-pointer text-brand-primary-white p-4 w-fit mx-auto hover:bg-brand-light-gray hover:text-brand-primary-black"
             >

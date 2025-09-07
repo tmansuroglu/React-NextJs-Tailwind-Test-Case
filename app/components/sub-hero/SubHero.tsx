@@ -13,7 +13,7 @@ export function SubHero() {
       <h2 id="subhero-heading" className="sr-only">
         Pay Later Benefits
       </h2>
-      <div role="main" className="grid xl:grid-cols-2">
+      <div role="group" className="grid xl:grid-cols-2">
         <div>
           <Image
             src="/logo.svg"

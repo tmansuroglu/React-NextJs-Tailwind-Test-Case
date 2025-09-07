@@ -9,7 +9,7 @@ type LabeledIconProps = {
 
 export function LabeledIcon({ src, alt, label }: LabeledIconProps) {
   return (
-    <div className="flex gap-1.5 items-center">
+    <div className="flex gap-1.5 items-center" data-testid="labeled-icon">
       <Image
         src={src}
         height={19}

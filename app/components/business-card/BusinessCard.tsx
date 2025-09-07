@@ -15,7 +15,7 @@ export function BusinessCard({
   mail,
 }: BusinessCardProps) {
   return (
-    <article className="card">
+    <article className="card" data-testid="business-card">
       <h2 className="font-md-plus-bold mb-5">{name}</h2>
       <dl>
         <div className="flex justify-between items-center py-4 border-t border-b border-brand-primary-gray">
