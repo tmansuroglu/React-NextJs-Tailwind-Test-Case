@@ -14,8 +14,6 @@ type FormCheckboxInputProps = {
   ariaDescribedBy?: string;
 };
 
-// TODO: create a seperate component for UI element only
-// TODO: improve accesibility
 export function FormCheckboxInput({
   hideErrorText,
   name,
@@ -50,9 +48,11 @@ export function FormCheckboxInput({
     onFieldBlur();
   };
 
+  const errorId = `${name}-error-id`;
+
   return (
     <CheckboxInput
-      ariaDescribedBy={ariaDescribedBy}
+      ariaDescribedBy={ariaDescribedBy || errorId}
       label={label}
       name={name}
       onChange={handleChange}
@@ -70,6 +70,7 @@ export function FormCheckboxInput({
             height={16}
             alt="error icon"
             className="w-4 h-4"
+            aria-hidden
           />
         ) : isChecked ? (
           <Image
@@ -78,6 +79,7 @@ export function FormCheckboxInput({
             height={16}
             className="w-4 h-4"
             alt="checked icon"
+            aria-hidden
           />
         ) : (
           <Image
@@ -86,12 +88,15 @@ export function FormCheckboxInput({
             height={16}
             alt="plus icon"
             className="w-4 h-4"
+            aria-hidden
           />
         )
       }
       caption={
         Boolean(!!fieldErrorMessage && !hideErrorText) && (
-          <span className="error-text">{fieldErrorMessage}</span>
+          <span className="error-text" id={errorId} role="alert">
+            {fieldErrorMessage}
+          </span>
         )
       }
     />
