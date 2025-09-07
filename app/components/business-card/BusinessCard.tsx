@@ -14,7 +14,7 @@ export function BusinessCard({
   mail,
 }: BusinessCardProps) {
   return (
-    <article className="p-8 border rounded-[30px] bg-brand-primary-white w-full">
+    <article className="card">
       <h2 className="font-md-plus-bold mb-5">{name}</h2>
       <dl>
         <div className="flex justify-between items-center py-4 border-t border-b border-brand-primary-gray">

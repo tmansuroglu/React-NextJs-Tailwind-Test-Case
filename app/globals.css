@@ -144,4 +144,8 @@
   .custom-scrollbar {
     clip-path: inset(0 0 0 0 round 20px);
   }
+
+  .card {
+    @apply p-8 border rounded-[30px] bg-brand-primary-white w-full;
+  }
 }
