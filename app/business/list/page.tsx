@@ -1,7 +1,6 @@
 "use client";
 
 import TextInput from "../../components/text-input";
-import Image from "next/image";
 import BusinessCard from "../../components/business-card";
 import { useEffect, useState } from "react";
 import { BusinessListResponsePayload } from "../../types/payload";
@@ -9,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 import { SearchParams } from "../../types/enums";
 import LoadingIndicator from "../../components/loading-indicator";
 import { useHandlers } from "./page.utils";
+import LabeledIcon from "../../components/labeled-icon";
 
 // TODO: add meta data
 
@@ -26,9 +26,9 @@ export default function ListPage() {
 
   const [error, setError] = useState(false);
 
-  const doesDataExist = Number(payload?.pagination.totalItems) > 0;
+  const isDataExist = Number(payload?.pagination.totalItems) > 0;
 
-  const moreItemsExist =
+  const isMoreItemsExist =
     Number(payload?.pagination.pageSize) <
     Number(payload?.pagination.totalItems);
 
@@ -71,23 +71,18 @@ export default function ListPage() {
           <TextInput
             value={inputValue}
             onChange={handleInputValueChange}
-            inputSuffix={isLoading && <LoadingIndicator />}
+            inputSuffix={isLoading && <LoadingIndicator aria-live="polite" />}
             label={
-              <div className="flex gap-1.5 items-center">
-                <Image
-                  src="/building.svg"
-                  height={19}
-                  width={16}
-                  alt="building icon"
-                  className="w-auto h-auto"
-                />
-                <span className="font-sm-bold">Search Company</span>
-              </div>
+              <LabeledIcon
+                src="/building.svg"
+                alt="search input label icon"
+                label="Search Company"
+              />
             }
           />
         </section>
         <section className="w-full gap-4 flex flex-col">
-          {doesDataExist &&
+          {isDataExist &&
             payload?.data.map(
               ({
                 id,
@@ -108,18 +103,27 @@ export default function ListPage() {
               )
             )}
           {isLoading ? (
-            <div className="card text-center font-lg xl:font-xl-plus">
+            <div
+              aria-live="polite"
+              className="card text-center font-lg xl:font-xl-plus"
+            >
               Loading...
             </div>
           ) : error ? (
-            <div className="card text-center">Failed to load the data</div>
-          ) : !doesDataExist ? (
-            <div className="card text-center">No Data</div>
+            <div aria-live="polite" className="card text-center">
+              Failed to load the data
+            </div>
+          ) : !isDataExist ? (
+            <div aria-live="polite" className="card text-center">
+              No Data
+            </div>
           ) : null}
-          {moreItemsExist && (
+          {isMoreItemsExist && (
             <button
               onClick={handleLoadMore}
               disabled={isLoading}
+              aria-busy={isLoading}
+              aria-label="Load More"
               className="rounded font-sm cursor-pointer text-brand-primary-white p-4 w-fit mx-auto hover:bg-brand-light-gray hover:text-brand-primary-black"
             >
               {isLoading && <LoadingIndicator />}
