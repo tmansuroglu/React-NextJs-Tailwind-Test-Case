@@ -9,6 +9,7 @@ export function Hero() {
       className="relative bg-[url(/hero.png)] min-h-[543px] h-auto w-full -mt-24 pt-24 bg-[34%_100%] bg-no-repeat bg-cover
  z-0  flex items-center"
       aria-labelledby="hero-title"
+      role="banner"
     >
       <div className="absolute inset-0 bg-brand-opacity-gray opacity-70" />
       <div className="container mx-auto px-4 pt-[29px] pb-[34px] xl:pt-11 xl:pb-[51px] flex items-center min-h-full relative">
