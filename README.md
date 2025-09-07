@@ -1,17 +1,15 @@
 ## TODOs
 
-- add favicon
-- add font
 - Recheck tests added tests
-- check performance metrics
+- improve accesibility
 - JSX is too cluttered
-- error handling
 - console warnings
 - ts errors
-- some svgs are just for different color. make configurations to change svg color
-- repetitive components
-- improve accesibility
+- error handling
 - check metadata
+- add favicon
+- check performance metrics
+- some svgs are just for different color. make configurations to change svg color
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
