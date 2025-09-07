@@ -12,6 +12,7 @@ import {
 } from "react-hook-form";
 import { z } from "zod";
 import { Routes } from "../../types/enums";
+import { RegisterBusinessRequestPayload } from "../../types/payload";
 
 const REQUIRED = "Required";
 
@@ -120,9 +121,19 @@ export const useEventHandlers = ({
       e?.preventDefault();
       setIsLoading(true);
 
+      const payload: RegisterBusinessRequestPayload = {
+        name: values[RegisterBusinessFormFields.Name],
+        company: values[RegisterBusinessFormFields.Company],
+        mobile_phone: values[RegisterBusinessFormFields.MobilePhone],
+        email_address: values[RegisterBusinessFormFields.Email],
+        postcode: values[RegisterBusinessFormFields.PostCode],
+        pay_later: values[RegisterBusinessFormFields.PayLater],
+        pay_now: values[RegisterBusinessFormFields.PayNow],
+      };
+
       await fetch("/api/business/register", {
         method: "POST",
-        body: JSON.stringify(values),
+        body: JSON.stringify(payload),
         headers: { "Content-Type": "application/json" },
       });
     } catch {
