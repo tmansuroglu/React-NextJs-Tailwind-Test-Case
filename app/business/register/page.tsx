@@ -15,6 +15,7 @@ import FormCheckboxInput from "../../components/form-checkbox-input";
 import FormAutoCompleteComboBox from "../../components/form-auto-complete-combo-box";
 import { useState } from "react";
 import LoadingIndicator from "../../components/loading-indicator";
+import LabeledIcon from "../../components/labeled-icon";
 
 // TODO: missing meta data
 
@@ -37,6 +38,7 @@ export default function BusinessRegisterPage() {
       <div className="container mx-auto px-4 relative pt-14 xl:pt-15">
         <Link
           href={Routes.Business}
+          aria-label="Back to previous page"
           className="inline-block p-4 absolute top-0 left-0"
         >
           <Image
@@ -69,49 +71,33 @@ export default function BusinessRegisterPage() {
                   name={RegisterBusinessFormFields.Name}
                   disabled={isLoading}
                   label={
-                    // TODO: this repeats too many times
-                    <div className="flex gap-1.5 items-center">
-                      <Image
-                        src="/person.svg"
-                        height={19}
-                        width={16}
-                        alt="person icon"
-                        className="w-auto h-auto"
-                      />
-                      <span className="font-sm-bold">Name</span>
-                    </div>
+                    <LabeledIcon
+                      src="/person.svg"
+                      alt="person icon"
+                      label="Name"
+                    />
                   }
                 />
                 <FormTextInput
                   name={RegisterBusinessFormFields.Company}
                   disabled={isLoading}
                   label={
-                    <div className="flex gap-1.5 items-center">
-                      <Image
-                        src="/building.svg"
-                        height={19}
-                        width={16}
-                        alt="building icon"
-                        className="w-auto h-auto"
-                      />
-                      <span className="font-sm-bold">Company</span>
-                    </div>
+                    <LabeledIcon
+                      src="/building.svg"
+                      alt="building icon"
+                      label="Company"
+                    />
                   }
                 />
                 <FormTextInput
                   disabled={isLoading}
                   name={RegisterBusinessFormFields.MobilePhone}
                   label={
-                    <div className="flex gap-1.5 items-center">
-                      <Image
-                        src="/phone.svg"
-                        height={19}
-                        width={16}
-                        className="w-auto h-auto"
-                        alt="phone icon"
-                      />
-                      <span className="font-sm-bold">Mobile Phone Number</span>
-                    </div>
+                    <LabeledIcon
+                      src="/phone.svg"
+                      alt="phone icon"
+                      label="Mobile Phone Number"
+                    />
                   }
                 />
                 <FormTextInput
@@ -119,16 +105,11 @@ export default function BusinessRegisterPage() {
                   name={RegisterBusinessFormFields.Email}
                   type="email"
                   label={
-                    <div className="flex gap-1.5 items-center">
-                      <Image
-                        src="/mail.svg"
-                        height={19}
-                        width={16}
-                        alt="mail icon"
-                        className="w-auto h-auto"
-                      />
-                      <span className="font-sm-bold">Email Address</span>
-                    </div>
+                    <LabeledIcon
+                      src="/mail.svg"
+                      alt="mail icon"
+                      label="Email Address"
+                    />
                   }
                 />
                 <FormAutoCompleteComboBox
@@ -140,29 +121,23 @@ export default function BusinessRegisterPage() {
                   items={POST_CODES}
                   LabelProps={{ className: "flex gap-1.5 items-center" }}
                   label={
-                    <>
-                      <Image
-                        src="/house.svg"
-                        height={19}
-                        width={16}
-                        alt="mail icon"
-                        className="w-auto h-auto"
-                      />
-                      <span className="font-sm-bold">Postcode</span>
-                    </>
+                    <LabeledIcon
+                      src="/house.svg"
+                      alt="mail icon"
+                      label="Postcode"
+                    />
                   }
                 />
-                <div>
-                  <p className="flex gap-1.5 items-center">
-                    <Image
-                      src="/wrench.svg"
-                      height={19}
-                      width={16}
-                      alt="wrench icon"
-                      className="w-auto h-auto"
-                    />
-                    <span>What services are you interested in?</span>
-                  </p>
+                <fieldset>
+                  <LabeledIcon
+                    src="/wrench.svg"
+                    alt="wrench icon"
+                    label={
+                      <legend className="font-sm-bold">
+                        What services are you interested in?
+                      </legend>
+                    }
+                  />
                   <p className="font-xs text-brand-tertiary-gray">
                     Please select the services you&apos;re interested in
                     offering your customers
@@ -173,34 +148,39 @@ export default function BusinessRegisterPage() {
                       disabled={isLoading}
                       label="PayLater"
                       name={RegisterBusinessFormFields.PayLater}
+                      ariaDescribedBy="pay-error"
                       onChange={handlePayLaterChange}
                     />
                     <FormCheckboxInput
                       disabled={isLoading}
                       hideErrorText
                       label="PayNow"
+                      ariaDescribedBy="pay-error"
                       name={RegisterBusinessFormFields.PayNow}
                       onChange={handlePayNowChange}
                     />
                   </div>
                   {!!payError && (
-                    <div className="error-text mt-2">{payError}</div>
+                    <div id="pay-error" className="error-text mt-2">
+                      {payError}
+                    </div>
                   )}
-                </div>
+                </fieldset>
                 <div>
                   <button
                     className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center mb-5"
                     type="submit"
                     aria-label="Register your interest with Bumper"
                     disabled={isSubmitDisabled}
+                    aria-disabled={isSubmitDisabled}
                   >
-                    {isLoading && <LoadingIndicator />}
+                    {isLoading && <LoadingIndicator aria-live="polite" />}
                     <span>Register</span>
                     <Image
                       src="/arrow.svg"
                       width={16}
                       height={19}
-                      alt=""
+                      alt="arrow icon decorating the register button"
                       aria-hidden="true"
                       className="w-auto h-auto"
                     />
