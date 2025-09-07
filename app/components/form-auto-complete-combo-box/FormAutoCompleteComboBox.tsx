@@ -37,6 +37,7 @@ export function FormAutoCompleteComboBox({
       InputProps={{
         ...InputProps,
         "aria-describedby": errorId,
+        "aria-invalid": !!fieldErrorMessage,
         autoComplete: name,
         name,
         ref,
@@ -70,7 +71,7 @@ export function FormAutoCompleteComboBox({
       }
       caption={
         !!fieldErrorMessage && (
-          <span className="error-text" id={errorId}>
+          <span className="error-text" id={errorId} role="alert">
             {fieldErrorMessage}
           </span>
         )

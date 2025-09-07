@@ -55,6 +55,7 @@ export function FormCheckboxInput({
       ariaDescribedBy={ariaDescribedBy || errorId}
       label={label}
       name={name}
+      aria-invalid={!!fieldErrorMessage}
       onChange={handleChange}
       LabelProps={{
         ref,

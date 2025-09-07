@@ -6,7 +6,6 @@ import Image from "next/image";
 
 type FormTextInputProps = TextInputProps & { name: string };
 
-// TODO: improve accesibility
 export function FormTextInput({ name, ...props }: FormTextInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({
@@ -20,12 +19,16 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
   const fieldError = error?.message;
   const isSuccess = !invalid && isTouched;
 
+  const errorId = `${name}-error-id`;
+
   return (
     <TextInput
       value={value}
       onBlur={onBlur}
       onChange={onChange}
       ref={ref}
+      aria-describedby={errorId}
+      aria-invalid={!!fieldError}
       {...props}
       className={`${
         !!fieldError
@@ -42,6 +45,7 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
             height={16}
             className="w-4 h-4"
             alt="success icon"
+            aria-hidden
           />
         ) : !!fieldError ? (
           <Image
@@ -50,11 +54,16 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
             height={16}
             className="w-4 h-4"
             alt="error icon"
+            aria-hidden
           />
         ) : null
       }
       caption={
-        !!fieldError && <span className="error-text w-full">{fieldError}</span>
+        !!fieldError && (
+          <span className="error-text w-full" role="alert" id={errorId}>
+            {fieldError}
+          </span>
+        )
       }
     />
   );

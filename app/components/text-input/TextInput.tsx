@@ -5,7 +5,6 @@ import {
   RefCallback,
 } from "react";
 
-// TODO: improve accesibility
 export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   LabelProps?: LabelHTMLAttributes<HTMLLabelElement>;
   inputSuffix?: ReactNode;
@@ -38,13 +37,17 @@ export function TextInput({
       )}
       <div className="relative">
         <input
-          className={`w-full px-4 py-3 border rounded-[27px] font-sm mt-2 disabled:bg-brand-light-gray disabled:cursor-not-allowed outline-0 border-brand-secondary-gray ${
+          className={`focus:outline w-full px-4 py-3 border rounded-[27px] font-sm mt-2 disabled:bg-brand-light-gray disabled:cursor-not-allowed outline-0 border-brand-secondary-gray ${
             className || ""
           }`}
+          aria-disabled={props.disabled}
           {...props}
         />
         {inputSuffix && (
-          <span className="absolute right-0 bottom-0 p-4 pointer-events-none">
+          <span
+            className="absolute right-0 bottom-0 p-4 pointer-events-none"
+            aria-hidden
+          >
             {inputSuffix}
           </span>
         )}

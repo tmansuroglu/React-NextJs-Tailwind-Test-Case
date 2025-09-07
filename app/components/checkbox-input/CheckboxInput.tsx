@@ -68,7 +68,6 @@ export function CheckboxInput({
         onKeyDown={handleOnKeyDown}
       >
         <span>{label}</span>
-        {/* // TODO: cant select it with keyboard */}
         <input
           type="checkbox"
           name={name}
