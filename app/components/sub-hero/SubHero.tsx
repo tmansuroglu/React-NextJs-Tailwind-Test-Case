@@ -7,12 +7,13 @@ export function SubHero() {
   return (
     <section
       className="container mx-auto px-4 pt-10 pb-6"
+      role="region"
       aria-labelledby="subhero-heading"
     >
       <h2 id="subhero-heading" className="sr-only">
         Pay Later Benefits
       </h2>
-      <div role="group" className="grid xl:grid-cols-2">
+      <div role="main" className="grid xl:grid-cols-2">
         <div>
           <Image
             src="/logo.svg"
@@ -20,7 +21,7 @@ export function SubHero() {
             alt="Bumper logo"
             width={75}
             height={19}
-            loading="lazy"
+            priority
           />
           <h3 className="font-2xl xl:font-2xl-wide text-brand-secondary-black">
             PAYLATER
@@ -28,11 +29,12 @@ export function SubHero() {
         </div>
         <Image
           src="/phone.png"
-          alt="cell phone"
+          alt="Mobile app illustrating PayLater payment options"
           data-testid="cell-phone"
           width={976}
           height={1238}
           className="mb-[26px] xl:mb-0 mt-[17px] xl:mt-0 xl:col-start-2 xl:col-end-3 xl:row-start-2 xl:row-end-7"
+          loading="lazy"
         />
         <p className="font-md xl:font-md-plus text-brand-secondary-black mb-6 xl:row-start-2">
           Give customers more flexibility at checkout, online and in store. Let
@@ -47,7 +49,7 @@ export function SubHero() {
         <p className="font-sm-bold text-brand-secondary-black mb-6 xl:row-start-5">
           It&apos;s as simple as:
         </p>
-        <ol className="xl:row-start-6">
+        <ol className="xl:row-start-6" aria-label="PayLater process steps">
           <li>
             <Step
               data-testid="step-1"
@@ -85,7 +87,7 @@ export function SubHero() {
           width={16}
           height={19}
           alt=""
-          aria-hidden="true"
+          aria-hidden
           data-testid="subhero-arrow"
         />
       </Link>
