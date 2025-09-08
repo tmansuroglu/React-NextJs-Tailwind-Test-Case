@@ -120,7 +120,7 @@ describe("RootLayout", () => {
   });
 
   it("applies aria-current to register link when active", () => {
-    (usePathname as jest.Mock).mockReturnValue(Routes.BusinessLogin);
+    (usePathname as jest.Mock).mockReturnValue(Routes.BusinessRegister);
     render(
       <RootLayout>
         <div>Test Content</div>
