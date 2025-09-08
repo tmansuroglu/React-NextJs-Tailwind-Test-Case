@@ -1,10 +1,13 @@
 import { render } from "@testing-library/react";
-import Home from "./page";
 import { redirect } from "next/navigation";
+import Home from "./page";
 import { Routes } from "./types/enums";
 
 jest.mock("next/navigation", () => ({
   redirect: jest.fn(),
+  RedirectType: {
+    replace: "replace",
+  },
 }));
 
 describe("Home", () => {
@@ -12,13 +15,15 @@ describe("Home", () => {
     jest.clearAllMocks();
   });
 
-  it("redirects to the Business route", () => {
+  it("redirects to Routes.Business with replace type", () => {
     render(<Home />);
-    expect(redirect).toHaveBeenCalledWith(Routes.Business);
+
+    expect(redirect).toHaveBeenCalledWith(Routes.Business, "replace");
   });
 
   it("does not render any content", () => {
     const { container } = render(<Home />);
+
     expect(container).toBeEmptyDOMElement();
   });
 });
