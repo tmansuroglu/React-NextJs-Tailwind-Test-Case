@@ -65,7 +65,11 @@ export function AutoCompleteComboBox({
           );
           return (
             <div className="flex flex-col relative">
-              <label {...getLabelProps(LabelProps)}>{label}</label>
+              <label
+                {...getLabelProps({ ...LabelProps, htmlFor: InputProps?.name })}
+              >
+                {label}
+              </label>
               <div
                 {...getRootProps(
                   { className: "inline-block" },
@@ -76,6 +80,7 @@ export function AutoCompleteComboBox({
                   {...getInputProps({
                     onFocus: () => openMenu(),
                     ...InputProps,
+                    id: InputProps?.name,
                     className: `w-full pl-4 pr-10 py-3 border rounded-[27px] font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs disabled:bg-brand-light-gray border-brand-secondary-gray ${
                       InputProps?.className || ""
                     }`,
