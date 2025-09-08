@@ -36,7 +36,9 @@ describe("SubHero Component", () => {
   });
 
   test("renders the phone image with correct alt text", () => {
-    const phone = screen.getByAltText("cell phone");
+    const phone = screen.getByAltText(
+      "Mobile app illustrating PayLater payment options"
+    );
     expect(phone).toBeInTheDocument();
     expect(phone).toHaveAttribute("width", "976");
     expect(phone).toHaveAttribute("height", "1238");
@@ -57,7 +59,7 @@ describe("SubHero Component", () => {
     const list = screen.getByRole("list");
     expect(list).toBeInTheDocument();
     const listItems = screen.getAllByRole("listitem");
-    expect(listItems).toHaveLength(3);
+    expect(listItems).toHaveLength(6);
 
     expect(screen.getByTestId("step-1")).toHaveTextContent("FIX IT");
     expect(screen.getByTestId("step-2")).toHaveTextContent("SPLIT IT");
