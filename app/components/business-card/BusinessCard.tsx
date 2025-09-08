@@ -6,7 +6,6 @@ type BusinessCardProps = {
   mail: string;
 };
 
-// TODO: what happens if texts are too long?
 export function BusinessCard({
   name,
   company,
