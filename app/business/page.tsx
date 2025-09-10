@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "../components/hero";
 import SubHero from "../components/sub-hero";
+import PageContainer from "../components/page-container";
 
 export const metadata: Metadata = {
   title: "Bumper UK - Business Landing Page",
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function BusinessPage() {
   return (
-    <main>
+    <PageContainer className="pt-0">
       <Hero />
       <SubHero />
-    </main>
+    </PageContainer>
   );
 }

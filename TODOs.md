@@ -1,13 +1,28 @@
-- check design again
-- Recheck tests added tests
+## HIGH PRIORTY
+
+- figure out a way to use modules for css
 - BusinessCard component => what happens if texts are too long?
 - console warnings
 - ts errors
 - error handling
-- add favicon
-- check performance metrics
 - some svgs are just for different color. make configurations to change svg color
 - add virtualization to list page
+- use react query
+- use the latest features of nextjs and react
+
+## MEDIUM PRIORTY
+
+- add import aliases
+- add favicon
+- check performance metrics
 - test image layout shift
 - Page change loader
-- use the latest features of nextjs and react
+- Re-organize folder structure to place components properly
+
+## LOW PRIORITY
+
+- Recheck tests added tests
+- add ci cd features
+- change repo title
+- for empty pages add buttons for redirect
+- Add a way to redirect user to list page

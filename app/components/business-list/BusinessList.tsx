@@ -70,6 +70,7 @@ export function BusinessList() {
         </div>
       ) : error ? (
         <div aria-live="polite" className="card text-center">
+          {/* TODO: Click here to refetch */}
           Failed to load the data
         </div>
       ) : !doesDataExist ? (

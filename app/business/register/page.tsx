@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Routes } from "../../types/enums";
 import RegisterBusinessForm from "../../components/register-business-form";
 import type { Metadata } from "next";
+import PageContainer from "../../components/page-container";
 
 export const metadata: Metadata = {
   title: "Bumper UK - Register Business",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function BusinessRegisterPage() {
   return (
-    <main className="bg-brand-primary-blue -mt-24 pt-30 pb-8">
+    <PageContainer className="bg-brand-primary-blue pt-30 pb-8">
       <div className="container mx-auto px-4 relative pt-14 xl:pt-15">
         <Link
           href={Routes.Business}
@@ -43,6 +44,6 @@ export default function BusinessRegisterPage() {
           <RegisterBusinessForm />
         </div>
       </div>
-    </main>
+    </PageContainer>
   );
 }
