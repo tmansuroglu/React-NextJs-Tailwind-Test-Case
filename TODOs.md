@@ -1,11 +1,11 @@
 ## HIGH PRIORTY
 
-- Nextjs issue
-- error handling
 - some svgs are just for different color. make configurations to change svg color
 - add virtualization to list page
-- use react query
+- use react query or server actions
 - use the latest features of nextjs and react
+- Page change loader
+- Fetch loader
 
 ## MEDIUM PRIORTY
 
@@ -13,7 +13,6 @@
 - add favicon
 - check performance metrics
 - test image layout shift
-- Page change loader
 - Re-organize folder structure to place components properly
 
 ## LOW PRIORITY
