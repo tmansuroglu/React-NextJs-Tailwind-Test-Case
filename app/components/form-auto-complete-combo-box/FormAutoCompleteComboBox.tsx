@@ -5,6 +5,7 @@ import { useController, useFormContext } from "react-hook-form";
 import AutoCompleteComboBox, {
   AutoCompleteComboBoxProps,
 } from "../auto-complete-combo-box";
+import { twMerge } from "tailwind-merge";
 
 type FormAutoCompleteComboBoxProps = AutoCompleteComboBoxProps & {
   name: string;
@@ -42,11 +43,11 @@ export function FormAutoCompleteComboBox({
         name,
         ref,
         onBlur,
-        className: !!fieldErrorMessage
-          ? "!border-error"
-          : isSuccess
-          ? "!border-brand-primary-green"
-          : "!border-brand-secondary-gray",
+        className: twMerge(
+          !!fieldErrorMessage && "border-error",
+          isSuccess && "border-brand-primary-green",
+          InputProps?.className
+        ),
       }}
       inputSuffix={
         !!fieldErrorMessage ? (
@@ -70,6 +71,7 @@ export function FormAutoCompleteComboBox({
         ) : null
       }
       caption={
+        // TODO: make this a component
         !!fieldErrorMessage && (
           <span className="error-text" id={errorId} role="alert">
             {fieldErrorMessage}

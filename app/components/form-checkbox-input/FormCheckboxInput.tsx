@@ -57,11 +57,10 @@ export function FormCheckboxInput({
       name={name}
       aria-invalid={!!fieldErrorMessage}
       onChange={handleChange}
+      disabled={disabled}
       LabelProps={{
         ref,
-        className: fieldErrorMessage
-          ? "border-error"
-          : "border-brand-secondary-black",
+        className: fieldErrorMessage ? "border-error" : undefined,
       }}
       inputSuffix={
         !!fieldErrorMessage ? (

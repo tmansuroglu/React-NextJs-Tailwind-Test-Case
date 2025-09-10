@@ -3,6 +3,7 @@
 import { useController, useFormContext } from "react-hook-form";
 import TextInput, { TextInputProps } from "../text-input";
 import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 
 type FormTextInputProps = TextInputProps & { name: string };
 
@@ -21,6 +22,8 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
 
   const errorId = `${name}-error-id`;
 
+  console.log("isSuccess", isSuccess);
+
   return (
     <TextInput
       value={value}
@@ -30,13 +33,11 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
       aria-describedby={errorId}
       aria-invalid={!!fieldError}
       {...props}
-      className={`${
-        !!fieldError
-          ? "!border-error"
-          : isSuccess
-          ? "!border-brand-primary-green"
-          : "!border-brand-secondary-gray"
-      }`}
+      className={twMerge(
+        isSuccess && "border-brand-primary-green",
+        fieldError && "border-error",
+        props.className
+      )}
       inputSuffix={
         isSuccess ? (
           <Image

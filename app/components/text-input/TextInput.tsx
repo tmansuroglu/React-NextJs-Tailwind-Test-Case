@@ -4,6 +4,7 @@ import {
   ReactNode,
   RefCallback,
 } from "react";
+import { twMerge } from "tailwind-merge";
 
 export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   LabelProps?: LabelHTMLAttributes<HTMLLabelElement>;
@@ -26,9 +27,10 @@ export function TextInput({
     <div>
       {label && (
         <label
-          className={`font-sm text-brand-secondary-black ${
-            labelClassName || ""
-          }`}
+          className={twMerge(
+            "font-sm text-brand-secondary-black",
+            labelClassName
+          )}
           htmlFor={props.id || props.name}
           {...labelProps}
         >
@@ -38,9 +40,10 @@ export function TextInput({
       <div className="relative">
         <input
           data-testid="text-input"
-          className={`focus:outline w-full px-4 py-3 border rounded-4xl font-sm mt-2 disabled:bg-brand-light-gray disabled:cursor-not-allowed outline-0 border-brand-secondary-gray ${
-            className || ""
-          }`}
+          className={twMerge(
+            "focus:outline w-full px-4 py-3 border rounded-4xl font-sm mt-2 disabled:bg-brand-light-gray disabled:cursor-not-allowed outline-0 border-brand-secondary-gray",
+            className
+          )}
           aria-disabled={props.disabled}
           {...props}
         />

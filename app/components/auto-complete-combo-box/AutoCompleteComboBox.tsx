@@ -8,6 +8,7 @@ import {
   RefCallback,
   useState,
 } from "react";
+import { twMerge } from "tailwind-merge";
 
 type Selection = { value: string };
 
@@ -81,9 +82,10 @@ export function AutoCompleteComboBox({
                     onFocus: () => openMenu(),
                     ...InputProps,
                     id: InputProps?.name,
-                    className: `w-full pl-4 pr-10 py-3 border rounded-4xl font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs disabled:bg-brand-light-gray border-brand-secondary-gray ${
-                      InputProps?.className || ""
-                    }`,
+                    className: twMerge(
+                      "w-full pl-4 pr-10 py-3 border rounded-4xl font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs disabled:bg-brand-light-gray border-brand-secondary-gray",
+                      InputProps?.className
+                    ),
                   })}
                 />
                 {inputSuffix && (
@@ -107,15 +109,13 @@ export function AutoCompleteComboBox({
                         {...getItemProps({
                           index,
                           item,
-                          className: "font-sm-medium p-2.5",
-                          style: {
-                            backgroundColor:
-                              highlightedIndex === index
-                                ? "lightgray"
-                                : "inherit",
-                            fontWeight:
-                              selectedItem === item ? "bold" : "normal",
-                          },
+                          className: twMerge(
+                            "font-sm-medium p-2.5",
+                            highlightedIndex === index
+                              ? "bg-brand-light-gray"
+                              : "bg-inherit",
+                            selectedItem === item ? "font-bold" : "font-normal"
+                          ),
                         })}
                       >
                         {item.value}

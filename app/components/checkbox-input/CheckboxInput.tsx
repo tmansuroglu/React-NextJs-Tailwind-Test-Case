@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { RefCallBack } from "react-hook-form";
+import { twMerge } from "tailwind-merge";
 
 export type CheckboxInputProps = {
   LabelProps?: LabelHTMLAttributes<HTMLLabelElement> & {
@@ -35,6 +36,9 @@ export function CheckboxInput({
   const [isChecked, setIsChecked] = useState(defaultIsChecked);
 
   const handleOnKeyDown: KeyboardEventHandler<HTMLLabelElement> = (e) => {
+    if (disabled) {
+      return;
+    }
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       const input = e.currentTarget.querySelector(
@@ -50,17 +54,14 @@ export function CheckboxInput({
     <div>
       <label
         {...LabelProps}
-        className={`
-    relative block px-4 py-3 rounded-4xl border text-left min-w-32 font-sm outline-0
-    focus:outline
-    ${disabled ? "bg-brand-light-gray cursor-not-allowed" : "cursor-pointer"}
-    ${
-      isChecked
-        ? "bg-brand-secondary-black text-brand-primary-white hover:bg-brand-secondary-gray hover:text-brand-primary-white"
-        : "text-brand-secondary-black hover:bg-brand-light-gray hover:text-brand-secondary-black"
-    }
-    ${LabelProps?.className}
-  `}
+        className={twMerge(
+          "relative block px-4 py-3 rounded-4xl border text-left min-w-32 font-sm outline-0 focus:outline cursor-pointer text-brand-secondary-black hover:bg-brand-light-gray hover:text-brand-secondary-black",
+          isChecked &&
+            "bg-brand-secondary-black text-brand-primary-white hover:bg-brand-secondary-gray hover:text-brand-primary-white",
+          disabled &&
+            "bg-brand-light-gray text-brand-secondary-black cursor-not-allowed",
+          LabelProps?.className
+        )}
         aria-live="polite"
         tabIndex={0}
         htmlFor={name}
@@ -76,6 +77,9 @@ export function CheckboxInput({
           aria-checked={isChecked}
           className="hidden"
           onChange={(e) => {
+            if (disabled) {
+              return;
+            }
             setIsChecked(e.target.checked);
             onChange(e);
           }}
