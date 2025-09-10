@@ -3,7 +3,7 @@
 - Use Tailwind CSS library for styling.
 - Implementation should be responsive.
 - Mobile Design: https://www.figma.com/design/RfLWz0MVx9YbgvDYydKqBo/FE-Test?node-id=0-1156&t=hyntdepgafE9wvoY-0
-- Desktop Design: https://www.figma.com/design/RfLWz0MVx9YbgvDYydKqBo/FE-Test?node-id=0-1156&t=hyntdepgafE9wvoY-0
+- Desktop Design: https://www.figma.com/design/RfLWz0MVx9YbgvDYydKqBo/FE-Test?node-id=2-4926&p=f&t=239mfFyGIXEeqzYh-0
 - Components: https://www.figma.com/design/RfLWz0MVx9YbgvDYydKqBo/FE-Test?node-id=2-4927&p=f&t=TnB7Q6t3QGAbAZKo-0
 - On the design fonts are our premium font but you can use google fonts or any font you want but they need to be aesthetically pleasing.
 - Form should be on different page (You need to navigate to another page) and it should validate input on blur and submit event.
