@@ -77,7 +77,7 @@
 }
 
 @utility btn-base {
-  @apply px-3 py-1 rounded-sm border-[1px] no-underline cursor-pointer;
+  @apply px-3 py-1 rounded-sm border no-underline cursor-pointer;
 }
 
 @utility btn-primary-style {
@@ -134,7 +134,7 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-transparent rounded-2xl;
+    @apply bg-transparent rounded-4xl;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -142,10 +142,10 @@
   }
 
   .custom-scrollbar {
-    clip-path: inset(0 0 0 0 round 20px);
+    clip-path: inset(0 0 0 0 round 32px);
   }
 
   .card {
-    @apply p-8 border rounded-[30px] bg-brand-primary-white w-full;
+    @apply p-8 border rounded-4xl bg-brand-primary-white w-full;
   }
 }

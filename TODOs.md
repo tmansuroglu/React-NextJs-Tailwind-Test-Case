@@ -1,7 +1,6 @@
 - check design again
 - Recheck tests added tests
 - BusinessCard component => what happens if texts are too long?
-- check metadata
 - console warnings
 - ts errors
 - error handling

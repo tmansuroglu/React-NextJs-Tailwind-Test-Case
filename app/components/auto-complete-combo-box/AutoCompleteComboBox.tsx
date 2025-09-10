@@ -97,7 +97,7 @@ export function AutoCompleteComboBox({
                   {...getMenuProps({
                     "aria-live": "polite",
                     className:
-                      "border absolute bottom-0 left-0 right-0 z-50 bg-brand-primary-white transform translate-y-full rounded-5 max-h-52 overflow-y-auto custom-scrollbar py-1",
+                      "border absolute bottom-0 left-0 right-0 z-50 bg-brand-primary-white transform translate-y-full rounded-4xl max-h-52 overflow-y-auto custom-scrollbar py-1",
                   })}
                 >
                   {filteredItems.length > 0 ? (

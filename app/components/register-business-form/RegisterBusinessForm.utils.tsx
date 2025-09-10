@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect } from "next/navigation";
-import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
+import { ChangeEventHandler, useState } from "react";
 import {
   DefaultValues,
   SubmitHandler,
@@ -108,14 +108,14 @@ export const useFormProps = () =>
 type UseEventHandlersOptions = {
   setValue: UseFormSetValue<FormValues>;
   trigger: UseFormTrigger<FormValues>;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
 };
 
 export const useEventHandlers = ({
   setValue,
   trigger,
-  setIsLoading,
 }: UseEventHandlersOptions) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleOnSubmit: SubmitHandler<FormValues> = async (values, e) => {
     try {
       e?.preventDefault();
@@ -162,7 +162,12 @@ export const useEventHandlers = ({
     trigger(RegisterBusinessFormFields.PayLater);
   };
 
-  return { handleOnSubmit, handlePayNowChange, handlePayLaterChange };
+  return {
+    handleOnSubmit,
+    handlePayNowChange,
+    handlePayLaterChange,
+    isLoading,
+  };
 };
 
 export const POST_CODES = [
