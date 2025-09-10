@@ -54,7 +54,7 @@ export default function RootLayout({
                     </TabLink>
                   </li>
                   <li
-                    className="border-r-[1px] border-brand-secondary-gray"
+                    className="border-r border-brand-secondary-gray"
                     aria-hidden
                   />
                   <li className="relative flex">

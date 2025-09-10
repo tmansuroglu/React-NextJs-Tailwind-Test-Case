@@ -19,7 +19,7 @@ describe("TextInput", () => {
     const input = screen.getByTestId("text-input");
     expect(input).toBeInTheDocument();
     expect(input).toHaveClass(
-      "w-full px-4 py-3 border rounded-[27px] font-sm mt-2"
+      "w-full px-4 py-3 border rounded-4xl font-sm mt-2"
     );
     expect(input).toHaveClass("border-brand-secondary-gray");
     expect(input).toHaveAttribute("placeholder", "Enter text");
@@ -61,7 +61,7 @@ describe("TextInput", () => {
 
     const input = screen.getByTestId("text-input");
     expect(input).toHaveClass("custom-class");
-    expect(input).toHaveClass("w-full px-4 py-3 border rounded-[27px]");
+    expect(input).toHaveClass("w-full px-4 py-3 border rounded-7");
   });
 
   it("applies custom LabelProps className and attributes", () => {

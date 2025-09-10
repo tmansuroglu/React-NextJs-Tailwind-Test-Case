@@ -57,7 +57,7 @@ export default function BusinessRegisterPage() {
           into monthly instalments - interest-free. Use <strong>PayNow</strong>
           to take secure payments online.
         </p>
-        <div className="bg-brand-primary-white rounded-[30px] px-4 py-6 xl:p-[45px] border-[1px] border-brand-secondary-black">
+        <div className="bg-brand-primary-white rounded-4xl px-4 py-6 xl:p-11 border border-brand-secondary-black">
           <h2 className="font-sm-bold xl:font-md-plus-bold text-brand-primary-black mb-1">
             Join our network
           </h2>

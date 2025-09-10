@@ -81,7 +81,7 @@ export function AutoCompleteComboBox({
                     onFocus: () => openMenu(),
                     ...InputProps,
                     id: InputProps?.name,
-                    className: `w-full pl-4 pr-10 py-3 border rounded-[27px] font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs disabled:bg-brand-light-gray border-brand-secondary-gray ${
+                    className: `w-full pl-4 pr-10 py-3 border rounded-4xl font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs disabled:bg-brand-light-gray border-brand-secondary-gray ${
                       InputProps?.className || ""
                     }`,
                   })}
@@ -97,7 +97,7 @@ export function AutoCompleteComboBox({
                   {...getMenuProps({
                     "aria-live": "polite",
                     className:
-                      "border absolute bottom-0 left-0 right-0 z-50 bg-brand-primary-white transform translate-y-full rounded-[20px] max-h-52 overflow-y-auto custom-scrollbar py-1",
+                      "border absolute bottom-0 left-0 right-0 z-50 bg-brand-primary-white transform translate-y-full rounded-5 max-h-52 overflow-y-auto custom-scrollbar py-1",
                   })}
                 >
                   {filteredItems.length > 0 ? (

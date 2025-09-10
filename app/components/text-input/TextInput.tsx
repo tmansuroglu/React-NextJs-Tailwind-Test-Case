@@ -38,7 +38,7 @@ export function TextInput({
       <div className="relative">
         <input
           data-testid="text-input"
-          className={`focus:outline w-full px-4 py-3 border rounded-[27px] font-sm mt-2 disabled:bg-brand-light-gray disabled:cursor-not-allowed outline-0 border-brand-secondary-gray ${
+          className={`focus:outline w-full px-4 py-3 border rounded-4xl font-sm mt-2 disabled:bg-brand-light-gray disabled:cursor-not-allowed outline-0 border-brand-secondary-gray ${
             className || ""
           }`}
           aria-disabled={props.disabled}

@@ -60,13 +60,14 @@ export default function ListPage() {
     searchParams,
   });
 
+  // TODO: create page container to use on all pages
   return (
-    <main className="bg-brand-primary-blue -mt-24 pt-25 pb-[50px] min-h-dvh">
+    <main className="bg-brand-primary-blue -mt-24 pt-25 pb-13 min-h-dvh">
       <div className="container mx-auto mt-11.5 px-4">
         <h1 className="text-brand-primary-white font-lg xl:font-xl-plus mb-2 xl:mb-5">
           Interested Dealerships
         </h1>
-        <section className="p-8 border rounded-[30px] bg-brand-primary-white w-full mb-4">
+        <section className="p-8 border rounded-4xl bg-brand-primary-white w-full mb-4">
           <TextInput
             value={inputValue}
             onChange={handleInputValueChange}
@@ -118,6 +119,7 @@ export default function ListPage() {
             </div>
           ) : null}
           {isMoreItemsExist && (
+            // TODO: make this a button component
             <button
               onClick={handleLoadMore}
               disabled={isLoading}

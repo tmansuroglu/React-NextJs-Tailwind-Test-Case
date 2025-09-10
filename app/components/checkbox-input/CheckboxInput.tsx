@@ -51,7 +51,7 @@ export function CheckboxInput({
       <label
         {...LabelProps}
         className={`
-    relative block px-4 py-3 rounded-[27px] border text-left min-w-32 font-sm outline-0
+    relative block px-4 py-3 rounded-4xl border text-left min-w-32 font-sm outline-0
     focus:outline
     ${disabled ? "bg-brand-light-gray cursor-not-allowed" : "cursor-pointer"}
     ${

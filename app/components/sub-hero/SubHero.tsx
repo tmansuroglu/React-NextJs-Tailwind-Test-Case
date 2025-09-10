@@ -33,7 +33,7 @@ export function SubHero() {
           data-testid="cell-phone"
           width={976}
           height={1238}
-          className="mb-[26px] xl:mb-0 mt-[17px] xl:mt-0 xl:col-start-2 xl:col-end-3 xl:row-start-2 xl:row-end-7"
+          className="mb-7 xl:mb-0 mt-4 xl:mt-0 xl:col-start-2 xl:col-end-3 xl:row-start-2 xl:row-end-7"
           loading="lazy"
         />
         <p className="font-md xl:font-md-plus text-brand-secondary-black mb-6 xl:row-start-2">

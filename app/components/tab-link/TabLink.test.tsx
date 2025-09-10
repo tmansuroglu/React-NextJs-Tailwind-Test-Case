@@ -41,7 +41,7 @@ describe("TabLink", () => {
       "absolute",
       "left-4",
       "right-4",
-      "-bottom-[1px]",
+      "-bottom",
       "rounded-t-2xl"
     );
   });

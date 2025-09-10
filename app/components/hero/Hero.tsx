@@ -12,7 +12,7 @@ export function Hero() {
       role="banner"
     >
       <div className="absolute inset-0 bg-brand-opacity-gray opacity-70" />
-      <div className="container mx-auto px-4 pt-[29px] pb-[34px] xl:pt-11 xl:pb-[51px] flex items-center min-h-full relative">
+      <div className="container mx-auto px-4 pt-7 pb-9 xl:pt-11 xl:pb-13 flex items-center min-h-full relative">
         <div className="flex flex-col max-w-2xl">
           <div className="flex gap-3 mb-6 items-center">
             <span className="font-sm-bold xl:font-md-plus-bold text-brand-primary-white">
