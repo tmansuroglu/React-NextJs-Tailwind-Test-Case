@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Routes } from "../../types/enums";
+import Arrow from "../../../public/arrow.svg";
 
 export function Hero() {
   return (
@@ -25,6 +26,7 @@ export function Hero() {
               alt="5 star rating"
               className="xl:h-6 xl:w-32"
               priority
+              unoptimized
             />
             <Image
               src="/trust-pilot.svg"
@@ -33,6 +35,7 @@ export function Hero() {
               alt="trust pilot logo"
               className="xl:h-6 xl:w-24"
               priority
+              unoptimized
             />
           </div>
           <h1
@@ -51,13 +54,7 @@ export function Hero() {
             aria-label="Register your interest with Bumper"
           >
             <span>Register your interest</span>
-            <Image
-              src="/arrow.svg"
-              width={16}
-              height={19}
-              alt=""
-              aria-hidden="true"
-            />
+            <Arrow aria-hidden="true" width={20} height={20} />
           </Link>
           <p className="mt-3 flex items-center gap-1 font-sm text-brand-primary-white">
             Already registered?

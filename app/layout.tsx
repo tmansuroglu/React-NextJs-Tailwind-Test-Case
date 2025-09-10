@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import TabLink from "./components/tab-link";
 import { Routes } from "./types/enums";
 import LogoLink from "./components/logo-link";
-import Image from "next/image";
+import LoginSvg from "../public/login.svg";
 
 export default function RootLayout({
   children,
@@ -70,12 +70,7 @@ export default function RootLayout({
                   aria-current={isLoginPage ? "page" : undefined}
                 >
                   <span>{loginText}</span>
-                  <Image
-                    src="/login.svg"
-                    width={12}
-                    height={12}
-                    alt="login icon"
-                  />
+                  <LoginSvg />
                 </Link>
               </div>
             </div>

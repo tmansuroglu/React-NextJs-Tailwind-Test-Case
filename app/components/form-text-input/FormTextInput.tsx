@@ -47,6 +47,7 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
             className="w-4 h-4"
             alt="success icon"
             aria-hidden
+            unoptimized
           />
         ) : !!fieldError ? (
           <Image
@@ -56,6 +57,7 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
             className="w-4 h-4"
             alt="error icon"
             aria-hidden
+            unoptimized
           />
         ) : null
       }

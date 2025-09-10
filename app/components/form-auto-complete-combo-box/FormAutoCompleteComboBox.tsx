@@ -58,6 +58,7 @@ export function FormAutoCompleteComboBox({
             className="w-4 h-4"
             alt="error icon"
             aria-hidden
+            unoptimized
           />
         ) : isSuccess ? (
           <Image
@@ -67,6 +68,7 @@ export function FormAutoCompleteComboBox({
             className="w-4 h-4"
             alt="success icon"
             aria-hidden
+            unoptimized
           />
         ) : null
       }

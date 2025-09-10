@@ -12,9 +12,9 @@ import {
 import FormAutoCompleteComboBox from "../form-auto-complete-combo-box";
 import FormCheckboxInput from "../form-checkbox-input";
 import LoadingIndicator from "../loading-indicator";
-import Image from "next/image";
 import Link from "next/link";
 import { Routes } from "../../types/enums";
+import Arrow from "../../../public/arrow.svg";
 
 export function RegisterBusinessForm() {
   const formProps = useFormProps();
@@ -39,7 +39,12 @@ export function RegisterBusinessForm() {
             name={RegisterBusinessFormFields.Name}
             disabled={isLoading}
             label={
-              <LabeledIcon src="/person.svg" alt="person icon" label="Name" />
+              <LabeledIcon
+                src="/person.svg"
+                alt="person icon"
+                label="Name"
+                unoptimized
+              />
             }
           />
           <FormTextInput
@@ -50,6 +55,7 @@ export function RegisterBusinessForm() {
                 src="/building.svg"
                 alt="building icon"
                 label="Company"
+                unoptimized
               />
             }
           />
@@ -61,6 +67,7 @@ export function RegisterBusinessForm() {
                 src="/phone.svg"
                 alt="phone icon"
                 label="Mobile Phone Number"
+                unoptimized
               />
             }
           />
@@ -73,6 +80,7 @@ export function RegisterBusinessForm() {
                 src="/mail.svg"
                 alt="mail icon"
                 label="Email Address"
+                unoptimized
               />
             }
           />
@@ -85,13 +93,19 @@ export function RegisterBusinessForm() {
             items={POST_CODES}
             LabelProps={{ className: "flex gap-1.5 items-center" }}
             label={
-              <LabeledIcon src="/house.svg" alt="mail icon" label="Postcode" />
+              <LabeledIcon
+                src="/house.svg"
+                alt="mail icon"
+                label="Postcode"
+                unoptimized
+              />
             }
           />
           <fieldset>
             <LabeledIcon
               src="/wrench.svg"
               alt="wrench icon"
+              unoptimized
               label={
                 <legend className="font-sm-bold">
                   What services are you interested in?
@@ -136,14 +150,7 @@ export function RegisterBusinessForm() {
             >
               {isLoading && <LoadingIndicator aria-live="polite" />}
               <span>Register</span>
-              <Image
-                src="/arrow.svg"
-                width={16}
-                height={19}
-                alt="arrow icon decorating the register button"
-                aria-hidden="true"
-                className="w-auto h-auto"
-              />
+              <Arrow aria-hidden="true" width={20} height={20} />
             </button>
             <p className="flex items-center gap-1 font-sm text-brand-primary-black justify-center">
               Already registered?

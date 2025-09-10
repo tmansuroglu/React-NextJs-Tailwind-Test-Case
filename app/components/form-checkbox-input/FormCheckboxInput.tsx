@@ -71,6 +71,7 @@ export function FormCheckboxInput({
             alt="error icon"
             className="w-4 h-4"
             aria-hidden
+            unoptimized
           />
         ) : isChecked ? (
           <Image
@@ -80,6 +81,7 @@ export function FormCheckboxInput({
             className="w-4 h-4"
             alt="checked icon"
             aria-hidden
+            unoptimized
           />
         ) : (
           <Image
@@ -89,6 +91,7 @@ export function FormCheckboxInput({
             alt="plus icon"
             className="w-4 h-4"
             aria-hidden
+            unoptimized
           />
         )
       }

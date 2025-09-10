@@ -16,6 +16,7 @@ export function BusinessSearchInput() {
           src="/building.svg"
           alt="search input label icon"
           label="Search Company"
+          unoptimized
         />
       }
     />

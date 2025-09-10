@@ -2,6 +2,7 @@ import Image from "next/image";
 import Step from "../step";
 import Link from "next/link";
 import { Routes } from "../../types/enums";
+import Arrow from "../../../public/arrow.svg";
 
 export function SubHero() {
   return (
@@ -22,6 +23,7 @@ export function SubHero() {
             width={75}
             height={19}
             priority
+            unoptimized
           />
           <h3 className="font-2xl xl:font-2xl-wide text-brand-secondary-black">
             PAYLATER
@@ -82,14 +84,7 @@ export function SubHero() {
         aria-label="Register your interest with Bumper"
       >
         <span>Register your interest</span>
-        <Image
-          src="/arrow.svg"
-          width={16}
-          height={19}
-          alt=""
-          aria-hidden
-          data-testid="subhero-arrow"
-        />
+        <Arrow aria-hidden="true" width={20} height={20} />
       </Link>
     </section>
   );

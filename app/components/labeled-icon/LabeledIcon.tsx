@@ -5,9 +5,15 @@ type LabeledIconProps = {
   src: string;
   alt: string;
   label: ReactNode;
+  unoptimized?: boolean;
 };
 
-export function LabeledIcon({ src, alt, label }: LabeledIconProps) {
+export function LabeledIcon({
+  src,
+  alt,
+  label,
+  unoptimized,
+}: LabeledIconProps) {
   return (
     <div className="flex gap-1.5 items-center" data-testid="labeled-icon">
       <Image
@@ -16,6 +22,7 @@ export function LabeledIcon({ src, alt, label }: LabeledIconProps) {
         width={16}
         alt={alt}
         className="w-auto h-auto"
+        unoptimized={unoptimized}
       />
       <span className="font-sm-bold">{label}</span>
     </div>

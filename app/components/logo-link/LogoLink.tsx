@@ -21,6 +21,7 @@ export function LogoLink({ children, context, ...props }: LogoLinkProps) {
         width={111}
         height={28}
         className="xl:h-8 xl:w-32"
+        unoptimized
       />
       <span className="font-xs-bold xl:font-sm-bold">{children}</span>
     </Link>

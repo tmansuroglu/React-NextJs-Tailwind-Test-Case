@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Routes } from "../../types/enums";
 import RegisterBusinessForm from "../../components/register-business-form";
 import type { Metadata } from "next";
 import PageContainer from "../../components/page-container";
+import Arrow from "../../../public/arrow.svg";
 
 export const metadata: Metadata = {
   title: "Bumper UK - Register Business",
@@ -18,12 +18,9 @@ export default function BusinessRegisterPage() {
           aria-label="Back to previous page"
           className="inline-block p-4 absolute top-0 left-0"
         >
-          <Image
-            src="/back-arrow.svg"
-            alt="back navigation button"
-            width={20}
-            height={20}
-            className="xl:w-8 xl:h-8"
+          <Arrow
+            fill="white"
+            className="size-5 sm:size-8 transform -scale-x-100"
           />
         </Link>
         <h1 className="font-lg xl:font-xl-plus text-brand-primary-white mb-2 xl:mb-5">
