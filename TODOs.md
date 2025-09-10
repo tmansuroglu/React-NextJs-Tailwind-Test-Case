@@ -1,9 +1,6 @@
 ## HIGH PRIORTY
 
-- figure out a way to use modules for css
-- BusinessCard component => what happens if texts are too long?
-- console warnings
-- ts errors
+- Nextjs issue
 - error handling
 - some svgs are just for different color. make configurations to change svg color
 - add virtualization to list page
@@ -26,3 +23,5 @@
 - change repo title
 - for empty pages add buttons for redirect
 - Add a way to redirect user to list page
+- console warnings
+- ts errors
