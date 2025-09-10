@@ -1,0 +1,14 @@
+- check design again
+- Recheck tests added tests
+- BusinessCard component => what happens if texts are too long?
+- check metadata
+- console warnings
+- ts errors
+- error handling
+- add favicon
+- check performance metrics
+- some svgs are just for different color. make configurations to change svg color
+- add virtualization to list page
+- test image layout shift
+- Page change loader
+- use the latest features of nextjs and react
