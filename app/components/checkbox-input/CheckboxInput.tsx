@@ -66,7 +66,7 @@ export function CheckboxInput({
         )}
         aria-live="polite"
         tabIndex={0}
-        htmlFor={name || id}
+        htmlFor={id || name}
         aria-disabled={disabled}
         onKeyDown={handleOnKeyDown}
       >
