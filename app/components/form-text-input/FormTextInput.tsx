@@ -2,8 +2,9 @@
 
 import { useController, useFormContext } from "react-hook-form";
 import TextInput, { TextInputProps } from "../text-input";
-import Image from "next/image";
 import { twMerge } from "tailwind-merge";
+import Error from "@/public/error.svg";
+import Success from "@/public/success.svg";
 
 type FormTextInputProps = TextInputProps & { name: string };
 
@@ -39,25 +40,9 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
       )}
       inputSuffix={
         isSuccess ? (
-          <Image
-            src="/success.svg"
-            width={16}
-            height={16}
-            className="w-4 h-4"
-            alt="success icon"
-            aria-hidden
-            unoptimized
-          />
+          <Success width={16} height={16} aria-hidden />
         ) : !!fieldError ? (
-          <Image
-            src="/error.svg"
-            width={16}
-            height={16}
-            className="w-4 h-4"
-            alt="error icon"
-            aria-hidden
-            unoptimized
-          />
+          <Error width={16} height={16} aria-hidden />
         ) : null
       }
       caption={

@@ -1,7 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Routes } from "@/types/enums";
 import Arrow from "@/public/arrow.svg";
+import TrustPilot from "@/public/trust-pilot.svg";
+import FiveStars from "@/public/five-stars.svg";
 
 export function Hero() {
   return (
@@ -19,24 +20,8 @@ export function Hero() {
             <span className="font-sm-bold xl:font-md-plus-bold text-brand-primary-white">
               Excellent
             </span>
-            <Image
-              src="/five-stars.svg"
-              height={16}
-              width={85}
-              alt="5 star rating"
-              className="xl:h-6 xl:w-32"
-              priority
-              unoptimized
-            />
-            <Image
-              src="/trust-pilot.svg"
-              height={16}
-              width={64}
-              alt="trust pilot logo"
-              className="xl:h-6 xl:w-24"
-              priority
-              unoptimized
-            />
+            <FiveStars height={16} width={85} className="xl:h-6 xl:w-32" />
+            <TrustPilot height={16} width={64} className="xl:h-6 xl:w-24" />
           </div>
           <h1
             className="font-xl xl:font-3xl text-brand-primary-white"

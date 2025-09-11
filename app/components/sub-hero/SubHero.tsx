@@ -3,6 +3,7 @@ import Step from "../step";
 import Link from "next/link";
 import { Routes } from "@/types/enums";
 import Arrow from "@/public/arrow.svg";
+import Logo from "@/public/logo.svg";
 
 export function SubHero() {
   return (
@@ -16,15 +17,7 @@ export function SubHero() {
       </h2>
       <div role="group" className="grid lg:grid-cols-2">
         <div>
-          <Image
-            src="/logo.svg"
-            data-testid="bumper-logo"
-            alt="Bumper logo"
-            width={75}
-            height={19}
-            priority
-            unoptimized
-          />
+          <Logo width={120} height={30} data-testid="bumper-logo" />
           <h3 className="font-2xl lg:font-2xl-wide text-brand-secondary-black">
             PAYLATER
           </h3>

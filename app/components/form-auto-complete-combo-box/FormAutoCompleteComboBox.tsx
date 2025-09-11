@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useController, useFormContext } from "react-hook-form";
 import AutoCompleteComboBox, {
   AutoCompleteComboBoxProps,
 } from "../auto-complete-combo-box";
 import { twMerge } from "tailwind-merge";
+import Error from "@/public/error.svg";
+import Success from "@/public/success.svg";
 
 type FormAutoCompleteComboBoxProps = AutoCompleteComboBoxProps & {
   name: string;
@@ -51,25 +52,9 @@ export function FormAutoCompleteComboBox({
       }}
       inputSuffix={
         !!fieldErrorMessage ? (
-          <Image
-            src="/error.svg"
-            width={16}
-            height={16}
-            className="w-4 h-4"
-            alt="error icon"
-            aria-hidden
-            unoptimized
-          />
+          <Error width={16} height={16} aria-hidden />
         ) : isSuccess ? (
-          <Image
-            src="/success.svg"
-            width={16}
-            height={16}
-            className="w-4 h-4"
-            alt="success icon"
-            aria-hidden
-            unoptimized
-          />
+          <Success width={16} height={16} aria-hidden />
         ) : null
       }
       caption={

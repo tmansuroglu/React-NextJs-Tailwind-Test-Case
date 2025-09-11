@@ -1,9 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { ChangeEventHandler, ReactNode } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import CheckboxInput from "../checkbox-input";
+import Error from "@/public/error.svg";
+import Plus from "@/public/plus.svg";
+import Tick from "@/public/tick.svg";
 
 type FormCheckboxInputProps = {
   hideErrorText?: boolean;
@@ -60,41 +62,18 @@ export function FormCheckboxInput({
       aria-invalid={!!fieldErrorMessage}
       onChange={handleChange}
       disabled={disabled}
+      id={id}
       LabelProps={{
         ref,
         className: fieldErrorMessage ? "border-error" : undefined,
       }}
       inputSuffix={
         !!fieldErrorMessage ? (
-          <Image
-            src="/error.svg"
-            width={16}
-            height={16}
-            alt="error icon"
-            className="w-4 h-4"
-            aria-hidden
-            unoptimized
-          />
+          <Error width={16} height={16} aria-hidden />
         ) : isChecked ? (
-          <Image
-            src="/white-tick.svg"
-            width={16}
-            height={16}
-            className="w-4 h-4"
-            alt="checked icon"
-            aria-hidden
-            unoptimized
-          />
+          <Tick width={16} height={16} aria-hidden />
         ) : (
-          <Image
-            src="/plus.svg"
-            width={16}
-            height={16}
-            alt="plus icon"
-            className="w-4 h-4"
-            aria-hidden
-            unoptimized
-          />
+          <Plus width={16} height={16} aria-hidden />
         )
       }
       caption={

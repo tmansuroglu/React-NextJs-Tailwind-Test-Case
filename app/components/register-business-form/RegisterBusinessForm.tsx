@@ -15,6 +15,12 @@ import LoadingIndicator from "../loading-indicator";
 import Link from "next/link";
 import { Routes } from "@/types/enums";
 import Arrow from "@/public/arrow.svg";
+import Person from "@/public/person.svg";
+import Building from "@/public/building.svg";
+import Phone from "@/public/phone.svg";
+import House from "@/public/house.svg";
+import Mail from "@/public/mail.svg";
+import Wrench from "@/public/wrench.svg";
 
 export function RegisterBusinessForm() {
   const formProps = useFormProps();
@@ -39,39 +45,20 @@ export function RegisterBusinessForm() {
             id={`${RegisterBusinessFormFields.Name}-id`}
             name={RegisterBusinessFormFields.Name}
             disabled={isLoading}
-            label={
-              <LabeledIcon
-                src="/person.svg"
-                alt="person icon"
-                label="Name"
-                unoptimized
-              />
-            }
+            label={<LabeledIcon label="Name" IconComponent={Person} />}
           />
           <FormTextInput
             name={RegisterBusinessFormFields.Company}
             id={`${RegisterBusinessFormFields.Company}-id`}
             disabled={isLoading}
-            label={
-              <LabeledIcon
-                src="/building.svg"
-                alt="building icon"
-                label="Company"
-                unoptimized
-              />
-            }
+            label={<LabeledIcon IconComponent={Building} label="Company" />}
           />
           <FormTextInput
             disabled={isLoading}
             id={`${RegisterBusinessFormFields.MobilePhone}-id`}
             name={RegisterBusinessFormFields.MobilePhone}
             label={
-              <LabeledIcon
-                src="/phone.svg"
-                alt="phone icon"
-                label="Mobile Phone Number"
-                unoptimized
-              />
+              <LabeledIcon IconComponent={Phone} label="Mobile Phone Number" />
             }
           />
           <FormTextInput
@@ -79,14 +66,7 @@ export function RegisterBusinessForm() {
             disabled={isLoading}
             name={RegisterBusinessFormFields.Email}
             type="email"
-            label={
-              <LabeledIcon
-                src="/mail.svg"
-                alt="mail icon"
-                label="Email Address"
-                unoptimized
-              />
-            }
+            label={<LabeledIcon IconComponent={Mail} label="Email Address" />}
           />
           <FormAutoCompleteComboBox
             InputProps={{
@@ -97,20 +77,11 @@ export function RegisterBusinessForm() {
             name={RegisterBusinessFormFields.PostCode}
             items={POST_CODES}
             LabelProps={{ className: "flex gap-1.5 items-center" }}
-            label={
-              <LabeledIcon
-                src="/house.svg"
-                alt="mail icon"
-                label="Postcode"
-                unoptimized
-              />
-            }
+            label={<LabeledIcon IconComponent={House} label="Postcode" />}
           />
           <fieldset>
             <LabeledIcon
-              src="/wrench.svg"
-              alt="wrench icon"
-              unoptimized
+              IconComponent={Wrench}
               label={
                 <legend className="font-sm-bold">
                   What services are you interested in?
