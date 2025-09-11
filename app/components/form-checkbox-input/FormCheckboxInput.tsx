@@ -12,6 +12,7 @@ type FormCheckboxInputProps = {
   onChange?: ChangeEventHandler<HTMLInputElement>;
   disabled?: boolean;
   ariaDescribedBy?: string;
+  id?: string;
 };
 
 export function FormCheckboxInput({
@@ -21,6 +22,7 @@ export function FormCheckboxInput({
   onChange,
   disabled,
   ariaDescribedBy,
+  id,
 }: FormCheckboxInputProps) {
   const { control } = useFormContext();
   const { field, fieldState } = useController({

@@ -36,6 +36,7 @@ export function RegisterBusinessForm() {
       <form onSubmit={handleSubmit(handleOnSubmit)}>
         <div className="flex flex-col gap-8">
           <FormTextInput
+            id={`${RegisterBusinessFormFields.Name}-id`}
             name={RegisterBusinessFormFields.Name}
             disabled={isLoading}
             label={
@@ -49,6 +50,7 @@ export function RegisterBusinessForm() {
           />
           <FormTextInput
             name={RegisterBusinessFormFields.Company}
+            id={`${RegisterBusinessFormFields.Company}-id`}
             disabled={isLoading}
             label={
               <LabeledIcon
@@ -61,6 +63,7 @@ export function RegisterBusinessForm() {
           />
           <FormTextInput
             disabled={isLoading}
+            id={`${RegisterBusinessFormFields.MobilePhone}-id`}
             name={RegisterBusinessFormFields.MobilePhone}
             label={
               <LabeledIcon
@@ -72,6 +75,7 @@ export function RegisterBusinessForm() {
             }
           />
           <FormTextInput
+            id={`${RegisterBusinessFormFields.Email}-id`}
             disabled={isLoading}
             name={RegisterBusinessFormFields.Email}
             type="email"
@@ -87,6 +91,7 @@ export function RegisterBusinessForm() {
           <FormAutoCompleteComboBox
             InputProps={{
               disabled: isLoading,
+              id: `${RegisterBusinessFormFields.PostCode}-id`,
               placeholder: "Start typing to match your address",
             }}
             name={RegisterBusinessFormFields.PostCode}
@@ -118,6 +123,7 @@ export function RegisterBusinessForm() {
             </p>
             <div className="flex flex-row gap-3 w-full relative mt-2">
               <FormCheckboxInput
+                id={`${RegisterBusinessFormFields.PayLater}-id`}
                 hideErrorText
                 disabled={isLoading}
                 label="PayLater"
@@ -126,6 +132,7 @@ export function RegisterBusinessForm() {
                 onChange={handlePayLaterChange}
               />
               <FormCheckboxInput
+                id={`${RegisterBusinessFormFields.PayNow}-id`}
                 disabled={isLoading}
                 hideErrorText
                 label="PayNow"

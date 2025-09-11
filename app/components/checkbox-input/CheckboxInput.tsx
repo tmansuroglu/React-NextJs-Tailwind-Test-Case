@@ -20,6 +20,7 @@ export type CheckboxInputProps = {
   onChange: ChangeEventHandler<HTMLInputElement>;
   defaultIsChecked?: boolean;
   ariaDescribedBy?: string;
+  id?: string;
 };
 
 export function CheckboxInput({
@@ -32,6 +33,7 @@ export function CheckboxInput({
   LabelProps,
   defaultIsChecked = false,
   ariaDescribedBy,
+  id,
 }: CheckboxInputProps) {
   const [isChecked, setIsChecked] = useState(defaultIsChecked);
 
@@ -64,7 +66,7 @@ export function CheckboxInput({
         )}
         aria-live="polite"
         tabIndex={0}
-        htmlFor={name}
+        htmlFor={name || id}
         aria-disabled={disabled}
         onKeyDown={handleOnKeyDown}
       >
@@ -72,7 +74,7 @@ export function CheckboxInput({
         <input
           type="checkbox"
           name={name}
-          id={name}
+          id={id || name}
           aria-describedby={ariaDescribedBy}
           aria-checked={isChecked}
           className="hidden"
