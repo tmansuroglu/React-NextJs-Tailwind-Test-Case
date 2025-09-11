@@ -1,8 +1,5 @@
 ## HIGH PRIORTY
 
-- refactor loading flow of the list page. Use server actions or react query or something else
-- Page change loader
-
 ## MEDIUM PRIORTY
 
 - add import aliases

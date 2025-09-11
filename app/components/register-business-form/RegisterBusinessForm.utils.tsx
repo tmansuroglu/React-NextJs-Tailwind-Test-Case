@@ -64,6 +64,7 @@ const validationSchema = z
     [RegisterBusinessFormFields.PayLater]: z.boolean(),
     [RegisterBusinessFormFields.PayNow]: z.boolean(),
   })
+  // TODO: refactor to use only 1 refine
   .refine(
     (data) =>
       data[RegisterBusinessFormFields.PayLater] ||
