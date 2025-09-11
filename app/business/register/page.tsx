@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Routes } from "../../types/enums";
-import RegisterBusinessForm from "../../components/register-business-form";
+import { Routes } from "@/types/enums";
+import RegisterBusinessForm from "@/components/register-business-form";
 import type { Metadata } from "next";
-import PageContainer from "../../components/page-container";
-import Arrow from "../../../public/arrow.svg";
+import PageContainer from "@/components/page-container";
+import Arrow from "@/public/arrow.svg";
 
 export const metadata: Metadata = {
   title: "Bumper UK - Register Business",

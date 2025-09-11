@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Routes } from "../../types/enums";
-import Arrow from "../../../public/arrow.svg";
+import { Routes } from "@/types/enums";
+import Arrow from "@/public/arrow.svg";
 
 export function Hero() {
   return (

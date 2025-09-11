@@ -2,8 +2,8 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { MouseEventHandler } from "react";
-import { SearchParams } from "../../types/enums";
-import { createSearchParams } from "../../utils/createSearchParams";
+import { SearchParams } from "@/types/enums";
+import { createSearchParams } from "@/utils/createSearchParams";
 
 export const useHandleLoadMore = () => {
   const searchParams = useSearchParams();

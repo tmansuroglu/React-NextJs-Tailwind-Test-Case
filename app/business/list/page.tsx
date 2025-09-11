@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import BusinessList from "../../components/business-list";
-import BusinessSearchInput from "../../components/business-search-Input";
-import PageContainer from "../../components/page-container";
+import BusinessList from "@/components/business-list";
+import BusinessSearchInput from "@/components/business-search-Input";
+import PageContainer from "@/components/page-container";
 import { Suspense } from "react";
-import LoadingIndicator from "../../components/loading-indicator";
+import LoadingIndicator from "@/components/loading-indicator";
 
 export const metadata: Metadata = {
   title: "Bumper UK - Business List Page",

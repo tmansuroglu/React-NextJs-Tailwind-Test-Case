@@ -13,8 +13,8 @@ import FormAutoCompleteComboBox from "../form-auto-complete-combo-box";
 import FormCheckboxInput from "../form-checkbox-input";
 import LoadingIndicator from "../loading-indicator";
 import Link from "next/link";
-import { Routes } from "../../types/enums";
-import Arrow from "../../../public/arrow.svg";
+import { Routes } from "@/types/enums";
+import Arrow from "@/public/arrow.svg";
 
 export function RegisterBusinessForm() {
   const formProps = useFormProps();

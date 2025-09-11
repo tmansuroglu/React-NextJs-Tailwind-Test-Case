@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { BusinessListResponsePayload } from "../../types/payload";
+import { BusinessListResponsePayload } from "@/types/payload";
 import BusinessCard from "../business-card";
 import { useHandleLoadMore } from "./BusinessList.utils";
 import LoadingIndicator from "../loading-indicator";

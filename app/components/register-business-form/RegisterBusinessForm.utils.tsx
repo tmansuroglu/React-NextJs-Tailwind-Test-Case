@@ -1,5 +1,7 @@
 "use client";
 
+import { Routes } from "@/types/enums";
+import { RegisterBusinessRequestPayload } from "@/types/payload";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect } from "next/navigation";
 import { ChangeEventHandler, useState } from "react";
@@ -11,8 +13,6 @@ import {
   UseFormTrigger,
 } from "react-hook-form";
 import { z } from "zod";
-import { Routes } from "../../types/enums";
-import { RegisterBusinessRequestPayload } from "../../types/payload";
 
 const REQUIRED = "Required";
 

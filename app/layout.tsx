@@ -3,10 +3,10 @@
 import "./globals.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import TabLink from "./components/tab-link";
-import { Routes } from "./types/enums";
-import LogoLink from "./components/logo-link";
-import LoginSvg from "../public/login.svg";
+import { Routes } from "@/types/enums";
+import TabLink from "@/components/tab-link";
+import LogoLink from "@/components/logo-link";
+import LoginSvg from "@/public/login.svg";
 
 export default function RootLayout({
   children,

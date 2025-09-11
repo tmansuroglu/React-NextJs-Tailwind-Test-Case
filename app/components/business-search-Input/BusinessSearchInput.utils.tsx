@@ -3,8 +3,8 @@
 import { ChangeEventHandler, useMemo, useState } from "react";
 import { debounce } from "throttle-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { SearchParams } from "../../types/enums";
-import { createSearchParams } from "../../utils/createSearchParams";
+import { SearchParams } from "@/types/enums";
+import { createSearchParams } from "@/utils/createSearchParams";
 
 export const useInputValueChange = () => {
   const searchParams = useSearchParams();

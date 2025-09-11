@@ -17,7 +17,13 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@/components/*": ["./app/components/*"],
+      "@/types/*": ["./app/types/*"],
+      "@/utils/*": ["./app/utils/*"],
+      "@/public/*": ["./public/*"]
+    }
   },
   "include": [
     "svgr.d.ts",
