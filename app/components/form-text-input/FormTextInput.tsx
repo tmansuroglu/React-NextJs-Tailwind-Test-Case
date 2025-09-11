@@ -22,13 +22,12 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
 
   const errorId = `${name}-error-id`;
 
-  console.log("isSuccess", isSuccess);
-
   return (
     <TextInput
       value={value}
       onBlur={onBlur}
       onChange={onChange}
+      name={name}
       ref={ref}
       aria-describedby={errorId}
       aria-invalid={!!fieldError}

@@ -14,7 +14,7 @@ export function SubHero() {
       <h2 id="subhero-heading" className="sr-only">
         Pay Later Benefits
       </h2>
-      <div role="group" className="grid xl:grid-cols-2">
+      <div role="group" className="grid lg:grid-cols-2">
         <div>
           <Image
             src="/logo.svg"
@@ -25,34 +25,34 @@ export function SubHero() {
             priority
             unoptimized
           />
-          <h3 className="font-2xl xl:font-2xl-wide text-brand-secondary-black">
+          <h3 className="font-2xl lg:font-2xl-wide text-brand-secondary-black">
             PAYLATER
           </h3>
         </div>
         <Image
-          src="/phone.png"
+          src="/phone.webp"
           alt="Mobile app illustrating PayLater payment options"
           data-testid="cell-phone"
           width={976}
           height={1238}
-          className="mb-7 xl:mb-0 mt-4 xl:mt-0 xl:col-start-2 xl:col-end-3 xl:row-start-2 xl:row-end-7"
+          className="mb-7 lg:mb-0 mt-4 lg:mt-0 lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-7"
           loading="lazy"
         />
-        <p className="font-md xl:font-md-plus text-brand-secondary-black mb-6 xl:row-start-2">
+        <p className="font-md lg:font-md-plus text-brand-secondary-black mb-6 lg:row-start-2">
           Give customers more flexibility at checkout, online and in store. Let
           them spread the cost with interest-free monthly payments.
         </p>
-        <p className="text-brand-primary-orange font-lg xl:font-xl-plus xl:row-start-3">
+        <p className="text-brand-primary-orange font-lg lg:font-xl-plus lg:row-start-3">
           No risk to your business.
         </p>
-        <p className="text-brand-primary-orange font-lg mb-6 xl:font-xl-plus xl:row-start-4">
+        <p className="text-brand-primary-orange font-lg mb-6 lg:font-xl-plus lg:row-start-4">
           No worries for your customers.
         </p>
-        <p className="font-sm-bold text-brand-secondary-black mb-6 xl:row-start-5">
+        <p className="font-sm-bold text-brand-secondary-black mb-6 lg:row-start-5">
           It&apos;s as simple as:
         </p>
-        <ol className="xl:row-start-6" aria-label="PayLater process steps">
-          <li>
+        <ol className="lg:row-start-6" aria-label="PayLater process steps">
+          <li role="listitem">
             <Step
               data-testid="step-1"
               number={1}
@@ -60,7 +60,7 @@ export function SubHero() {
               description="Your customers bring their vehicle to you. You repair and service the car. Everything just like it works right now."
             />
           </li>
-          <li>
+          <li role="listitem">
             <Step
               data-testid="step-2"
               number={2}
@@ -68,7 +68,7 @@ export function SubHero() {
               description="When the customer gets their bill or quote, your customer chooses the option to 'PayLater' and in just a few clicks they've been approved and have paid."
             />
           </li>
-          <li>
+          <li role="listitem">
             <Step
               data-testid="step-3"
               number={3}
@@ -79,7 +79,7 @@ export function SubHero() {
         </ol>
       </div>
       <Link
-        className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-fit mt-6"
+        className="btn-primary-over-rounded font-sm lg:font-sm-medium flex gap-2.5 w-fit mt-6"
         href={Routes.BusinessRegister}
         aria-label="Register your interest with Bumper"
       >

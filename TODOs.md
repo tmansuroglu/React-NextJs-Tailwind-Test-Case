@@ -3,8 +3,6 @@
 ## MEDIUM PRIORTY
 
 - add import aliases
-- check performance metrics
-- test image layout shift
 
 ## LOW PRIORITY
 

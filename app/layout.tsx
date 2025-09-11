@@ -48,7 +48,12 @@ export default function RootLayout({
                   role="tablist"
                   aria-label="Navigation tabs"
                 >
-                  <li className="relative flex">
+                  <li
+                    className="relative flex"
+                    role="tab"
+                    aria-current={!isBusiness ? "page" : undefined}
+                    aria-selected={!isBusiness}
+                  >
                     <TabLink href={Routes.Business} highlight={isBusiness}>
                       For business
                     </TabLink>
@@ -57,7 +62,12 @@ export default function RootLayout({
                     className="border-r border-brand-secondary-gray"
                     aria-hidden
                   />
-                  <li className="relative flex">
+                  <li
+                    className="relative flex"
+                    role="tab"
+                    aria-current={!isBusiness ? "page" : undefined}
+                    aria-selected={!isBusiness}
+                  >
                     <TabLink href={Routes.Driver} highlight={!isBusiness}>
                       For drivers
                     </TabLink>

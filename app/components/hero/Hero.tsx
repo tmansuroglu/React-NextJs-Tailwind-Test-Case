@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="relative bg-[url(/hero.png)] min-h-[543px] h-auto w-full  pt-24 bg-[34%_100%] bg-no-repeat bg-cover
+      className="relative bg-[url(/hero.webp)] min-h-[543px] h-auto w-full  pt-24 bg-[34%_100%] bg-no-repeat bg-cover
  z-0  flex items-center"
       aria-labelledby="hero-title"
       role="banner"

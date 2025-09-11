@@ -8,13 +8,7 @@ type TabLinkProps = LinkProps & {
 
 export function TabLink({ children, highlight, ...props }: TabLinkProps) {
   return (
-    <Link
-      {...props}
-      role="tab"
-      className="btn-nav"
-      aria-current={highlight ? "page" : undefined}
-      aria-selected={highlight}
-    >
+    <Link {...props} className="btn-nav">
       {children}
       {highlight && (
         <span
