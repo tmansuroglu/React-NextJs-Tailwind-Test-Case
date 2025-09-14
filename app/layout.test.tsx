@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import RootLayout from "./layout";
 import { usePathname } from "next/navigation";
-import { Routes } from "./types/enums";
+import { Routes } from "./_types/enums";
 
 jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),

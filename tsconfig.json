@@ -19,12 +19,13 @@
       }
     ],
     "paths": {
-      "@/components/*": ["./app/components/*"],
-      "@/types/*": ["./app/types/*"],
-      "@/utils/*": ["./app/utils/*"],
+      "@/components/*": ["./app/_components/*"],
+      "@/form-components/*": ["./app/_form-components/*"],
+      "@/types/*": ["./app/_types/*"],
+      "@/utils/*": ["./app/_utils/*"],
       "@/public/*": ["./public/*"],
-      "@/actions/*": ["./app/actions/*"],
-      "@/constants/*": ["./app/constants/*"]
+      "@/actions/*": ["./app/_actions/*"],
+      "@/constants/*": ["./app/_constants/*"]
     }
   },
   "include": [

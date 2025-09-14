@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { redirect } from "next/navigation";
 import Home from "./page";
-import { Routes } from "./types/enums";
+import { Routes } from "./_types/enums";
 
 jest.mock("next/navigation", () => ({
   redirect: jest.fn(),

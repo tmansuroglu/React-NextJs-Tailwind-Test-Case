@@ -1,8 +1,8 @@
 "use client";
 
 import { redirect, RedirectType } from "next/navigation";
-import { Routes } from "@/types/enums";
-import PageContainer from "@/components/page-container";
+import { Routes } from "./_types/enums";
+import PageContainer from "./_components/page-container";
 
 export default function Error({}: {
   error: Error & { digest?: string };

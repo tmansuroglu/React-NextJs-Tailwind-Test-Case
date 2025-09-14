@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
-import BusinessList from "@/components/business-list";
-import BusinessSearchInput from "@/components/business-search-Input";
-import PageContainer from "@/components/page-container";
+import PageContainer from "../../_components/page-container";
 import { Suspense } from "react";
-import LoadingIndicator from "@/components/loading-indicator";
-import { SearchParamsType } from "@/types/search-param-type";
-import getBusinessList from "@/actions/get-business-list";
+import LoadingIndicator from "../../_components/loading-indicator";
+import { SearchParamsType } from "../../_types/search-param-type";
+import getBusinessList from "../../_actions/get-business-list";
+import BusinessSearchInput from "./_components/business-search-Input";
+import BusinessList from "./_components/business-list";
 
 export const metadata: Metadata = {
   title: "Bumper UK - Business List Page",
 };
 
 type ListPageProps = {
-  searchParams: SearchParamsType;
+  searchParams: Promise<SearchParamsType>;
 };
 export default async function ListPage({ searchParams }: ListPageProps) {
   // TODO: needs suspense?
-  await searchParams;
+  const params = await searchParams;
   // TODO: what if move this inside the business list?
-  const payload = await getBusinessList(searchParams);
+  const payload = await getBusinessList(params);
 
   return (
     <PageContainer className="bg-brand-primary-blue">

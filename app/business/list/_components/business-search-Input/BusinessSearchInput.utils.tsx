@@ -1,0 +1,41 @@
+"use client";
+
+import { ChangeEventHandler, useMemo, useState } from "react";
+import { debounce } from "throttle-debounce";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { SearchParamKeys } from "../../../../_types/enums";
+import createNewURLSearchParams from "../../../../_utils/create-new-url-search-params";
+
+export const useInputValueChange = () => {
+  const searchParams = useSearchParams();
+
+  const [inputValue, setInputValue] = useState(
+    searchParams.get(SearchParamKeys.CompanyName) || ""
+  );
+
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const debouncedSearchParamChange = useMemo(
+    () =>
+      debounce(250, (searchParamKey: SearchParamKeys, value: string) => {
+        router.push(
+          pathname +
+            "?" +
+            createNewURLSearchParams({
+              previousSearchParams: searchParams,
+              additions: [{ newKey: searchParamKey, newValue: value }],
+            }).toString(),
+          { scroll: false }
+        );
+      }),
+    [pathname, router, searchParams]
+  );
+
+  const handleInputValueChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setInputValue(e.target.value);
+    debouncedSearchParamChange(SearchParamKeys.CompanyName, e.target.value);
+  };
+
+  return { handleInputValueChange, inputValue };
+};

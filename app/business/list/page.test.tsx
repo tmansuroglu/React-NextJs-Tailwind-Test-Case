@@ -7,8 +7,7 @@ import {
 } from "@testing-library/react";
 import ListPage from "./page";
 import { useSearchParams } from "next/navigation";
-import { useHandlers } from "./page.utils";
-import { BusinessListResponsePayload } from "../../types/payload";
+import { BusinessListResponsePayload } from "../../_types/payload";
 
 jest.mock("next/navigation", () => ({
   useSearchParams: jest.fn(),

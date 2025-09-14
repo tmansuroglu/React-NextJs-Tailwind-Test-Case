@@ -1,4 +1,4 @@
 - inline todos
-- Recheck tests added tests
+- Virtual list
 - Cross browser check
-- component placement is wrong
+- Recheck tests added tests
