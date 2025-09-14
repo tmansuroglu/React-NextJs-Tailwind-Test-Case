@@ -5,7 +5,6 @@ import FormTextInput from "../form-text-input";
 import LabeledIcon from "../labeled-icon";
 import {
   POST_CODES,
-  RegisterBusinessFormFields,
   useEventHandlers,
   useFormProps,
 } from "./RegisterBusinessForm.utils";
@@ -13,7 +12,7 @@ import FormAutoCompleteComboBox from "../form-auto-complete-combo-box";
 import FormCheckboxInput from "../form-checkbox-input";
 import LoadingIndicator from "../loading-indicator";
 import Link from "next/link";
-import { Routes } from "@/types/enums";
+import { RegisterBusinessFormFields, Routes } from "@/types/enums";
 import Arrow from "@/public/arrow.svg";
 import Person from "@/public/person.svg";
 import Building from "@/public/building.svg";
@@ -25,36 +24,36 @@ import Wrench from "@/public/wrench.svg";
 export function RegisterBusinessForm() {
   const formProps = useFormProps();
 
-  const { handleSubmit, formState, setValue, trigger } = formProps;
+  const { formState, setValue, trigger } = formProps;
   const { errors } = formState;
 
   const payError = errors[RegisterBusinessFormFields.PayLater]?.message;
 
   const {
-    handleOnSubmit,
+    transitionWrappedHandleSubmit,
     handlePayLaterChange,
     handlePayNowChange,
-    isLoading,
+    isPending,
   } = useEventHandlers({ setValue, trigger });
 
   return (
     <FormProvider {...formProps}>
-      <form onSubmit={handleSubmit(handleOnSubmit)}>
+      <form onSubmit={formProps.handleSubmit(transitionWrappedHandleSubmit)}>
         <div className="flex flex-col gap-8">
           <FormTextInput
             id={`${RegisterBusinessFormFields.Name}-id`}
             name={RegisterBusinessFormFields.Name}
-            disabled={isLoading}
+            disabled={isPending}
             label={<LabeledIcon label="Name" IconComponent={Person} />}
           />
           <FormTextInput
             name={RegisterBusinessFormFields.Company}
             id={`${RegisterBusinessFormFields.Company}-id`}
-            disabled={isLoading}
+            disabled={isPending}
             label={<LabeledIcon IconComponent={Building} label="Company" />}
           />
           <FormTextInput
-            disabled={isLoading}
+            disabled={isPending}
             id={`${RegisterBusinessFormFields.MobilePhone}-id`}
             name={RegisterBusinessFormFields.MobilePhone}
             label={
@@ -63,14 +62,14 @@ export function RegisterBusinessForm() {
           />
           <FormTextInput
             id={`${RegisterBusinessFormFields.Email}-id`}
-            disabled={isLoading}
+            disabled={isPending}
             name={RegisterBusinessFormFields.Email}
             type="email"
             label={<LabeledIcon IconComponent={Mail} label="Email Address" />}
           />
           <FormAutoCompleteComboBox
             InputProps={{
-              disabled: isLoading,
+              disabled: isPending,
               id: `${RegisterBusinessFormFields.PostCode}-id`,
               placeholder: "Start typing to match your address",
             }}
@@ -96,7 +95,7 @@ export function RegisterBusinessForm() {
               <FormCheckboxInput
                 id={`${RegisterBusinessFormFields.PayLater}-id`}
                 hideErrorText
-                disabled={isLoading}
+                disabled={isPending}
                 label="PayLater"
                 name={RegisterBusinessFormFields.PayLater}
                 ariaDescribedBy="pay-error"
@@ -104,7 +103,7 @@ export function RegisterBusinessForm() {
               />
               <FormCheckboxInput
                 id={`${RegisterBusinessFormFields.PayNow}-id`}
-                disabled={isLoading}
+                disabled={isPending}
                 hideErrorText
                 label="PayNow"
                 ariaDescribedBy="pay-error"
@@ -123,10 +122,10 @@ export function RegisterBusinessForm() {
               className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center mb-5"
               type="submit"
               aria-label="Register your interest with Bumper"
-              disabled={isLoading}
-              aria-disabled={isLoading}
+              disabled={isPending}
+              aria-disabled={isPending}
             >
-              {isLoading && <LoadingIndicator aria-live="polite" />}
+              {isPending && <LoadingIndicator aria-live="polite" />}
               <span>Register</span>
               <Arrow aria-hidden="true" width={20} height={20} />
             </button>

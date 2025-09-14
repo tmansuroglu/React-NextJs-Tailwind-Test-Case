@@ -22,7 +22,9 @@
       "@/components/*": ["./app/components/*"],
       "@/types/*": ["./app/types/*"],
       "@/utils/*": ["./app/utils/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+      "@/actions/*": ["./app/actions/*"],
+      "@/constants/*": ["./app/constants/*"]
     }
   },
   "include": [
