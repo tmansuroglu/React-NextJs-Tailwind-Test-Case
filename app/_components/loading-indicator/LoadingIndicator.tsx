@@ -1,20 +1,30 @@
-type LoadingIndicatorProps = {
-  ariaLabel?: string;
+import { HTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
+
+type LoadingIndicatorProps = HTMLAttributes<HTMLDivElement> & {
+  LoaderProps?: HTMLAttributes<HTMLDivElement>;
 };
 
 export function LoadingIndicator({
-  ariaLabel = "Loading...",
+  LoaderProps = {},
+  className,
+  ...props
 }: LoadingIndicatorProps) {
   return (
     <div
-      className="flex justify-center items-center"
+      className={twMerge("flex justify-center items-center", className)}
       role="status"
-      aria-label={ariaLabel}
+      aria-label={props["aria-label"] || "Loading..."}
       aria-live="polite"
       aria-hidden
       data-testid="loading-indicator"
+      {...props}
     >
-      <div className="w-4 h-4 border-2 border-t-blue-500 border-gray-200 rounded-full animate-spin" />
+      <div
+        // TODO: twMerge breaks the animation
+        className="size-2.5 border-2 border-t-blue-500 border-gray-200 rounded-full animate-spin"
+        {...LoaderProps}
+      />
     </div>
   );
 }

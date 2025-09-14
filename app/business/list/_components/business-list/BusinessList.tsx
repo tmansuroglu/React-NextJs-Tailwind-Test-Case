@@ -1,12 +1,15 @@
-import { BusinessListResponsePayload } from "@/types/payload";
+import getBusinessList from "@/actions/get-business-list";
 import BusinessCard from "../business-card";
 import LoadMore from "../load-more";
+import { SearchParamsType } from "@/types/search-param-type";
 
 type BusinessListProps = {
-  payload: BusinessListResponsePayload | null;
+  searchParams: SearchParamsType;
 };
 
-export function BusinessList({ payload }: BusinessListProps) {
+export async function BusinessList({ searchParams }: BusinessListProps) {
+  const payload = await getBusinessList(searchParams);
+
   if (!payload) {
     return (
       <div aria-live="polite" className="card text-center">

@@ -37,6 +37,17 @@ export function LoadMore() {
     });
   };
 
+  if (isPending) {
+    return (
+      <LoadingIndicator
+        LoaderProps={{
+          className:
+            "size-10 border-4 border-t-blue-500 border-gray-200 rounded-full animate-spin",
+        }}
+      />
+    );
+  }
+
   return (
     <button
       onClick={handleLoadMore}
@@ -46,8 +57,7 @@ export function LoadMore() {
       aria-label="Load More"
       className="flex items-center gap-2 rounded font-sm cursor-pointer text-brand-primary-white p-4 w-fit mx-auto hover:bg-brand-light-gray hover:text-brand-primary-black"
     >
-      <span>{isPending ? "Loading" : "Load More"}...</span>
-      {isPending && <LoadingIndicator />}
+      <span>Load More...</span>
     </button>
   );
 }
