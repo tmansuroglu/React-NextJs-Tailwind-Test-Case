@@ -1,14 +1,15 @@
 "use server";
 
-import { Business, BusinessListResponsePayload } from "../../_types/payload";
-import { SearchParamsType } from "../../_types/search-param-type";
-import { readBusinesses } from "../utils";
-import { SearchParamKeys } from "../../_types/enums";
 import { createFilteredData } from "./get-business-list.utils";
+
+import { SearchParamsType } from "@/types/search-param-type";
+import { Business, BusinessListResponsePayload } from "@/types/payload";
+import { SearchParamKeys } from "@/types/enums";
+import { readBusinesses } from "../utils";
 import {
   BUSINESS_LIST_DEFAULT_PAGE_NUMBER,
   BUSINESS_LIST_DEFAULT_PAGE_SIZE,
-} from "../../_constants/constants";
+} from "@/constants/constants";
 
 export async function getBusinessList(
   params: SearchParamsType

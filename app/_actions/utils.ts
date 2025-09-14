@@ -1,6 +1,6 @@
 import path from "path";
 import { promises as fs } from "fs";
-import { Business } from "../_types/payload";
+import { Business } from "@/types/payload";
 
 const businessesFilePath = path.join(process.cwd(), "businesses.json");
 

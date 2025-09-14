@@ -1,6 +1,6 @@
+import EmptyPageContent from "@/components/empty-page-content";
+import PageContainer from "@/components/page-container";
 import type { Metadata } from "next";
-import PageContainer from "../_components/page-container";
-import EmptyPageContent from "../_components/empty-page-content";
 
 export const metadata: Metadata = {
   title: "Bumper UK - Driver Landing Page",

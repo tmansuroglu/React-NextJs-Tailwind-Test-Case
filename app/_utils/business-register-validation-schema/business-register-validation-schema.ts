@@ -1,10 +1,10 @@
-import { RegisterBusinessFormFields } from "../../_types/enums";
 import z from "zod";
 import {
   alphaNumericRegex,
   emailRegex,
   mobilePhoneRegex,
 } from "../regex/regex";
+import { RegisterBusinessFormFields } from "@/types/enums";
 
 const REQUIRED_MESSAGE = "Required";
 

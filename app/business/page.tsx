@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import PageContainer from "../_components/page-container";
-import Hero from "./_components/hero";
 import SubHero from "./_components/sub-hero";
+import Hero from "./_components/hero";
+import PageContainer from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "Bumper UK - Business Landing Page",

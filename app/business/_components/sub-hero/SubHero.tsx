@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Routes } from "../../../_types/enums";
 import Arrow from "@/public/arrow.svg";
 import Logo from "@/public/logo.svg";
 import Step from "../step";
+import { Routes } from "@/types/enums";
 
 export function SubHero() {
   return (

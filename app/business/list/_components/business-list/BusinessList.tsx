@@ -1,5 +1,5 @@
+import { BusinessListResponsePayload } from "@/types/payload";
 import BusinessCard from "../business-card";
-import { BusinessListResponsePayload } from "../../../../_types/payload";
 import LoadMore from "../load-more";
 
 type BusinessListProps = {

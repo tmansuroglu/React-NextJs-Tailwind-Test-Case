@@ -7,7 +7,6 @@ import {
   useFormProps,
 } from "./RegisterBusinessForm.utils";
 import Link from "next/link";
-import { RegisterBusinessFormFields, Routes } from "../../../../_types/enums";
 import Arrow from "@/public/arrow.svg";
 import Person from "@/public/person.svg";
 import Building from "@/public/building.svg";
@@ -15,11 +14,12 @@ import Phone from "@/public/phone.svg";
 import House from "@/public/house.svg";
 import Mail from "@/public/mail.svg";
 import Wrench from "@/public/wrench.svg";
-import LabeledIcon from "../../../../_components/labeled-icon";
-import LoadingIndicator from "../../../../_components/loading-indicator";
-import FormTextInput from "../../../../_form-components/form-text-input";
-import FormAutoCompleteComboBox from "../../../../_form-components/form-auto-complete-combo-box";
-import FormCheckboxInput from "../../../../_form-components/form-checkbox-input";
+import { RegisterBusinessFormFields, Routes } from "@/types/enums";
+import FormTextInput from "@/form-components/form-text-input";
+import LabeledIcon from "@/components/labeled-icon";
+import FormAutoCompleteComboBox from "@/form-components/form-auto-complete-combo-box";
+import FormCheckboxInput from "@/form-components/form-checkbox-input";
+import LoadingIndicator from "@/components/loading-indicator";
 
 export function RegisterBusinessForm() {
   const formProps = useFormProps();

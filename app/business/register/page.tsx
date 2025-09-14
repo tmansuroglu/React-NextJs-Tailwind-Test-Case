@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { Routes } from "../../_types/enums";
 import type { Metadata } from "next";
-import PageContainer from "../../_components/page-container";
 import Arrow from "@/public/arrow.svg";
+
+import { Routes } from "@/types/enums";
+import PageContainer from "@/components/page-container";
 import RegisterBusinessForm from "./_components/register-business-form";
 
 export const metadata: Metadata = {

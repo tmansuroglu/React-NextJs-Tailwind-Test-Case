@@ -1,12 +1,13 @@
 "use client";
 
 import { useController, useFormContext } from "react-hook-form";
-import AutoCompleteComboBox, {
-  AutoCompleteComboBoxProps,
-} from "../../_components/auto-complete-combo-box";
+
 import { twMerge } from "tailwind-merge";
 import Error from "@/public/error.svg";
 import Success from "@/public/success.svg";
+import AutoCompleteComboBox, {
+  AutoCompleteComboBoxProps,
+} from "@/components/auto-complete-combo-box";
 
 type FormAutoCompleteComboBoxProps = AutoCompleteComboBoxProps & {
   name: string;

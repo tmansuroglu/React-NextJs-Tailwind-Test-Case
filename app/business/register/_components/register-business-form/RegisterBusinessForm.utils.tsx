@@ -1,6 +1,6 @@
 "use client";
 
-import { RegisterBusinessRequestPayload } from "../../../../_types/payload";
+import businessRegisterValidationSchema from "@/utils/business-register-validation-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChangeEventHandler, useTransition } from "react";
 import {
@@ -11,9 +11,9 @@ import {
   UseFormTrigger,
 } from "react-hook-form";
 import { z } from "zod";
-import { RegisterBusinessFormFields } from "../../../../_types/enums";
-import registerBusiness from "../../../../_actions/register-business";
-import businessRegisterValidationSchema from "../../../../_utils/business-register-validation-schema";
+import { RegisterBusinessFormFields } from "@/types/enums";
+import registerBusiness from "@/actions/register-business";
+import { RegisterBusinessRequestPayload } from "@/types/payload";
 
 export type RegisterBusinessFormValues = z.infer<
   typeof businessRegisterValidationSchema

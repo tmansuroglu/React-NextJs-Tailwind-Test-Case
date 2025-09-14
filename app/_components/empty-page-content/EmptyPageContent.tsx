@@ -1,6 +1,6 @@
 "use client";
 
-import { Routes } from "../../_types/enums";
+import { Routes } from "@/types/enums";
 import { redirect, RedirectType } from "next/navigation";
 
 type EmptyPageContentProps = {

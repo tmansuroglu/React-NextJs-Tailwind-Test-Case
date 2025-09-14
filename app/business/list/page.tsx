@@ -1,9 +1,9 @@
+import getBusinessList from "@/actions/get-business-list";
+import LoadingIndicator from "@/components/loading-indicator";
+import PageContainer from "@/components/page-container";
+import { SearchParamsType } from "@/types/search-param-type";
 import type { Metadata } from "next";
-import PageContainer from "../../_components/page-container";
 import { Suspense } from "react";
-import LoadingIndicator from "../../_components/loading-indicator";
-import { SearchParamsType } from "../../_types/search-param-type";
-import getBusinessList from "../../_actions/get-business-list";
 import BusinessSearchInput from "./_components/business-search-Input";
 import BusinessList from "./_components/business-list";
 

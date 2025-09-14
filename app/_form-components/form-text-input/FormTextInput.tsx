@@ -1,10 +1,10 @@
 "use client";
 
 import { useController, useFormContext } from "react-hook-form";
-import TextInput, { TextInputProps } from "../../_components/text-input";
 import { twMerge } from "tailwind-merge";
 import Error from "@/public/error.svg";
 import Success from "@/public/success.svg";
+import TextInput, { TextInputProps } from "@/components/text-input";
 
 type FormTextInputProps = TextInputProps & { name: string };
 

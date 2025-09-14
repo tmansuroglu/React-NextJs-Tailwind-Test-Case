@@ -1,11 +1,11 @@
 "use server";
 
-import { Routes } from "../../_types/enums";
-import { RegisterBusinessRequestPayload } from "../../_types/payload";
 import { redirect, RedirectType } from "next/navigation";
-import { readBusinesses, writeBusinesses } from "../utils";
 import { revalidatePath } from "next/cache";
-import businessRegisterValidationSchema from "../../_utils/business-register-validation-schema";
+import businessRegisterValidationSchema from "@/utils/business-register-validation-schema";
+import { readBusinesses, writeBusinesses } from "../utils";
+import { RegisterBusinessRequestPayload } from "@/types/payload";
+import { Routes } from "@/types/enums";
 
 export async function registerBusiness(
   payload: RegisterBusinessRequestPayload

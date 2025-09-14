@@ -2,10 +2,10 @@
 
 import { ChangeEventHandler, ReactNode } from "react";
 import { useController, useFormContext } from "react-hook-form";
-import CheckboxInput from "../../_components/checkbox-input";
 import Error from "@/public/error.svg";
 import Plus from "@/public/plus.svg";
 import Tick from "@/public/tick.svg";
+import CheckboxInput from "@/components/checkbox-input";
 
 type FormCheckboxInputProps = {
   hideErrorText?: boolean;

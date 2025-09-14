@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Routes } from "../../../_types/enums";
 import Arrow from "@/public/arrow.svg";
 import TrustPilot from "@/public/trust-pilot.svg";
 import FiveStars from "@/public/five-stars.svg";
+import { Routes } from "@/types/enums";
 
 export function Hero() {
   return (
