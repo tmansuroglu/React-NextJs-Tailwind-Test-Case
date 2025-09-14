@@ -21,9 +21,9 @@ export async function registerBusiness(
 
     revalidatePath(Routes.BusinessList);
   } catch (error) {
-    // TODO: improve error handling
-    console.log("register action error", error);
-    throw new Error("Failed to register the business");
+    // TODO: error.js
+    console.error("get business list error", error);
+    return null; // Graceful failure – component will render error UI
   } finally {
     redirect(Routes.BusinessList, RedirectType.push);
   }
