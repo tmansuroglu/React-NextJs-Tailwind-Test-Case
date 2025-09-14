@@ -3,8 +3,8 @@
 import { ChangeEventHandler, useMemo, useState } from "react";
 import { debounce } from "throttle-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { SearchParamKeys } from "../../../../_types/enums";
-import createNewURLSearchParams from "../../../../_utils/create-new-url-search-params";
+import { SearchParamKeys } from "@/types/enums";
+import createNewURLSearchParams from "@/utils/create-new-url-search-params";
 
 export const useInputValueChange = () => {
   const searchParams = useSearchParams();
@@ -24,7 +24,8 @@ export const useInputValueChange = () => {
             "?" +
             createNewURLSearchParams({
               previousSearchParams: searchParams,
-              additions: [{ newKey: searchParamKey, newValue: value }],
+              add: [{ newKey: searchParamKey, newValue: value }],
+              remove: [SearchParamKeys.PageSize, SearchParamKeys.Page],
             }).toString(),
           { scroll: false }
         );

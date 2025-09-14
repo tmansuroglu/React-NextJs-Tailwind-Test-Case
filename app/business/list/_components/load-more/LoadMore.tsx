@@ -1,14 +1,14 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { useTransition } from "react";
-import { SearchParamKeys } from "../../../../_types/enums";
+import LoadingIndicator from "@/components/loading-indicator";
 import {
   BUSINESS_LIST_DEFAULT_PAGE_SIZE,
   BUSINESS_LIST_DEFAULT_PAGE_SIZE_INCREASE,
-} from "../../../../_constants/constants";
-import createNewURLSearchParams from "../../../../_utils/create-new-url-search-params";
-import LoadingIndicator from "../../../../_components/loading-indicator";
+} from "@/constants/constants";
+import { SearchParamKeys } from "@/types/enums";
+import createNewURLSearchParams from "@/utils/create-new-url-search-params";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useTransition } from "react";
 
 export function LoadMore() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export function LoadMore() {
     startTransition(() => {
       const newSeachParams = createNewURLSearchParams({
         previousSearchParams: searchParams,
-        additions: [
+        add: [
           {
             newKey: SearchParamKeys.PageSize,
             newValue: String(

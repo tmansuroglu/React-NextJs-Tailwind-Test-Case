@@ -1,26 +1,30 @@
-import { SearchParamKeys } from "../../_types/enums";
+import { SearchParamKeys } from "@/types/enums";
 import { ReadonlyURLSearchParams } from "next/navigation";
 
 type CreateSearchParamsOptions = {
   previousSearchParams: ReadonlyURLSearchParams;
-  additions: { newKey: SearchParamKeys; newValue: string; append?: boolean }[];
+  add?: { newKey: SearchParamKeys; newValue: string; append?: boolean }[];
+  remove?: SearchParamKeys[];
 };
 
 export const createNewURLSearchParams = ({
   previousSearchParams,
-  additions,
+  add,
+  remove,
 }: CreateSearchParamsOptions) => {
   const newParams = new URLSearchParams();
 
-  Object.entries(previousSearchParams).forEach(([key, value]) => {
-    if (Array.isArray(value)) {
+  previousSearchParams.forEach((value, key) => {
+    if (remove?.includes(key as SearchParamKeys)) {
+      return;
+    } else if (Array.isArray(value)) {
       value.forEach((v) => newParams.append(key, v));
     } else if (value !== undefined) {
       newParams.set(key, value);
     }
   });
 
-  additions.forEach(({ newKey, newValue, append }) => {
+  add?.forEach(({ newKey, newValue, append }) => {
     if (newValue && append) {
       newParams.append(newKey, newValue);
     } else if (newValue && !append) {
