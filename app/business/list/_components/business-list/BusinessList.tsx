@@ -12,8 +12,7 @@ export async function BusinessList({ searchParams }: BusinessListProps) {
 
   if (!payload) {
     return (
-      <div aria-live="polite" className="card text-center">
-        {/* TODO: Click here to refetch – could add a button to reload */}
+      <div aria-live="polite" className="card text-center" role="alert">
         Failed to load the data
       </div>
     );
@@ -25,7 +24,7 @@ export async function BusinessList({ searchParams }: BusinessListProps) {
 
   if (!doesDataExist) {
     return (
-      <div aria-live="polite" className="card text-center">
+      <div aria-live="polite" className="card text-center" role="alert">
         No Data
       </div>
     );
