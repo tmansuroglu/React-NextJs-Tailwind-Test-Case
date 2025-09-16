@@ -40,8 +40,7 @@ export async function getBusinessList(
       ...filteredData,
     };
   } catch (error) {
-    // TODO: error.js
     console.error("get business list error", error);
-    return null; // Graceful failure – component will render error UI
+    return null;
   }
 }
