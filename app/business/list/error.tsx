@@ -1,7 +1,7 @@
 "use client";
 
-import PageContainer from "./_components/page-container";
-import { RenderErrorProps } from "./_types/error-props";
+import PageContainer from "@/components/page-container";
+import { RenderErrorProps } from "@/types/error-props";
 
 export default function Error({ reset }: RenderErrorProps) {
   return (
