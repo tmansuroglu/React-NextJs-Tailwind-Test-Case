@@ -21,10 +21,10 @@ export async function registerBusiness(
 
     revalidatePath(Routes.BusinessList);
   } catch (error) {
-    // TODO: error.js
     console.error("get business list error", error);
-    return null; // Graceful failure – component will render error UI
+    return null;
   } finally {
+    // TODO: if fails, shouldn't redirect
     redirect(Routes.BusinessList, RedirectType.push);
   }
 }
