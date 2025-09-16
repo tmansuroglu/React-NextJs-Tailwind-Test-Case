@@ -20,8 +20,10 @@ import LabeledIcon from "@/components/labeled-icon";
 import FormAutoCompleteComboBox from "@/form-components/form-auto-complete-combo-box";
 import FormCheckboxInput from "@/form-components/form-checkbox-input";
 import LoadingIndicator from "@/components/loading-indicator";
+import { useId } from "react";
 
 export function RegisterBusinessForm() {
+  const submitErrorId = useId();
   const formProps = useFormProps();
 
   const { formState, setValue, trigger } = formProps;
@@ -34,6 +36,7 @@ export function RegisterBusinessForm() {
     handlePayLaterChange,
     handlePayNowChange,
     isPending,
+    submitFailure,
   } = useEventHandlers({ setValue, trigger });
 
   return (
@@ -117,18 +120,28 @@ export function RegisterBusinessForm() {
               </div>
             )}
           </fieldset>
-          <div>
+          <div className="flex gap-5 flex-col">
             <button
-              className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center mb-5"
+              className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center"
               type="submit"
               aria-label="Register your interest with Bumper"
               disabled={isPending}
               aria-disabled={isPending}
+              aria-describedby={submitErrorId}
             >
               {isPending && <LoadingIndicator aria-live="polite" />}
               <span>Register</span>
               <Arrow aria-hidden="true" width={20} height={20} />
             </button>
+            {submitFailure && (
+              <div
+                className="error-text text-center"
+                id={submitErrorId}
+                role="alert"
+              >
+                Failed to submit the form
+              </div>
+            )}
             <p className="flex items-center gap-1 font-sm text-brand-primary-black justify-center">
               Already registered?
               <Link

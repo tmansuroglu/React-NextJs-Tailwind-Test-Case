@@ -20,11 +20,8 @@ export async function registerBusiness(
     await writeBusinesses([newData, ...existingBusinesses]);
 
     revalidatePath(Routes.BusinessList);
-  } catch (error) {
-    console.error("get business list error", error);
+  } catch {
     return null;
-  } finally {
-    // TODO: if fails, shouldn't redirect
-    redirect(Routes.BusinessList, RedirectType.push);
   }
+  redirect(Routes.BusinessList, RedirectType.push);
 }

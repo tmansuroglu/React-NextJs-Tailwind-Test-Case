@@ -1,8 +1,7 @@
-- failed to complete action UI
-- client side error UI
-- Virtual list
 - Refactor input prop spreads
 - implement useId
+- Input mask for phone input
+- Virtual list
 - Cross browser check
 - inline todos
 - Recheck tests added tests

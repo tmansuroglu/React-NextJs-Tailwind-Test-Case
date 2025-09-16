@@ -2,7 +2,7 @@
 
 import businessRegisterValidationSchema from "@/utils/business-register-validation-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChangeEventHandler, useTransition } from "react";
+import { ChangeEventHandler, useState, useTransition } from "react";
 import {
   DefaultValues,
   SubmitHandler,
@@ -46,9 +46,11 @@ export const useEventHandlers = ({
   setValue,
   trigger,
 }: UseEventHandlersOptions) => {
+  const [submitFailure, setSubmitFailure] = useState(false);
+
   const [isPending, startTransition] = useTransition();
 
-  const handleOnSubmit: SubmitHandler<RegisterBusinessFormValues> = async (
+  const handleOnSubmit: SubmitHandler<RegisterBusinessFormValues> = (
     values
   ) => {
     const payload: RegisterBusinessRequestPayload = {
@@ -61,14 +63,20 @@ export const useEventHandlers = ({
       pay_now: Boolean(values[RegisterBusinessFormFields.PayNow]),
     };
 
-    await registerBusiness(payload);
+    return registerBusiness(payload);
   };
 
   const transitionWrappedHandleSubmit: SubmitHandler<
     RegisterBusinessFormValues
   > = (values) => {
-    startTransition(() => {
-      handleOnSubmit(values);
+    startTransition(async () => {
+      setSubmitFailure(false);
+
+      const resp = await handleOnSubmit(values);
+
+      if (resp === null) {
+        setSubmitFailure(true);
+      }
     });
   };
 
@@ -96,6 +104,7 @@ export const useEventHandlers = ({
     handlePayNowChange,
     handlePayLaterChange,
     isPending,
+    submitFailure,
   };
 };
 

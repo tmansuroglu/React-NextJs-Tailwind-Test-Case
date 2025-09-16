@@ -39,8 +39,7 @@ export async function getBusinessList(
       message: "Retrieved businesses successfully",
       ...filteredData,
     };
-  } catch (error) {
-    console.error("get business list error", error);
+  } catch {
     return null;
   }
 }
