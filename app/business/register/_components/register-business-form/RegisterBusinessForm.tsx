@@ -21,6 +21,7 @@ import FormAutoCompleteComboBox from "@/form-components/form-auto-complete-combo
 import FormCheckboxInput from "@/form-components/form-checkbox-input";
 import LoadingIndicator from "@/components/loading-indicator";
 import { useId } from "react";
+import ErrorText from "@/components/error-text";
 
 export function RegisterBusinessForm() {
   const submitErrorId = useId();
@@ -44,27 +45,23 @@ export function RegisterBusinessForm() {
       <form onSubmit={formProps.handleSubmit(transitionWrappedHandleSubmit)}>
         <div className="flex flex-col gap-8">
           <FormTextInput
-            id={`${RegisterBusinessFormFields.Name}-id`}
             name={RegisterBusinessFormFields.Name}
             disabled={isPending}
             label={<LabeledIcon label="Name" IconComponent={Person} />}
           />
           <FormTextInput
             name={RegisterBusinessFormFields.Company}
-            id={`${RegisterBusinessFormFields.Company}-id`}
             disabled={isPending}
             label={<LabeledIcon IconComponent={Building} label="Company" />}
           />
           <FormTextInput
             disabled={isPending}
-            id={`${RegisterBusinessFormFields.MobilePhone}-id`}
             name={RegisterBusinessFormFields.MobilePhone}
             label={
               <LabeledIcon IconComponent={Phone} label="Mobile Phone Number" />
             }
           />
           <FormTextInput
-            id={`${RegisterBusinessFormFields.Email}-id`}
             disabled={isPending}
             name={RegisterBusinessFormFields.Email}
             type="email"
@@ -73,7 +70,6 @@ export function RegisterBusinessForm() {
           <FormAutoCompleteComboBox
             InputProps={{
               disabled: isPending,
-              id: `${RegisterBusinessFormFields.PostCode}-id`,
               placeholder: "Start typing to match your address",
             }}
             name={RegisterBusinessFormFields.PostCode}
@@ -96,7 +92,6 @@ export function RegisterBusinessForm() {
             </p>
             <div className="flex flex-row gap-3 w-full relative mt-2">
               <FormCheckboxInput
-                id={`${RegisterBusinessFormFields.PayLater}-id`}
                 hideErrorText
                 disabled={isPending}
                 label="PayLater"
@@ -105,7 +100,6 @@ export function RegisterBusinessForm() {
                 onChange={handlePayLaterChange}
               />
               <FormCheckboxInput
-                id={`${RegisterBusinessFormFields.PayNow}-id`}
                 disabled={isPending}
                 hideErrorText
                 label="PayNow"
@@ -115,9 +109,9 @@ export function RegisterBusinessForm() {
               />
             </div>
             {!!payError && (
-              <div id="pay-error" className="error-text mt-2">
+              <ErrorText id="pay-error" className="mt-2">
                 {payError}
-              </div>
+              </ErrorText>
             )}
           </fieldset>
           <div className="flex gap-5 flex-col">
@@ -134,13 +128,9 @@ export function RegisterBusinessForm() {
               <Arrow aria-hidden="true" width={20} height={20} />
             </button>
             {submitFailure && (
-              <div
-                className="error-text text-center"
-                id={submitErrorId}
-                role="alert"
-              >
+              <ErrorText className="text-center w-full" id={submitErrorId}>
                 Failed to submit the form
-              </div>
+              </ErrorText>
             )}
             <p className="flex items-center gap-1 font-sm text-brand-primary-black justify-center">
               Already registered?

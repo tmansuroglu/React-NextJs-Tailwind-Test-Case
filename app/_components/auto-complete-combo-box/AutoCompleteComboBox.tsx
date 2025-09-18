@@ -67,7 +67,10 @@ export function AutoCompleteComboBox({
           return (
             <div className="flex flex-col relative">
               <label
-                {...getLabelProps({ ...LabelProps, htmlFor: InputProps?.name })}
+                {...getLabelProps({
+                  ...LabelProps,
+                  htmlFor: InputProps?.id,
+                })}
               >
                 {label}
               </label>
@@ -81,7 +84,6 @@ export function AutoCompleteComboBox({
                   {...getInputProps({
                     onFocus: () => openMenu(),
                     ...InputProps,
-                    id: InputProps?.name,
                     className: twMerge(
                       "w-full pl-4 pr-10 py-3 border rounded-4xl font-sm mt-2 outline-0 placeholder:font-sm xl:placeholder:font-xs disabled:bg-brand-light-gray border-brand-secondary-gray",
                       InputProps?.className

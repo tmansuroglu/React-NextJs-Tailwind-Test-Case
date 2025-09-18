@@ -31,7 +31,7 @@ export function TextInput({
             "font-sm text-brand-secondary-black",
             labelClassName
           )}
-          htmlFor={props.id || props.name}
+          htmlFor={props.id}
           {...labelProps}
         >
           {label}

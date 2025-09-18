@@ -5,10 +5,14 @@ import { twMerge } from "tailwind-merge";
 import Error from "@/public/error.svg";
 import Success from "@/public/success.svg";
 import TextInput, { TextInputProps } from "@/components/text-input";
+import ErrorText from "@/components/error-text";
+import { useId } from "react";
 
 type FormTextInputProps = TextInputProps & { name: string };
 
 export function FormTextInput({ name, ...props }: FormTextInputProps) {
+  const inputId = useId();
+  const errorId = useId();
   const { control } = useFormContext();
   const { field, fieldState } = useController({
     control,
@@ -21,8 +25,6 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
   const fieldError = error?.message;
   const isSuccess = !invalid && isTouched;
 
-  const errorId = `${name}-error-id`;
-
   return (
     <TextInput
       value={value}
@@ -32,7 +34,6 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
       ref={ref}
       aria-describedby={errorId}
       aria-invalid={!!fieldError}
-      {...props}
       className={twMerge(
         isSuccess && "border-brand-primary-green",
         fieldError && "border-error",
@@ -45,13 +46,9 @@ export function FormTextInput({ name, ...props }: FormTextInputProps) {
           <Error width={16} height={16} aria-hidden />
         ) : null
       }
-      caption={
-        !!fieldError && (
-          <span className="error-text w-full" role="alert" id={errorId}>
-            {fieldError}
-          </span>
-        )
-      }
+      caption={!!fieldError && <ErrorText id={errorId}>{fieldError}</ErrorText>}
+      id={inputId}
+      {...props}
     />
   );
 }

@@ -8,6 +8,8 @@ import Success from "@/public/success.svg";
 import AutoCompleteComboBox, {
   AutoCompleteComboBoxProps,
 } from "@/components/auto-complete-combo-box";
+import ErrorText from "@/components/error-text";
+import { useId } from "react";
 
 type FormAutoCompleteComboBoxProps = AutoCompleteComboBoxProps & {
   name: string;
@@ -18,6 +20,8 @@ export function FormAutoCompleteComboBox({
   name,
   ...props
 }: FormAutoCompleteComboBoxProps) {
+  const errorId = useId();
+  const inputId = useId();
   const { control } = useFormContext();
   const { field, fieldState } = useController({
     control,
@@ -31,8 +35,6 @@ export function FormAutoCompleteComboBox({
   const fieldErrorMessage = error?.message;
   const isSuccess = !invalid && isTouched;
 
-  const errorId = `${name}-error-id`;
-
   return (
     <AutoCompleteComboBox
       defaultValue={value}
@@ -42,6 +44,7 @@ export function FormAutoCompleteComboBox({
         "aria-describedby": errorId,
         "aria-invalid": !!fieldErrorMessage,
         autoComplete: name,
+        id: inputId,
         name,
         ref,
         onBlur,
@@ -59,11 +62,8 @@ export function FormAutoCompleteComboBox({
         ) : null
       }
       caption={
-        // TODO: make this a component
         !!fieldErrorMessage && (
-          <span className="error-text" id={errorId} role="alert">
-            {fieldErrorMessage}
-          </span>
+          <ErrorText id={errorId}>{fieldErrorMessage}</ErrorText>
         )
       }
       {...props}

@@ -1,7 +1,7 @@
-- Refactor input prop spreads
-- implement useId
+- inline todos
+
 - Input mask for phone input
 - Virtual list
+
 - Cross browser check
-- inline todos
 - Recheck tests added tests

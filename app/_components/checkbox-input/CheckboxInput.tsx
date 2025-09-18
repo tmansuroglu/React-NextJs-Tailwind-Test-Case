@@ -1,5 +1,6 @@
 import {
   ChangeEventHandler,
+  HTMLAttributes,
   KeyboardEventHandler,
   LabelHTMLAttributes,
   ReactNode,
@@ -21,6 +22,7 @@ export type CheckboxInputProps = {
   defaultIsChecked?: boolean;
   ariaDescribedBy?: string;
   id?: string;
+  TextWrapperProps?: HTMLAttributes<HTMLSpanElement>;
 };
 
 export function CheckboxInput({
@@ -34,6 +36,7 @@ export function CheckboxInput({
   defaultIsChecked = false,
   ariaDescribedBy,
   id,
+  TextWrapperProps,
 }: CheckboxInputProps) {
   const [isChecked, setIsChecked] = useState(defaultIsChecked);
 
@@ -66,7 +69,7 @@ export function CheckboxInput({
         )}
         aria-live="polite"
         tabIndex={0}
-        htmlFor={id || name}
+        htmlFor={id}
         aria-disabled={disabled}
         onKeyDown={handleOnKeyDown}
       >
@@ -74,7 +77,7 @@ export function CheckboxInput({
         <input
           type="checkbox"
           name={name}
-          id={id || name}
+          id={id}
           aria-describedby={ariaDescribedBy}
           aria-checked={isChecked}
           className="hidden"
@@ -87,7 +90,13 @@ export function CheckboxInput({
           }}
         />
         {inputSuffix && (
-          <span className=" absolute right-3 bottom-0.5 -translate-y-full pointer-events-none">
+          <span
+            {...TextWrapperProps}
+            className={twMerge(
+              "absolute right-3 bottom-0.5 -translate-y-full pointer-events-none",
+              TextWrapperProps?.className
+            )}
+          >
             {inputSuffix}
           </span>
         )}
