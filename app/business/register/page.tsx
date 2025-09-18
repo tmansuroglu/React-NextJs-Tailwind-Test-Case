@@ -29,7 +29,7 @@ export default function BusinessRegisterPage() {
         </h1>
         <p className="text-brand-primary-white font-sm mb-8">
           Offer <strong>PayLater</strong> to split servicing and repair work
-          into monthly instalments - interest-free. Use <strong>PayNow</strong>
+          into monthly instalments - interest-free. Use <strong>PayNow</strong>{" "}
           to take secure payments online.
         </p>
         <div className="bg-brand-primary-white rounded-4xl px-4 py-6 xl:p-11 border border-brand-secondary-black">

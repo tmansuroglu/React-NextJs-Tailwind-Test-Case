@@ -58,6 +58,7 @@ export function RegisterBusinessForm() {
           />
           <FormTextInput
             disabled={isPending}
+            type="tel"
             name={RegisterBusinessFormFields.MobilePhone}
             label={
               <LabeledIcon IconComponent={Phone} label="Mobile Phone Number" />
