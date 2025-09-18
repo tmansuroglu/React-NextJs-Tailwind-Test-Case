@@ -42,24 +42,23 @@ export const businessRegisterValidationSchema = z
     [RegisterBusinessFormFields.PayLater]: z.boolean(),
     [RegisterBusinessFormFields.PayNow]: z.boolean(),
   })
-  // TODO: refactor to use only 1 refine
-  .refine(
-    (data) =>
-      data[RegisterBusinessFormFields.PayLater] ||
-      data[RegisterBusinessFormFields.PayNow],
-    {
-      path: [RegisterBusinessFormFields.PayLater],
-      message:
-        "At least one payment option (Pay Later or Pay Now) must be selected",
+  .superRefine((data, ctx) => {
+    if (
+      !data[RegisterBusinessFormFields.PayLater] &&
+      !data[RegisterBusinessFormFields.PayNow]
+    ) {
+      ctx.addIssue({
+        code: "custom",
+        path: [RegisterBusinessFormFields.PayLater],
+        message:
+          "At least one payment option (Pay Later or Pay Now) must be selected",
+      });
+
+      ctx.addIssue({
+        code: "custom",
+        path: [RegisterBusinessFormFields.PayNow],
+        message:
+          "At least one payment option (Pay Later or Pay Now) must be selected",
+      });
     }
-  )
-  .refine(
-    (data) =>
-      data[RegisterBusinessFormFields.PayLater] ||
-      data[RegisterBusinessFormFields.PayNow],
-    {
-      path: [RegisterBusinessFormFields.PayNow],
-      message:
-        "At least one payment option (Pay Later or Pay Now) must be selected",
-    }
-  );
+  });

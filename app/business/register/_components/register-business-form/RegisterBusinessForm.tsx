@@ -30,7 +30,9 @@ export function RegisterBusinessForm() {
   const { formState, setValue, trigger } = formProps;
   const { errors } = formState;
 
-  const payError = errors[RegisterBusinessFormFields.PayLater]?.message;
+  const payError =
+    errors[RegisterBusinessFormFields.PayLater]?.message ||
+    errors[RegisterBusinessFormFields.PayNow]?.message;
 
   const {
     transitionWrappedHandleSubmit,
@@ -115,8 +117,9 @@ export function RegisterBusinessForm() {
             )}
           </fieldset>
           <div className="flex gap-5 flex-col">
+            {/* TODO: makes this a component */}
             <button
-              className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center"
+              className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center items-center"
               type="submit"
               aria-label="Register your interest with Bumper"
               disabled={isPending}
