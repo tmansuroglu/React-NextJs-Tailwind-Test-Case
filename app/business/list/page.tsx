@@ -23,24 +23,24 @@ export default async function ListPage({ searchParams }: ListPageProps) {
         <h1 className="text-brand-primary-white font-lg xl:font-xl-plus mb-2 xl:mb-5">
           Interested Dealerships
         </h1>
-        <section className="p-8 border rounded-4xl bg-brand-primary-white w-full mb-4">
-          <BusinessSearchInput />
-        </section>
-        <section className="w-full gap-4 flex flex-col flex-1">
-          <Suspense
-            key={params[SearchParamKeys.CompanyName] as string | undefined}
-            fallback={
-              <LoadingIndicator
-                className="flex-1"
-                LoaderProps={{
-                  className: "size-20",
-                }}
-              />
-            }
-          >
+        <Suspense
+          key={params[SearchParamKeys.CompanyName] as string | undefined}
+          fallback={
+            <LoadingIndicator
+              className="flex-1"
+              LoaderProps={{
+                className: "size-20",
+              }}
+            />
+          }
+        >
+          <section className="p-8 border rounded-4xl bg-brand-primary-white w-full mb-4">
+            <BusinessSearchInput />
+          </section>
+          <section className="w-full gap-4 flex flex-col flex-1">
             <BusinessList searchParams={params} />
-          </Suspense>
-        </section>
+          </section>
+        </Suspense>
       </div>
     </PageContainer>
   );
