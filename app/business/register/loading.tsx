@@ -7,8 +7,7 @@ export default function Loading() {
       <LoadingIndicator
         className="flex-1"
         LoaderProps={{
-          className:
-            "size-20 border-4 border-t-blue-500 border-gray-200 rounded-full animate-spin",
+          className: "size-20",
         }}
       />
     </PageContainer>

@@ -118,7 +118,6 @@ export function RegisterBusinessForm() {
             )}
           </fieldset>
           <div className="flex gap-5 flex-col">
-            {/* TODO: makes this a component */}
             <button
               className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-full justify-center items-center"
               type="submit"
@@ -127,7 +126,12 @@ export function RegisterBusinessForm() {
               aria-disabled={isPending}
               aria-describedby={submitErrorId}
             >
-              {isPending && <LoadingIndicator aria-live="polite" />}
+              {isPending && (
+                <LoadingIndicator
+                  aria-live="polite"
+                  LoaderProps={{ className: "size-5" }}
+                />
+              )}
               <span>Register</span>
               <Arrow aria-hidden="true" width={20} height={20} />
             </button>

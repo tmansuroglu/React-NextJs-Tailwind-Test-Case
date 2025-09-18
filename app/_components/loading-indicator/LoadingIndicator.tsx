@@ -21,9 +21,11 @@ export function LoadingIndicator({
       {...props}
     >
       <div
-        // TODO: twMerge breaks the animation
-        className="size-2.5 border-2 border-t-blue-500 border-gray-200 rounded-full animate-spin"
         {...LoaderProps}
+        className={twMerge(
+          "size-2.5 border-2  border-gray-200 border-t-blue-500 rounded-full animate-spin",
+          LoaderProps.className
+        )}
       />
     </div>
   );
