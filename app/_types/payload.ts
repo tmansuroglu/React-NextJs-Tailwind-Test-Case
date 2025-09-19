@@ -8,6 +8,11 @@ export type RegisterBusinessRequestPayload = {
   pay_now: boolean;
 };
 
+export type RegisterBusinessResponsePayload = {
+  success: boolean;
+  message: string;
+};
+
 export type Business = RegisterBusinessRequestPayload & { id: string };
 
 export type BusinessListResponsePayload = {

@@ -2,10 +2,9 @@
 
 import businessRegisterValidationSchema from "@/utils/business-register-validation-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChangeEventHandler, useState, useTransition } from "react";
+import { ChangeEventHandler } from "react";
 import {
   DefaultValues,
-  SubmitHandler,
   useForm,
   UseFormSetValue,
   UseFormTrigger,
@@ -13,7 +12,10 @@ import {
 import { z } from "zod";
 import { RegisterBusinessFormFields } from "@/types/enums";
 import registerBusiness from "@/actions/register-business";
-import { RegisterBusinessRequestPayload } from "@/types/payload";
+import {
+  RegisterBusinessRequestPayload,
+  RegisterBusinessResponsePayload,
+} from "@/types/payload";
 
 export type RegisterBusinessFormValues = z.infer<
   typeof businessRegisterValidationSchema
@@ -46,38 +48,31 @@ export const useEventHandlers = ({
   setValue,
   trigger,
 }: UseEventHandlersOptions) => {
-  const [submitFailure, setSubmitFailure] = useState(false);
+  const handleOnSubmit = async (
+    currentState: RegisterBusinessResponsePayload,
+    formData: FormData
+  ): Promise<RegisterBusinessResponsePayload> => {
+    const isFormValid = await trigger();
 
-  const [isPending, startTransition] = useTransition();
+    if (!isFormValid) {
+      return { message: "Failed to validate the form fields.", success: false };
+    }
 
-  const handleOnSubmit: SubmitHandler<RegisterBusinessFormValues> = (
-    values
-  ) => {
     const payload: RegisterBusinessRequestPayload = {
-      name: values[RegisterBusinessFormFields.Name],
-      company: values[RegisterBusinessFormFields.Company],
-      mobile_phone: values[RegisterBusinessFormFields.MobilePhone],
-      email_address: values[RegisterBusinessFormFields.Email],
-      postcode: values[RegisterBusinessFormFields.PostCode],
-      pay_later: Boolean(values[RegisterBusinessFormFields.PayLater]),
-      pay_now: Boolean(values[RegisterBusinessFormFields.PayNow]),
+      name: formData.get(RegisterBusinessFormFields.Name)?.toString() ?? "",
+      company:
+        formData.get(RegisterBusinessFormFields.Company)?.toString() ?? "",
+      mobile_phone:
+        formData.get(RegisterBusinessFormFields.MobilePhone)?.toString() ?? "",
+      email_address:
+        formData.get(RegisterBusinessFormFields.Email)?.toString() ?? "",
+      postcode:
+        formData.get(RegisterBusinessFormFields.PostCode)?.toString() ?? "",
+      pay_later: formData.has(RegisterBusinessFormFields.PayLater),
+      pay_now: formData.has(RegisterBusinessFormFields.PayNow),
     };
 
-    return registerBusiness(payload);
-  };
-
-  const transitionWrappedHandleSubmit: SubmitHandler<
-    RegisterBusinessFormValues
-  > = (values) => {
-    startTransition(async () => {
-      setSubmitFailure(false);
-
-      const resp = await handleOnSubmit(values);
-
-      if (resp === null) {
-        setSubmitFailure(true);
-      }
-    });
+    return await registerBusiness(payload);
   };
 
   const handlePayLaterChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -100,11 +95,9 @@ export const useEventHandlers = ({
   };
 
   return {
-    transitionWrappedHandleSubmit,
     handlePayNowChange,
     handlePayLaterChange,
-    isPending,
-    submitFailure,
+    handleOnSubmit,
   };
 };
 

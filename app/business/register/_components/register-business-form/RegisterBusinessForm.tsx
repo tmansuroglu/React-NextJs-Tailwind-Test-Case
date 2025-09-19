@@ -20,8 +20,9 @@ import LabeledIcon from "@/components/labeled-icon";
 import FormAutoCompleteComboBox from "@/form-components/form-auto-complete-combo-box";
 import FormCheckboxInput from "@/form-components/form-checkbox-input";
 import LoadingIndicator from "@/components/loading-indicator";
-import { useId } from "react";
+import { useActionState, useId } from "react";
 import ErrorText from "@/components/error-text";
+import Form from "next/form";
 
 export function RegisterBusinessForm() {
   const submitErrorId = useId();
@@ -35,16 +36,19 @@ export function RegisterBusinessForm() {
     errors[RegisterBusinessFormFields.PayNow]?.message;
 
   const {
-    transitionWrappedHandleSubmit,
+    handleOnSubmit: handleOnSubmitAction,
     handlePayLaterChange,
     handlePayNowChange,
-    isPending,
-    submitFailure,
   } = useEventHandlers({ setValue, trigger });
+
+  const [state, formAction, isPending] = useActionState(handleOnSubmitAction, {
+    success: true,
+    message: "",
+  });
 
   return (
     <FormProvider {...formProps}>
-      <form onSubmit={formProps.handleSubmit(transitionWrappedHandleSubmit)}>
+      <Form action={formAction}>
         <div className="flex flex-col gap-8">
           <FormTextInput
             name={RegisterBusinessFormFields.Name}
@@ -135,9 +139,9 @@ export function RegisterBusinessForm() {
               <span>Register</span>
               <Arrow aria-hidden="true" width={20} height={20} />
             </button>
-            {submitFailure && (
+            {!state.success && (
               <ErrorText className="text-center w-full" id={submitErrorId}>
-                Failed to submit the form
+                {state.message}
               </ErrorText>
             )}
             <p className="flex items-center gap-1 font-sm text-brand-primary-black justify-center">
@@ -152,7 +156,7 @@ export function RegisterBusinessForm() {
             </p>
           </div>
         </div>
-      </form>
+      </Form>
     </FormProvider>
   );
 }

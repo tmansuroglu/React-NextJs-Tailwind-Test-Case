@@ -1,9 +1,7 @@
-- inline todos
-
-- useFormActionState for Register form
 - Input mask for phone input
 - Virtual list
-- Add a way to list navigation
+
+- Add a navigation for list page
 
 - Cross browser check
 - Recheck tests added tests

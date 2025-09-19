@@ -4,12 +4,15 @@ import { redirect, RedirectType } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import businessRegisterValidationSchema from "@/utils/business-register-validation-schema";
 import { readBusinesses, writeBusinesses } from "../utils";
-import { RegisterBusinessRequestPayload } from "@/types/payload";
+import {
+  RegisterBusinessResponsePayload,
+  RegisterBusinessRequestPayload,
+} from "@/types/payload";
 import { Routes } from "@/types/enums";
 
 export async function registerBusiness(
   payload: RegisterBusinessRequestPayload
-) {
+): Promise<RegisterBusinessResponsePayload> {
   try {
     businessRegisterValidationSchema.parse(payload);
 
@@ -21,7 +24,10 @@ export async function registerBusiness(
 
     revalidatePath(Routes.BusinessList);
   } catch {
-    return null;
+    return {
+      success: false,
+      message: "Failed to register the business",
+    };
   }
   redirect(Routes.BusinessList, RedirectType.push);
 }
