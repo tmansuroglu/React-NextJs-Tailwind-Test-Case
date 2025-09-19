@@ -23,6 +23,7 @@ import LoadingIndicator from "@/components/loading-indicator";
 import { useActionState, useId } from "react";
 import ErrorText from "@/components/error-text";
 import Form from "next/form";
+import FormPhoneInput from "@/form-components/form-phone-input";
 
 export function RegisterBusinessForm() {
   const submitErrorId = useId();
@@ -51,24 +52,30 @@ export function RegisterBusinessForm() {
       <Form action={formAction}>
         <div className="flex flex-col gap-8">
           <FormTextInput
+            aria-required
             name={RegisterBusinessFormFields.Name}
             disabled={isPending}
             label={<LabeledIcon label="Name" IconComponent={Person} />}
           />
           <FormTextInput
+            aria-required
             name={RegisterBusinessFormFields.Company}
             disabled={isPending}
             label={<LabeledIcon IconComponent={Building} label="Company" />}
           />
-          <FormTextInput
+          <FormPhoneInput
+            aria-required
             disabled={isPending}
-            type="tel"
             name={RegisterBusinessFormFields.MobilePhone}
             label={
               <LabeledIcon IconComponent={Phone} label="Mobile Phone Number" />
             }
+            defaultCountry="gb"
+            forceDialCode
+            hideDropdown
           />
           <FormTextInput
+            aria-required
             disabled={isPending}
             name={RegisterBusinessFormFields.Email}
             type="email"
@@ -76,6 +83,7 @@ export function RegisterBusinessForm() {
           />
           <FormAutoCompleteComboBox
             InputProps={{
+              "aria-required": true,
               disabled: isPending,
               placeholder: "Start typing to match your address",
             }}

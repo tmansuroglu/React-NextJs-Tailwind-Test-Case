@@ -1,4 +1,3 @@
-- Input mask for phone input
 - Virtual list
 
 - Add a navigation for list page

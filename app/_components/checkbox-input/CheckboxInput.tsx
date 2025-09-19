@@ -11,7 +11,7 @@ import { twMerge } from "tailwind-merge";
 
 export type CheckboxInputProps = {
   LabelProps?: LabelHTMLAttributes<HTMLLabelElement> & {
-    ref: RefCallBack;
+    ref?: RefCallBack;
   };
   inputSuffix?: ReactNode;
   caption?: ReactNode;
@@ -33,12 +33,12 @@ export function CheckboxInput({
   label,
   onChange,
   LabelProps,
-  defaultIsChecked = false,
   ariaDescribedBy,
   id,
   TextWrapperProps,
 }: CheckboxInputProps) {
-  const [isChecked, setIsChecked] = useState(defaultIsChecked);
+  // TODO: get rid of this. causing problems
+  const [isChecked, setIsChecked] = useState();
 
   const handleOnKeyDown: KeyboardEventHandler<HTMLLabelElement> = (e) => {
     if (disabled) {

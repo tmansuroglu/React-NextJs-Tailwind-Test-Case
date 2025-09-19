@@ -52,7 +52,7 @@ export const useEventHandlers = ({
     currentState: RegisterBusinessResponsePayload,
     formData: FormData
   ): Promise<RegisterBusinessResponsePayload> => {
-    const isFormValid = await trigger();
+    const isFormValid = await trigger(undefined, { shouldFocus: true });
 
     if (!isFormValid) {
       return { message: "Failed to validate the form fields.", success: false };
@@ -63,7 +63,10 @@ export const useEventHandlers = ({
       company:
         formData.get(RegisterBusinessFormFields.Company)?.toString() ?? "",
       mobile_phone:
-        formData.get(RegisterBusinessFormFields.MobilePhone)?.toString() ?? "",
+        formData
+          .get(RegisterBusinessFormFields.MobilePhone)
+          ?.toString()
+          .replaceAll(" ", "") ?? "",
       email_address:
         formData.get(RegisterBusinessFormFields.Email)?.toString() ?? "",
       postcode:

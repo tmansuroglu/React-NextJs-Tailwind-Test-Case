@@ -27,7 +27,7 @@ export const businessRegisterValidationSchema = z
       .string()
       .regex(
         mobilePhoneRegex,
-        "Mobile phone must be a valid UK number (e.g., 07700900123)"
+        "Mobile phone must be a valid UK number (e.g., +44 7700 900123)"
       )
       .max(15, "Mobile phone must not exceed 15 characters"),
     [RegisterBusinessFormFields.Email]: z
