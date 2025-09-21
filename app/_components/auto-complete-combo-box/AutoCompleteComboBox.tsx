@@ -100,6 +100,7 @@ export function AutoCompleteComboBox({
                 <ul
                   {...getMenuProps({
                     "aria-live": "polite",
+                    tabIndex: -1,
                     className:
                       "border absolute bottom-0 left-0 right-0 z-50 bg-brand-primary-white transform translate-y-full rounded-4xl max-h-52 overflow-y-auto custom-scrollbar py-1",
                   })}
