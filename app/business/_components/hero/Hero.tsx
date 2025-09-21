@@ -8,14 +8,14 @@ export function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="relative bg-[url(/hero.webp)] min-h-[543px] h-auto w-full  pt-24 bg-[34%_100%] bg-no-repeat bg-cover
- z-0  flex items-center"
+      className="relative bg-[url(/hero.webp)] min-h-[543px] h-auto w-full pt-24 bg-[34%_100%] bg-no-repeat bg-cover
+ z-0  flex items-center xl:min-h-[743px]"
       aria-labelledby="hero-title"
       role="banner"
     >
       <div className="absolute inset-0 bg-brand-opacity-gray opacity-70" />
       <div className="container mx-auto px-4 pt-7 pb-9 xl:pt-11 xl:pb-13 flex items-center min-h-full relative">
-        <div className="flex flex-col max-w-2xl">
+        <div className="flex flex-col">
           <div className="flex gap-3 mb-6 items-center">
             <span className="font-sm-bold xl:font-md-plus-bold text-brand-primary-white">
               Excellent
@@ -24,7 +24,7 @@ export function Hero() {
             <TrustPilot height={16} width={64} className="xl:h-6 xl:w-24" />
           </div>
           <h1
-            className="font-xl xl:font-3xl text-brand-primary-white"
+            className="font-xl xl:font-3xl text-brand-primary-white break-keep"
             id="hero-title"
           >
             BECOME A BUMPER APPROVED DEPENDABLE DEALERSHIP
