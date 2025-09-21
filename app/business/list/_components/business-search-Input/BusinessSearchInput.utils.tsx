@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEventHandler, useMemo, useState } from "react";
+import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
 import { debounce } from "throttle-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SearchParamKeys } from "@/types/enums";
@@ -12,6 +12,20 @@ export const useInputValueChange = () => {
   const [inputValue, setInputValue] = useState(
     searchParams.get(SearchParamKeys.CompanyName) || ""
   );
+
+  useEffect(() => {
+    const handlePopStateEvent = (e: PopStateEvent) => {
+      const params = new URLSearchParams(window.location.search);
+
+      setInputValue(params.get(SearchParamKeys.CompanyName) || "");
+    };
+
+    window.addEventListener("popstate", handlePopStateEvent);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopStateEvent);
+    };
+  }, []);
 
   const router = useRouter();
   const pathname = usePathname();
