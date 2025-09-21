@@ -1,20 +1,16 @@
 "use client";
 
-import { ChangeEventHandler, ReactNode, useId } from "react";
+import { useId } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import Error from "@/public/error.svg";
 import Plus from "@/public/plus.svg";
 import Tick from "@/public/tick.svg";
-import CheckboxInput from "@/components/checkbox-input";
+import CheckboxInput, { CheckboxInputProps } from "@/components/checkbox-input";
 import ErrorText from "@/components/error-text";
 
-type FormCheckboxInputProps = {
+type FormCheckboxInputProps = CheckboxInputProps & {
   hideErrorText?: boolean;
   name: string;
-  label?: ReactNode;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  disabled?: boolean;
-  ariaDescribedBy?: string;
 };
 
 export function FormCheckboxInput({
@@ -22,8 +18,8 @@ export function FormCheckboxInput({
   name,
   label,
   onChange,
-  disabled,
-  ariaDescribedBy,
+  LabelProps,
+  ...props
 }: FormCheckboxInputProps) {
   const errorId = useId();
   const inputId = useId();
@@ -33,38 +29,26 @@ export function FormCheckboxInput({
     name,
   });
 
-  const {
-    value: fieldValue,
-    onBlur: onFieldBlur,
-    onChange: onFieldChange,
-    ref,
-  } = field;
+  const { value: fieldValue, onBlur, onChange: onFieldChange, ref } = field;
 
   const fieldErrorMessage = fieldState.error?.message;
 
   const isChecked = !!fieldValue;
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    if (disabled) {
-      return;
-    }
-
-    (onChange || onFieldChange)(e);
-    onFieldBlur();
-  };
-
   return (
     <CheckboxInput
-      ariaDescribedBy={ariaDescribedBy || errorId}
+      aria-describedby={props["aria-describedby"] || errorId}
       label={label}
+      checked={isChecked}
       name={name}
       aria-invalid={!!fieldErrorMessage}
-      onChange={handleChange}
-      disabled={disabled}
+      onChange={onChange || onFieldChange}
+      onBlur={onBlur}
       id={inputId}
       LabelProps={{
         ref,
         className: fieldErrorMessage ? "border-error" : undefined,
+        ...LabelProps,
       }}
       inputSuffix={
         !!fieldErrorMessage ? (
@@ -77,11 +61,12 @@ export function FormCheckboxInput({
       }
       caption={
         Boolean(!!fieldErrorMessage && !hideErrorText) && (
-          <ErrorText id={ariaDescribedBy || errorId}>
+          <ErrorText id={props["aria-describedby"] || errorId}>
             {fieldErrorMessage}
           </ErrorText>
         )
       }
+      {...props}
     />
   );
 }

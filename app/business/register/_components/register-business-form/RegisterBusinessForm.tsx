@@ -27,6 +27,7 @@ import FormPhoneInput from "@/form-components/form-phone-input";
 
 export function RegisterBusinessForm() {
   const submitErrorId = useId();
+  const payErrorId = useId();
   const formProps = useFormProps();
 
   const { formState, setValue, trigger } = formProps;
@@ -111,20 +112,20 @@ export function RegisterBusinessForm() {
                 disabled={isPending}
                 label="PayLater"
                 name={RegisterBusinessFormFields.PayLater}
-                ariaDescribedBy="pay-error"
+                aria-describedby={payErrorId}
                 onChange={handlePayLaterChange}
               />
               <FormCheckboxInput
                 disabled={isPending}
                 hideErrorText
                 label="PayNow"
-                ariaDescribedBy="pay-error"
+                aria-describedby={payErrorId}
                 name={RegisterBusinessFormFields.PayNow}
                 onChange={handlePayNowChange}
               />
             </div>
             {!!payError && (
-              <ErrorText id="pay-error" className="mt-2">
+              <ErrorText id={payErrorId} className="mt-2">
                 {payError}
               </ErrorText>
             )}
