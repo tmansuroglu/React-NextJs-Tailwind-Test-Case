@@ -10,9 +10,9 @@ export function EmptyPageContent({ title }: EmptyPageContentProps) {
   return (
     <main className="text-center flex justify-center flex-col gap-5 pt-5">
       <h1>{title}</h1>
-      <p>This page is out of scope of this project.</p>
+      <p>This page is out of the scope of the project.</p>
       <p> Use the buttons below to visit the developed pages.</p>
-      <div className="flex gap-5 justify-center">
+      <div className="flex gap-5 justify-center px-2">
         <button
           className="btn-primary"
           onClick={() => redirect(Routes.Business, RedirectType.push)}
