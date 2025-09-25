@@ -11,11 +11,13 @@ export function LogoLink({ children, context, ...props }: LogoLinkProps) {
   return (
     <Link
       {...props}
-      className="flex gap-2 items-center px-4 py-3"
+      className="flex gap-0.5 sm:gap-2 items-center px-4 py-3"
       aria-label={`Bumper ${context} logo`}
     >
       <Logo width={111} height={28} className="xl:h-8 xl:w-32" />
-      <span className="font-xs-bold xl:font-sm-bold">{children}</span>
+      <span className="text-[11px] font-bold  sm:font-xs-bold xl:font-sm-bold">
+        {children}
+      </span>
     </Link>
   );
 }
