@@ -30,8 +30,14 @@ export function Hero() {
             BECOME A BUMPER APPROVED DEPENDABLE DEALERSHIP
           </h1>
           <p className="font-sm xl:font-md-plus text-brand-primary-white mt-2">
-            Join our network of 3,000+ garages and dealerships who already offer
-            Bumper to their customers.
+            Join our network of 3,000+{" "}
+            <Link
+              href={Routes.BusinessList}
+              className="underline text-brand-primary-green xl:font-md-plus-bold"
+            >
+              garages and dealerships who already offer Bumper to their
+              customers.
+            </Link>
           </p>
           <Link
             className="btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-fit mt-6"

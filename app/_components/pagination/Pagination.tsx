@@ -38,6 +38,7 @@ export function Pagination({
     );
   };
 
+  // TODO: Doesn't look nice when there are a lot of pages
   return (
     <nav {...props}>
       <ul className="flex justify-center gap-2 list-none flex-wrap">
