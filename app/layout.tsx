@@ -28,14 +28,14 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className="flex flex-col min-h-screen">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:bg-brand-primary-white focus:text-brand-primary-black focus:p-2"
         >
           Skip to main content
         </a>
-        <header className="relative z-50">
+        <header className="z-50">
           <nav
             role="navigation"
             aria-label="Main navigation"
@@ -105,7 +105,7 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <div id="main-content" className="z-10">
+        <div id="main-content" className="flex flex-1">
           {children}
         </div>
       </body>

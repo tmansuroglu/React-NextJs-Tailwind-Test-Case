@@ -17,7 +17,7 @@ export default async function ListPage({ searchParams }: ListPageProps) {
   const params = await searchParams;
 
   return (
-    <Main className="bg-brand-primary-blue flex">
+    <Main className="bg-brand-primary-blue">
       <div className="container mx-auto mt-11.5 px-4 flex flex-col flex-1">
         <h1 className="text-brand-primary-white font-lg xl:font-xl-plus mb-2 xl:mb-5">
           Interested Dealerships
