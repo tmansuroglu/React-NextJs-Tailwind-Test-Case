@@ -14,7 +14,7 @@ export const useInputValueChange = () => {
   );
 
   useEffect(() => {
-    const handlePopStateEvent = (e: PopStateEvent) => {
+    const handlePopStateEvent = (_e: PopStateEvent) => {
       const params = new URLSearchParams(window.location.search);
 
       setInputValue(params.get(SearchParamKeys.CompanyName) || "");
@@ -39,7 +39,7 @@ export const useInputValueChange = () => {
             createNewURLSearchParams({
               previousSearchParams: searchParams,
               add: [{ newKey: searchParamKey, newValue: value }],
-              remove: [SearchParamKeys.PageSize, SearchParamKeys.Page],
+              remove: [SearchParamKeys.Page],
             }).toString(),
           { scroll: false }
         );

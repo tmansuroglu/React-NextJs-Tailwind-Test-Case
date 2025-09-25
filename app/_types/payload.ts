@@ -15,14 +15,16 @@ export type RegisterBusinessResponsePayload = {
 
 export type Business = RegisterBusinessRequestPayload & { id: string };
 
+export type Pagination = {
+  currentPage: number;
+  pageSize: number;
+  totalItems: number;
+  numberOfPages: number;
+};
+
 export type BusinessListResponsePayload = {
   success: boolean;
   message: string;
   data: Business[];
-  pagination: {
-    currentPage: number;
-    pageSize: number;
-    totalItems: number;
-    numberOfPages: number;
-  };
+  pagination: Pagination;
 };
