@@ -1,4 +1,7 @@
-type BusinessCardProps = {
+import { HTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
+
+type BusinessCardProps = HTMLAttributes<HTMLDivElement> & {
   name: string;
   company: string;
   phone: string;
@@ -12,9 +15,14 @@ export function BusinessCard({
   phone,
   postCode,
   mail,
+  ...props
 }: BusinessCardProps) {
   return (
-    <article className="card" data-testid="business-card">
+    <article
+      data-testid="business-card"
+      {...props}
+      className={twMerge("card", props.className)}
+    >
       <h2 className="font-md-plus-bold mb-5 break-all">{name}</h2>
       <dl>
         <div className="flex justify-between items-center py-4 border-t border-b border-brand-primary-gray gap-5">
