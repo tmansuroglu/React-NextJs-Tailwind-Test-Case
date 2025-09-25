@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.1",
-    "@tanstack/react-virtual": "3.13.12",
     "downshift": "9.0.10",
     "next": "15.5.2",
     "react": "19.1.0",

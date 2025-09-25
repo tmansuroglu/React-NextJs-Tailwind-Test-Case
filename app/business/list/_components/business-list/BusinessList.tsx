@@ -1,6 +1,6 @@
 import getBusinessList from "@/actions/get-business-list";
 import { SearchParamsType } from "@/types/search-param-type";
-import VirtualList from "../virtual-list";
+import BusinessCard from "../business-card";
 
 type BusinessListProps = {
   searchParams: SearchParamsType;
@@ -27,5 +27,14 @@ export async function BusinessList({ searchParams }: BusinessListProps) {
     );
   }
 
-  return <VirtualList payload={payload} />;
+  return payload.data.map((item) => (
+    <BusinessCard
+      key={item.id}
+      name={item.name}
+      phone={item.mobile_phone}
+      postCode={item.postcode}
+      company={item.company}
+      mail={item.email_address}
+    />
+  ));
 }
