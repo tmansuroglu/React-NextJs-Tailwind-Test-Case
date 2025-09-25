@@ -28,7 +28,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col h-screen">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:bg-brand-primary-white focus:text-brand-primary-black focus:p-2"

@@ -6,20 +6,15 @@ import { SearchParamsType } from "@/types/search-param-type";
 import { Business, BusinessListResponsePayload } from "@/types/payload";
 import { SearchParamKeys } from "@/types/enums";
 import { readBusinesses } from "../utils";
-import {
-  BUSINESS_LIST_DEFAULT_PAGE_NUMBER,
-  BUSINESS_LIST_DEFAULT_PAGE_SIZE,
-} from "@/constants/constants";
+import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE } from "@/constants/constants";
 
 export async function getBusinessList(
   params: SearchParamsType
 ): Promise<BusinessListResponsePayload | null> {
   try {
-    const page =
-      Number(params[SearchParamKeys.Page]) || BUSINESS_LIST_DEFAULT_PAGE_NUMBER;
+    const page = Number(params[SearchParamKeys.Page]) || DEFAULT_PAGE_NUMBER;
     const pageSize =
-      Number(params[SearchParamKeys.PageSize]) ||
-      BUSINESS_LIST_DEFAULT_PAGE_SIZE;
+      Number(params[SearchParamKeys.PageSize]) || DEFAULT_PAGE_SIZE;
     const company = (params[SearchParamKeys.CompanyName] as string) || "";
 
     const filteredData = createFilteredData<Business>({

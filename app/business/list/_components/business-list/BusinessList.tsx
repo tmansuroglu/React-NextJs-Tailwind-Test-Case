@@ -1,7 +1,6 @@
 import getBusinessList from "@/actions/get-business-list";
-import BusinessCard from "../business-card";
-import LoadMore from "../load-more";
 import { SearchParamsType } from "@/types/search-param-type";
+import VirtualList from "../virtual-list";
 
 type BusinessListProps = {
   searchParams: SearchParamsType;
@@ -19,8 +18,6 @@ export async function BusinessList({ searchParams }: BusinessListProps) {
   }
 
   const doesDataExist = Number(payload.pagination.totalItems) > 0;
-  const doesMoreItemExist =
-    Number(payload.pagination.pageSize) < Number(payload.pagination.totalItems);
 
   if (!doesDataExist) {
     return (
@@ -30,21 +27,5 @@ export async function BusinessList({ searchParams }: BusinessListProps) {
     );
   }
 
-  return (
-    <>
-      {payload.data.map(
-        ({ id, name, mobile_phone, postcode, company, email_address }) => (
-          <BusinessCard
-            key={id}
-            name={name}
-            phone={mobile_phone}
-            postCode={postcode}
-            company={company}
-            mail={email_address}
-          />
-        )
-      )}
-      {doesMoreItemExist && <LoadMore />}
-    </>
-  );
+  return <VirtualList payload={payload} />;
 }

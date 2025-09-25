@@ -7,7 +7,7 @@ type MainProps = PropsWithChildren &
 export function Main({ className, children, ...props }: MainProps) {
   return (
     <main
-      className={twMerge("-mt-24 pt-24 pb-13 flex-1", className)}
+      className={twMerge("-mt-24 pt-24 pb-13 flex flex-1", className)}
       {...props}
     >
       {children}
