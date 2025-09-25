@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Arrow from "@/public/arrow.svg";
 
 import { Routes } from "@/types/enums";
-import PageContainer from "@/components/page-container";
+import Main from "@/components/main";
 import RegisterBusinessForm from "./_components/register-business-form";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BusinessRegisterPage() {
   return (
-    <PageContainer className="bg-brand-primary-blue pt-30 pb-8">
+    <Main className="bg-brand-primary-blue pt-30 pb-8">
       <div className="container mx-auto px-4 relative pt-14 xl:pt-15">
         <Link
           href={Routes.Business}
@@ -42,6 +42,6 @@ export default function BusinessRegisterPage() {
           <RegisterBusinessForm />
         </div>
       </div>
-    </PageContainer>
+    </Main>
   );
 }

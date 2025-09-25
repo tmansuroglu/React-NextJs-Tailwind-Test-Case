@@ -1,15 +1,15 @@
 import LoadingIndicator from "@/components/loading-indicator";
-import PageContainer from "@/components/page-container";
+import Main from "@/components/main";
 
 export default function Loading() {
   return (
-    <PageContainer className="bg-brand-primary-blue flex">
+    <Main className="bg-brand-primary-blue flex">
       <LoadingIndicator
         className="flex-1"
         LoaderProps={{
           className: "size-20",
         }}
       />
-    </PageContainer>
+    </Main>
   );
 }

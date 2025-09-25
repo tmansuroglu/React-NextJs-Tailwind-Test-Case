@@ -1,17 +1,13 @@
 import { DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
-type PageContainerProps = PropsWithChildren &
+type MainProps = PropsWithChildren &
   DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
-export function PageContainer({
-  className,
-  children,
-  ...props
-}: PageContainerProps) {
+export function Main({ className, children, ...props }: MainProps) {
   return (
     <main
-      className={twMerge("-mt-24 pt-24 pb-13 min-h-dvh", className)}
+      className={twMerge("-mt-24 pt-24 pb-13 z-10 flex-1", className)}
       {...props}
     >
       {children}

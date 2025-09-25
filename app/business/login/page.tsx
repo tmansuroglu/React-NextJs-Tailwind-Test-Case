@@ -1,5 +1,5 @@
 import EmptyPageContent from "@/components/empty-page-content";
-import PageContainer from "@/components/page-container";
+import Main from "@/components/main";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function BusinessLoginPage() {
   return (
-    <PageContainer className="container mx-auto px-5">
+    <Main className="container mx-auto px-5">
       <EmptyPageContent title="Business Login Page" />
-    </PageContainer>
+    </Main>
   );
 }

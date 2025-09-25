@@ -1,4 +1,4 @@
-import PageContainer from "@/components/page-container";
+import Main from "@/components/main";
 import { SearchParamsType } from "@/types/search-param-type";
 import type { Metadata } from "next";
 import { Suspense } from "react";
@@ -17,7 +17,7 @@ export default async function ListPage({ searchParams }: ListPageProps) {
   const params = await searchParams;
 
   return (
-    <PageContainer className="bg-brand-primary-blue flex">
+    <Main className="bg-brand-primary-blue flex">
       <div className="container mx-auto mt-11.5 px-4 flex flex-col flex-1">
         <h1 className="text-brand-primary-white font-lg xl:font-xl-plus mb-2 xl:mb-5">
           Interested Dealerships
@@ -40,6 +40,6 @@ export default async function ListPage({ searchParams }: ListPageProps) {
           </Suspense>
         </section>
       </div>
-    </PageContainer>
+    </Main>
   );
 }
