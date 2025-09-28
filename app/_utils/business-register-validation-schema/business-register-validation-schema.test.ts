@@ -92,12 +92,12 @@ describe("businessRegisterValidationSchema", () => {
       const invalidData = {
         ...validData,
         [RegisterBusinessFormFields.MobilePhone]: "+4477009001234",
-      }; // 14 chars, but regex fails first, but to test max, use valid length but extra
+      };
       const result = businessRegisterValidationSchema.safeParse(invalidData);
       expect(result.success).toBe(false);
       expect(result.error?.issues[0].message).toBe(
         "Mobile phone must be a valid UK number (e.g., +44 7700 900123)"
-      ); // Since regex fails before max
+      );
     });
   });
 
