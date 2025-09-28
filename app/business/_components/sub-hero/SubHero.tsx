@@ -84,7 +84,12 @@ export function SubHero() {
         aria-label="Register your interest with Bumper"
       >
         <span>Register your interest</span>
-        <Arrow aria-hidden="true" width={20} height={20} />
+        <Arrow
+          aria-hidden="true"
+          width={20}
+          height={20}
+          data-testid="arrow-icon"
+        />
       </Link>
     </section>
   );

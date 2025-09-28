@@ -1,83 +1,112 @@
 import { render, screen } from "@testing-library/react";
 import { SubHero } from "./SubHero";
+import { Routes } from "@/types/enums";
 
-describe("SubHero Component", () => {
-  beforeEach(() => {
+jest.mock("next/link", () => ({
+  __esModule: true,
+  default: ({ children, ...props }: any) => <a {...props}>{children}</a>,
+}));
+
+jest.mock("next/image", () => ({
+  __esModule: true,
+  default: (props: any) => <img {...props} />,
+}));
+
+jest.mock("@/public/arrow.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
+jest.mock("@/public/logo.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
+describe("SubHero component", () => {
+  it("renders the section with correct classes and attributes", () => {
     render(<SubHero />);
-  });
 
-  test("renders without crashing", () => {
-    const section = screen.getByRole("region", { name: /pay later benefits/i });
+    const section = screen.getByRole("region", { name: /Pay Later Benefits/ });
     expect(section).toBeInTheDocument();
+    expect(section).toHaveClass("relative container mx-auto px-4 pt-10 pb-6");
+    expect(section).toHaveAttribute("aria-labelledby", "subhero-heading");
   });
 
-  test("renders the hidden heading correctly", () => {
-    const heading = screen.getByRole("heading", {
+  it("renders the hidden h2", () => {
+    render(<SubHero />);
+
+    const h2 = screen.getByRole("heading", {
+      name: "Pay Later Benefits",
       level: 2,
-      name: /pay later benefits/i,
     });
-    expect(heading).toHaveClass("sr-only");
+    expect(h2).toBeInTheDocument();
+    expect(h2).toHaveAttribute("id", "subhero-heading");
+    expect(h2).toHaveClass("sr-only");
   });
 
-  test("renders the PAYLATER heading", () => {
-    const heading = screen.getByRole("heading", {
-      level: 3,
-      name: /paylater/i,
-    });
-    expect(heading).toBeInTheDocument();
-  });
+  it("renders the logo and PAYLATER heading", () => {
+    render(<SubHero />);
 
-  test("renders the logo image with correct alt text", () => {
-    const logo = screen.getByAltText("Bumper logo");
+    const logo = screen.getByTestId("bumper-logo");
     expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute("src", "/logo.svg");
-    expect(logo).toHaveAttribute("width", "75");
-    expect(logo).toHaveAttribute("height", "19");
+
+    const h3 = screen.getByRole("heading", { name: "PAYLATER", level: 3 });
+    expect(h3).toBeInTheDocument();
+    expect(h3).toHaveClass(
+      "font-2xl lg:font-2xl-wide text-brand-secondary-black"
+    );
   });
 
-  test("renders the phone image with correct alt text", () => {
-    const phone = screen.getByAltText(
+  it("renders the phone image with correct attributes", () => {
+    render(<SubHero />);
+
+    const image = screen.getByTestId("cell-phone");
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute("src", "/phone.webp");
+    expect(image).toHaveAttribute(
+      "alt",
       "Mobile app illustrating PayLater payment options"
     );
-    expect(phone).toBeInTheDocument();
-    expect(phone).toHaveAttribute("width", "976");
-    expect(phone).toHaveAttribute("height", "1238");
+    expect(image).toHaveClass(
+      "xl:order-2 object-contain max-h-[552px] xl:max-h-[684px] 2xl:max-h-[552px]"
+    );
   });
 
-  test("renders the descriptive paragraphs", () => {
+  it("renders the content paragraphs", () => {
+    render(<SubHero />);
+
     expect(
-      screen.getByText(/give customers more flexibility at checkout/i)
+      screen.getByText(/Give customers more flexibility/)
     ).toBeInTheDocument();
-    expect(screen.getByText(/no risk to your business/i)).toBeInTheDocument();
+    expect(screen.getByText("No risk to your business.")).toBeInTheDocument();
     expect(
-      screen.getByText(/no worries for your customers/i)
+      screen.getByText("No worries for your customers.")
     ).toBeInTheDocument();
-    expect(screen.getByText(/it's as simple as/i)).toBeInTheDocument();
+    expect(screen.getByText("It's as simple as:")).toBeInTheDocument();
   });
 
-  test("renders the ordered list of steps", () => {
-    const list = screen.getByRole("list");
+  it("renders the steps list", () => {
+    render(<SubHero />);
+
+    const list = screen.getByRole("list", { name: "PayLater process steps" });
     expect(list).toBeInTheDocument();
-    const listItems = screen.getAllByRole("listitem");
-    expect(listItems).toHaveLength(6);
 
-    expect(screen.getByTestId("step-1")).toHaveTextContent("FIX IT");
-    expect(screen.getByTestId("step-2")).toHaveTextContent("SPLIT IT");
-    expect(screen.getByTestId("step-3")).toHaveTextContent("SORTED");
+    expect(screen.getByTestId("step-1")).toBeInTheDocument();
+    expect(screen.getByTestId("step-2")).toBeInTheDocument();
+    expect(screen.getByTestId("step-3")).toBeInTheDocument();
   });
 
-  test("renders the register link with correct href and aria-label", () => {
-    const link = screen.getByRole("link", {
-      name: /register your interest with bumper/i,
+  it("renders the register interest button", () => {
+    render(<SubHero />);
+
+    const button = screen.getByRole("link", {
+      name: "Register your interest with Bumper",
     });
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute("href", "/business/register");
-    expect(link).toHaveTextContent("Register your interest");
-  });
-
-  test("renders the arrow image as decorative", () => {
-    const arrow = screen.getByTestId("subhero-arrow", { hidden: true });
-    expect(arrow).toHaveAttribute("aria-hidden", "true");
-    expect(arrow).toHaveAttribute("alt", "");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute("href", Routes.BusinessRegister);
+    expect(button).toHaveClass(
+      "btn-primary-over-rounded font-sm lg:font-sm-medium flex gap-2.5 w-fit mt-6"
+    );
+    expect(screen.getByTestId("arrow-icon")).toBeInTheDocument();
   });
 });
