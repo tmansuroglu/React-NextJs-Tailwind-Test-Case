@@ -1,25 +1,51 @@
 import { render, screen } from "@testing-library/react";
 import BusinessPage, { metadata } from "./page";
 
+jest.mock("next/image", () => ({
+  __esModule: true,
+  default: (props: any) => <img {...props} />,
+}));
+
+jest.mock("@/public/arrow.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
+jest.mock("@/public/trust-pilot.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
+jest.mock("@/public/five-stars.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
+jest.mock("@/public/logo.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
 describe("BusinessPage", () => {
-  it("renders the main element with correct content", () => {
+  it("renders Main with Hero and SubHero components", () => {
     render(<BusinessPage />);
-    const mainElement = screen.getByRole("main");
-    expect(mainElement).toBeInTheDocument();
-    expect(screen.getByTestId("hero-section")).toBeVisible();
+
+    const main = screen.getByRole("main");
+    expect(main).toBeInTheDocument();
+    expect(main).toHaveClass("pt-0");
+
+    // Check Hero is rendered
+    const hero = screen.getByTestId("hero-section");
+    expect(hero).toBeInTheDocument();
+
+    // Check SubHero is rendered
+    const subHero = screen.getByRole("region", { name: /Pay Later Benefits/ });
+    expect(subHero).toBeInTheDocument();
   });
 
-  it("has correct metadata title", () => {
-    expect(metadata).toHaveProperty(
-      "title",
-      "Bumper UK - Business Landing Page"
-    );
-  });
-
-  it("is accessible with main landmark", () => {
-    render(<BusinessPage />);
-    const mainElement = screen.getByRole("main");
-    expect(mainElement).toBeInTheDocument();
-    expect(mainElement.tagName.toLowerCase()).toBe("main");
+  it("exports correct metadata", () => {
+    expect(metadata).toEqual({
+      title: "Bumper UK - Business Landing Page",
+    });
   });
 });
