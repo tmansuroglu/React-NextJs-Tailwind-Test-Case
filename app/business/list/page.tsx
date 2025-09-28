@@ -2,7 +2,7 @@ import Main from "@/components/main";
 import { SearchParamsType } from "@/types/search-param-type";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import BusinessSearchInput from "./_components/business-search-Input";
+import BusinessSearchInput from "./_components/business-search-inputt";
 import BusinessList from "./_components/business-list";
 import LoadingIndicator from "@/components/loading-indicator";
 
