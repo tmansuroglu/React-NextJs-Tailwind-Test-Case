@@ -15,20 +15,18 @@ export const createNewURLSearchParams = ({
   const newParams = new URLSearchParams();
 
   previousSearchParams.forEach((value, key) => {
-    if (remove?.includes(key as SearchParamKeys)) {
-      return;
-    } else if (Array.isArray(value)) {
-      value.forEach((v) => newParams.append(key, v));
-    } else if (value !== undefined) {
-      newParams.set(key, value);
+    if (!remove?.includes(key as SearchParamKeys)) {
+      newParams.append(key, value);
     }
   });
 
   add?.forEach(({ newKey, newValue, append }) => {
-    if (newValue && append) {
-      newParams.append(newKey, newValue);
-    } else if (newValue && !append) {
-      newParams.set(newKey, newValue);
+    if (newValue) {
+      if (append) {
+        newParams.append(newKey, newValue);
+      } else {
+        newParams.set(newKey, newValue);
+      }
     } else {
       newParams.delete(newKey);
     }
