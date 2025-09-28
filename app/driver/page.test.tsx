@@ -1,22 +1,35 @@
 import { render, screen } from "@testing-library/react";
 import DriverPage, { metadata } from "./page";
 
-describe("DriverPage", () => {
-  it("renders the main element with correct content", () => {
-    render(<DriverPage />);
-    const mainElement = screen.getByRole("main");
-    expect(mainElement).toBeInTheDocument();
-    expect(mainElement).toHaveTextContent("For Drivers Page");
+jest.mock("@/components/main", () => ({
+  __esModule: true,
+  default: (props: any) => <main data-testid="main" {...props} />,
+}));
+
+jest.mock("@/components/empty-page-content", () => ({
+  __esModule: true,
+  default: (props: any) => <div data-testid="empty-page-content" {...props} />,
+}));
+
+describe("DriverPage component", () => {
+  it("exports correct metadata", () => {
+    expect(metadata).toEqual({
+      title: "Bumper UK - Driver Landing Page",
+    });
   });
 
-  it("has correct metadata title", () => {
-    expect(metadata).toHaveProperty("title", "Bumper UK - Driver Landing Page");
+  it("renders Main", () => {
+    render(<DriverPage />);
+
+    const main = screen.getByTestId("main");
+    expect(main).toBeInTheDocument();
   });
 
-  it("is accessible with main landmark", () => {
+  it("renders EmptyPageContent with correct title", () => {
     render(<DriverPage />);
-    const mainElement = screen.getByRole("main");
-    expect(mainElement).toBeInTheDocument();
-    expect(mainElement.tagName.toLowerCase()).toBe("main");
+
+    const emptyContent = screen.getByTestId("empty-page-content");
+    expect(emptyContent).toBeInTheDocument();
+    expect(emptyContent).toHaveAttribute("title", "For Drivers Page");
   });
 });
