@@ -1,44 +1,57 @@
 import { render, screen } from "@testing-library/react";
-import { Step } from "./Step";
+import { Step } from "./Step"; // Adjust the import path as needed
 
-describe("Step Component", () => {
-  const defaultProps = {
+describe("Step component", () => {
+  const props = {
     number: 1,
-    title: "FIX IT",
-    description: "Your customers bring their vehicle to you.",
+    title: "Test Title",
+    description: "Test Description",
   };
 
-  it("renders the step number, title, and description correctly", () => {
-    render(<Step {...defaultProps} />);
+  it("renders the step with number, title, and description", () => {
+    render(<Step {...props} />);
 
-    const numberElement = screen.getByText(defaultProps.number.toString());
-    expect(numberElement).toBeInTheDocument();
-    expect(numberElement).toHaveClass(
-      "min-w-6 w-6 h-6 rounded-[50%] border-[1px]"
+    const step = screen.getByLabelText("1. Test Title");
+    expect(step).toBeInTheDocument();
+    expect(step).toHaveClass("flex gap-2");
+
+    expect(screen.getByText("Test Title")).toBeInTheDocument();
+    expect(screen.getByText("Test Title")).toHaveClass(
+      "font-sm-bold text-brand-primary-black"
     );
-    expect(numberElement).toHaveClass("bg-brand-primary-orange");
-    expect(numberElement).toHaveClass("text-brand-secondary-black");
 
-    const titleElement = screen.getByText(defaultProps.title);
-    expect(titleElement).toBeInTheDocument();
-    expect(titleElement).toHaveClass("font-sm-bold text-brand-primary-black");
-
-    const descriptionElement = screen.getByText(defaultProps.description);
-    expect(descriptionElement).toBeInTheDocument();
-    expect(descriptionElement).toHaveClass("font-sm text-brand-primary-black");
+    expect(screen.getByText("Test Description")).toBeInTheDocument();
+    expect(screen.getByText("Test Description")).toHaveClass(
+      "font-sm text-brand-primary-black"
+    );
   });
 
-  it("renders different props correctly", () => {
-    const customProps = {
-      number: 2,
-      title: "SPLIT IT",
-      description: "When the customer gets their bill or quote.",
-    };
+  it("renders the number circle with correct styles and aria-hidden", () => {
+    render(<Step {...props} />);
 
-    render(<Step {...customProps} />);
+    const circle = screen.getByText("1");
+    expect(circle).toBeInTheDocument();
+    expect(circle).toHaveAttribute("aria-hidden", "true");
+    expect(circle).toHaveClass(
+      "flex items-center justify-center font-xs-bold min-w-6 w-6 h-6 rounded-[50%] border border-brand-secondary-black bg-brand-primary-orange text-brand-secondary-black"
+    );
+  });
 
-    expect(screen.getByText(customProps.number.toString())).toBeInTheDocument();
-    expect(screen.getByText(customProps.title)).toBeInTheDocument();
-    expect(screen.getByText(customProps.description)).toBeInTheDocument();
+  it("applies data-testid if provided", () => {
+    render(<Step {...props} data-testid="custom-test-id" />);
+
+    const step = screen.getByTestId("custom-test-id");
+    expect(step).toBeInTheDocument();
+  });
+
+  it("renders with different number and content", () => {
+    render(
+      <Step number={2} title="Another Title" description="Another Desc" />
+    );
+
+    expect(screen.getByLabelText("2. Another Title")).toBeInTheDocument();
+    expect(screen.getByText("2")).toBeInTheDocument();
+    expect(screen.getByText("Another Title")).toBeInTheDocument();
+    expect(screen.getByText("Another Desc")).toBeInTheDocument();
   });
 });
