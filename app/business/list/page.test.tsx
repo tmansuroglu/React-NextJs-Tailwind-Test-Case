@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { Suspense } from "react";
-import BusinessSearchInput from "./_components/business-search-inputt";
+import BusinessSearchInput from "./_components/business-search-input";
 import BusinessList from "./_components/business-list";
 import LoadingIndicator from "@/components/loading-indicator";
 import Main from "@/components/main";
