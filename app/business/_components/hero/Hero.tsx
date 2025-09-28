@@ -20,8 +20,18 @@ export function Hero() {
             <span className="font-sm-bold xl:font-md-plus-bold text-brand-primary-white">
               Excellent
             </span>
-            <FiveStars height={16} width={85} className="xl:h-6 xl:w-32" />
-            <TrustPilot height={16} width={64} className="xl:h-6 xl:w-24" />
+            <FiveStars
+              height={16}
+              width={85}
+              className="xl:h-6 xl:w-32"
+              data-testid="five-stars-icon"
+            />
+            <TrustPilot
+              height={16}
+              width={64}
+              className="xl:h-6 xl:w-24"
+              data-testid="trust-pilot-icon"
+            />
           </div>
           <h1
             className="font-xl xl:font-3xl text-brand-primary-white break-keep"
@@ -45,7 +55,12 @@ export function Hero() {
             aria-label="Register your interest with Bumper"
           >
             <span>Register your interest</span>
-            <Arrow aria-hidden="true" width={20} height={20} />
+            <Arrow
+              aria-hidden="true"
+              width={20}
+              height={20}
+              data-testid="arrow-icon"
+            />
           </Link>
           <p className="mt-3 flex items-center gap-1 font-sm text-brand-primary-white">
             Already registered?

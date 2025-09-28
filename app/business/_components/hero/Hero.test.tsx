@@ -1,143 +1,117 @@
 import { render, screen } from "@testing-library/react";
-import { Hero } from "./Hero";
-import { Routes } from "../../types/enums";
+import { Hero } from "./Hero"; // Adjust the import path as needed
+import { Routes } from "@/types/enums";
 
-describe("Hero", () => {
-  it("renders hero section with correct content", () => {
+jest.mock("next/link", () => ({
+  __esModule: true,
+  default: ({ children, ...props }: any) => <a {...props}>{children}</a>,
+}));
+
+jest.mock("@/public/arrow.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
+jest.mock("@/public/trust-pilot.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
+jest.mock("@/public/five-stars.svg", () => ({
+  __esModule: true,
+  default: (props: any) => <svg {...props} />,
+}));
+
+describe("Hero component", () => {
+  it("renders the section with correct attributes and classes", () => {
     render(<Hero />);
+
     const section = screen.getByTestId("hero-section");
     expect(section).toBeInTheDocument();
-    expect(section).toHaveClass(
-      "relative",
-      "min-h-[543px]",
-      "w-full",
-      "-mt-24",
-      "pt-24",
-      "bg-[34%_100%]",
-      "bg-no-repeat",
-      "bg-cover",
-      "flex",
-      "items-center"
-    );
     expect(section).toHaveAttribute("aria-labelledby", "hero-title");
+    expect(section).toHaveAttribute("role", "banner");
+    expect(section).toHaveClass(
+      "relative bg-[url(/hero.webp)] min-h-[543px] h-auto w-full pt-24 bg-[34%_100%] bg-no-repeat bg-cover z-0 flex items-center xl:min-h-[743px]"
+    );
   });
 
-  it("renders gray filter overlay", () => {
+  it("renders the overlay div", () => {
     render(<Hero />);
-    const overlay = screen.getByTestId("hero-section").firstChild;
+
+    const section = screen.getByTestId("hero-section");
+    const overlay = section.children[0] as HTMLElement;
     expect(overlay).toHaveClass(
-      "absolute",
-      "inset-0",
-      "bg-brand-opacity-gray",
-      "opacity-70"
+      "absolute inset-0 bg-brand-opacity-gray opacity-70"
     );
   });
 
-  it("renders container with correct padding and content alignment", () => {
+  it("renders the trust pilot rating section", () => {
     render(<Hero />);
-    const container = screen.getByTestId("hero-section").children[1];
-    expect(container).toHaveClass(
-      "container",
-      "mx-auto",
-      "px-4",
-      "pt-[29px]",
-      "pb-[34px]",
-      "xl:pt-11",
-      "xl:pb-[51px]",
-      "flex",
-      "items-center",
-      "min-h-full",
-      "relative"
-    );
+
+    expect(screen.getByText("Excellent")).toBeInTheDocument();
+    expect(screen.getByTestId("five-stars-icon")).toBeInTheDocument();
+    expect(screen.getByTestId("trust-pilot-icon")).toBeInTheDocument();
   });
 
-  it("renders rating section with text and images", () => {
+  it("renders the hero title", () => {
     render(<Hero />);
-    const ratingText = screen.getByText("Excellent");
-    expect(ratingText).toHaveClass(
-      "font-sm-bold",
-      "xl:font-md-plus-bold",
-      "text-brand-primary-white"
-    );
-    const starsImage = screen.getByAltText("5 star rating");
-    expect(starsImage).toHaveAttribute(
-      "src",
-      expect.stringContaining("five-stars.svg")
-    );
-    expect(starsImage).toHaveClass("xl:h-6", "xl:w-32");
-    const trustpilotImage = screen.getByAltText("trust pilot logo");
-    expect(trustpilotImage).toHaveAttribute(
-      "src",
-      expect.stringContaining("trust-pilot.svg")
-    );
-    expect(trustpilotImage).toHaveClass("xl:h-6", "xl:w-24");
-  });
 
-  it("renders heading with correct text and styles", () => {
-    render(<Hero />);
-    const heading = screen.getByRole("heading", {
-      level: 1,
-      name: /become a bumper approved dependable dealership/i,
+    const title = screen.getByRole("heading", {
+      name: "BECOME A BUMPER APPROVED DEPENDABLE DEALERSHIP",
     });
-    expect(heading).toHaveClass(
-      "font-xl",
-      "xl:font-3xl",
-      "text-brand-primary-white"
-    );
-    expect(heading).toHaveAttribute("id", "hero-title");
-  });
-
-  it("renders subheading with correct text and styles", () => {
-    render(<Hero />);
-    const subheading = screen.getByText(
-      /join our network of 3,000\+ garages and dealerships/i
-    );
-    expect(subheading).toHaveClass(
-      "font-sm",
-      "xl:font-md-plus",
-      "text-brand-primary-white",
-      "mt-2"
+    expect(title).toBeInTheDocument();
+    expect(title).toHaveAttribute("id", "hero-title");
+    expect(title).toHaveClass(
+      "font-xl xl:font-3xl text-brand-primary-white break-keep"
     );
   });
 
-  it("renders register link with correct href and styles", () => {
+  it("renders the description paragraph with link", () => {
     render(<Hero />);
-    const registerLink = screen.getByRole("link", {
-      name: /register your interest with bumper/i,
+
+    const paragraph = screen.getByText(/Join our network/);
+    expect(paragraph).toBeInTheDocument();
+    expect(paragraph).toHaveClass(
+      "font-sm xl:font-md-plus text-brand-primary-white mt-2"
+    );
+
+    const link = screen.getByRole("link", {
+      name: /garages and dealerships who already offer Bumper to their customers./,
     });
-    expect(registerLink).toHaveAttribute("href", Routes.BusinessRegister);
-    expect(registerLink).toHaveClass(
-      "btn-primary-over-rounded",
-      "font-sm",
-      "xl:font-sm-medium",
-      "flex",
-      "gap-2.5",
-      "w-fit",
-      "mt-6"
+    expect(link).toHaveAttribute("href", Routes.BusinessList);
+    expect(link).toHaveClass(
+      "underline text-brand-primary-green xl:font-md-plus-bold"
     );
-    const arrowImage = screen.getByAltText("");
-    expect(arrowImage).toHaveAttribute(
-      "src",
-      expect.stringContaining("arrow.svg")
-    );
-    expect(arrowImage).toHaveAttribute("aria-hidden", "true");
   });
 
-  it("renders login link with correct href and styles", () => {
+  it("renders the register interest button", () => {
     render(<Hero />);
-    const loginLink = screen.getByRole("link", {
-      name: /log in to your bumper account/i,
+
+    const button = screen.getByRole("link", {
+      name: "Register your interest with Bumper",
     });
-    expect(loginLink).toHaveAttribute("href", Routes.BusinessLogin);
-    expect(loginLink).toHaveClass(
-      "text-brand-primary-green",
-      "hover:underline"
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute("href", Routes.BusinessRegister);
+    expect(button).toHaveClass(
+      "btn-primary-over-rounded font-sm xl:font-sm-medium flex gap-2.5 w-fit mt-6"
     );
+    expect(screen.getByTestId("arrow-icon")).toBeInTheDocument();
   });
 
-  it("renders already registered text", () => {
+  it("renders the already registered login link", () => {
     render(<Hero />);
+
     const text = screen.getByText("Already registered?");
-    expect(text).toHaveClass("font-sm", "text-brand-primary-white");
+    expect(text).toBeInTheDocument();
+    expect(text).toHaveClass(
+      "mt-3 flex items-center gap-1 font-sm text-brand-primary-white"
+    );
+
+    const link = screen.getByRole("link", {
+      name: "Log in to your Bumper account",
+    });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", Routes.BusinessLogin);
+    expect(link).toHaveClass("text-brand-primary-green hover:underline");
   });
 });
