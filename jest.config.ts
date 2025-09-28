@@ -98,7 +98,15 @@ const config: Config = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    "^@/components/(.*)$": "<rootDir>/app/_components/$1",
+    "^@/form-components/(.*)$": "<rootDir>/app/_form-components/$1",
+    "^@/types/(.*)$": "<rootDir>/app/_types/$1",
+    "^@/utils/(.*)$": "<rootDir>/app/_utils/$1",
+    "^@/public/(.*)$": "<rootDir>/public/$1",
+    "^@/actions/(.*)$": "<rootDir>/app/_actions/$1",
+    "^@/constants/(.*)$": "<rootDir>/app/_constants/$1",
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
