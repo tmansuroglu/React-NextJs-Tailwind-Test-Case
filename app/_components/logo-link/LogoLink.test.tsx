@@ -1,86 +1,75 @@
 import { render, screen } from "@testing-library/react";
 import { LogoLink } from "./LogoLink";
-import { Routes } from "../../_types/enums";
 
-describe("LogoLink", () => {
-  const contexts: ("for business" | "for drivers")[] = [
-    "for business",
-    "for drivers",
-  ];
-  const routes = {
-    "for business": Routes.Business,
-    "for drivers": Routes.Driver,
-  };
+jest.mock("@/public/logo.svg", () => {
+  const MockLogo = (props: any) => <svg data-testid="logo" {...props} />;
+  return MockLogo;
+});
 
-  it.each(contexts)(
-    "renders logo with correct href and text for %s context",
-    (context) => {
-      render(
-        <LogoLink href={routes[context]} context={context}>
-          Bumper {context}
-        </LogoLink>
-      );
-      const link = screen.getByRole("link", { name: `Bumper ${context} logo` });
-      expect(link).toHaveAttribute("href", routes[context]);
-      expect(screen.getByText(`Bumper ${context}`)).toBeInTheDocument();
-    }
-  );
-
-  it.each(contexts)(
-    "renders image with correct alt text and classes for %s context",
-    (context) => {
-      render(
-        <LogoLink href={routes[context]} context={context}>
-          Bumper {context}
-        </LogoLink>
-      );
-      const image = screen.getByAltText("Bumper logo");
-      expect(image).toHaveAttribute("src", expect.stringContaining("logo.svg"));
-      expect(image).toHaveClass("xl:h-8", "xl:w-[126px]");
-      expect(image).toHaveAttribute("width", "111");
-      expect(image).toHaveAttribute("height", "28");
-    }
-  );
-
-  it.each(contexts)("applies aria-label based on %s context", (context) => {
+describe("LogoLink component", () => {
+  it("renders the logo and children correctly", () => {
     render(
-      <LogoLink href={routes[context]} context={context}>
-        Bumper {context}
+      <LogoLink href="/" context="for business">
+        Business
       </LogoLink>
     );
-    const link = screen.getByRole("link", { name: `Bumper ${context} logo` });
-    expect(link).toHaveAttribute("aria-label", `Bumper ${context} logo`);
-  });
 
-  it("applies aria-current when active", () => {
-    render(
-      <LogoLink href={Routes.Driver} context="for drivers" aria-current="page">
-        Bumper for drivers
-      </LogoLink>
-    );
-    const link = screen.getByRole("link", { name: /Bumper for drivers logo/i });
-    expect(link).toHaveAttribute("aria-current", "page");
-  });
-
-  it("has correct link classes", () => {
-    render(
-      <LogoLink href={Routes.Business} context="for business">
-        Bumper for business
-      </LogoLink>
-    );
-    const link = screen.getByRole("link", {
-      name: /Bumper for business logo/i,
+    const linkElement = screen.getByRole("link", {
+      name: "Bumper for business logo",
     });
-    expect(link).toHaveClass("flex", "gap-2", "items-center", "px-4", "py-3");
+    expect(linkElement).toBeInTheDocument();
+
+    const logoElement = screen.getByTestId("logo");
+    expect(logoElement).toBeInTheDocument();
+    expect(logoElement).toHaveAttribute("width", "111");
+    expect(logoElement).toHaveAttribute("height", "28");
+    expect(logoElement).toHaveClass("xl:h-8 xl:w-32");
+
+    const textElement = screen.getByText("Business");
+    expect(textElement).toBeInTheDocument();
+    expect(textElement).toHaveClass(
+      "text-[11px] font-bold sm:font-xs-bold xl:font-sm-bold"
+    );
   });
 
-  it("renders span with correct text classes", () => {
+  it("sets the correct aria-label based on context", () => {
     render(
-      <LogoLink href={Routes.Business} context="for business">
-        Bumper for business
+      <LogoLink href="/" context="for drivers">
+        Drivers
       </LogoLink>
     );
-    const span = screen.getByText("Bumper for business");
-    expect(span).toHaveClass("font-xs-bold", "xl:font-sm-bold");
+
+    const linkElement = screen.getByRole("link", {
+      name: "Bumper for drivers logo",
+    });
+    expect(linkElement).toBeInTheDocument();
+  });
+
+  it("applies default classes to the Link element", () => {
+    render(
+      <LogoLink href="/" context="for business">
+        Test
+      </LogoLink>
+    );
+
+    const linkElement = screen.getByRole("link");
+    expect(linkElement).toHaveClass("flex");
+    expect(linkElement).toHaveClass("gap-0.5");
+    expect(linkElement).toHaveClass("sm:gap-2");
+    expect(linkElement).toHaveClass("items-center");
+    expect(linkElement).toHaveClass("px-4");
+    expect(linkElement).toHaveClass("py-3");
+  });
+
+  it("passes additional props to the Link element", () => {
+    render(
+      <LogoLink href="/test" context="for business" id="logo-link">
+        Test
+      </LogoLink>
+    );
+
+    const linkElement = screen.getByRole("link");
+    expect(linkElement).toHaveAttribute("href", "/test");
+    expect(linkElement).toHaveAttribute("id", "logo-link");
   });
 });

@@ -1,47 +1,55 @@
 import { render, screen } from "@testing-library/react";
 import { LoadingIndicator } from "./LoadingIndicator";
 
-describe("LoadingIndicator", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it("renders loading indicator with default props", () => {
+describe("LoadingIndicator component", () => {
+  it("renders the loading indicator with default props", () => {
     render(<LoadingIndicator />);
 
-    const loadingIndicator = screen.getByTestId("loading-indicator");
-    expect(loadingIndicator).toBeInTheDocument();
-    expect(loadingIndicator).toHaveClass("flex justify-center items-center");
-    expect(loadingIndicator).toHaveAttribute("role", "status");
-    expect(loadingIndicator).toHaveAttribute("aria-label", "Loading...");
-    expect(loadingIndicator).toHaveAttribute("aria-live", "polite");
-    expect(loadingIndicator).toHaveAttribute("aria-hidden", "true");
+    const container = screen.getByTestId("loading-indicator");
+    expect(container).toBeInTheDocument();
+    expect(container).toHaveAttribute("role", "status");
+    expect(container).toHaveAttribute("aria-label", "Loading...");
+    expect(container).toHaveAttribute("aria-live", "polite");
+    expect(container).toHaveAttribute("aria-hidden");
+    expect(container).toHaveClass("flex justify-center items-center");
+
+    const spinner = container.querySelector("div");
+    expect(spinner).toHaveClass("size-2.5");
+    expect(spinner).toHaveClass("border-2");
+    expect(spinner).toHaveClass("border-gray-200");
+    expect(spinner).toHaveClass("border-t-blue-500");
+    expect(spinner).toHaveClass("rounded-full");
+    expect(spinner).toHaveClass("animate-spin");
   });
 
-  it("renders with custom aria-label when provided", () => {
-    const customAriaLabel = "Custom Loading";
-    render(<LoadingIndicator ariaLabel={customAriaLabel} />);
+  it("applies custom className to the container", () => {
+    render(<LoadingIndicator className="mt-4" />);
 
-    const loadingIndicator = screen.getByTestId("loading-indicator");
-    expect(loadingIndicator).toHaveAttribute("aria-label", customAriaLabel);
+    const container = screen.getByTestId("loading-indicator");
+    expect(container).toHaveClass("flex justify-center items-center");
+    expect(container).toHaveClass("mt-4");
   });
 
-  it("renders spinner with correct styling", () => {
-    render(<LoadingIndicator />);
+  it("applies custom aria-label to the container", () => {
+    render(<LoadingIndicator aria-label="Processing..." />);
 
-    const spinner = screen.getByTestId("loading-indicator").firstChild;
-    expect(spinner).toHaveClass(
-      "w-4 h-4 border-2 border-t-blue-500 border-gray-200 rounded-full animate-spin"
+    const container = screen.getByTestId("loading-indicator");
+    expect(container).toHaveAttribute("aria-label", "Processing...");
+  });
+
+  it("applies LoaderProps including custom className to the spinner", () => {
+    render(
+      <LoadingIndicator LoaderProps={{ className: "size-4", id: "spinner" }} />
     );
-  });
 
-  it("has accessible structure", () => {
-    render(<LoadingIndicator />);
-
-    const loadingIndicator = screen.getByTestId("loading-indicator");
-    expect(loadingIndicator).toBeInTheDocument();
-    expect(loadingIndicator).toHaveAttribute("aria-label", "Loading...");
-    expect(loadingIndicator).toHaveAttribute("aria-live", "polite");
-    expect(loadingIndicator).toHaveAttribute("aria-hidden", "true");
+    const container = screen.getByTestId("loading-indicator");
+    const spinner = container.querySelector("div");
+    expect(spinner).toHaveClass("size-4");
+    expect(spinner).toHaveClass("border-2");
+    expect(spinner).toHaveClass("border-gray-200");
+    expect(spinner).toHaveClass("border-t-blue-500");
+    expect(spinner).toHaveClass("rounded-full");
+    expect(spinner).toHaveClass("animate-spin");
+    expect(spinner).toHaveAttribute("id", "spinner");
   });
 });

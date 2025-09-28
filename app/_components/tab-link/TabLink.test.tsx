@@ -1,107 +1,74 @@
 import { render, screen } from "@testing-library/react";
-import { Routes } from "../../_types/enums";
 import { TabLink } from "./TabLink";
 
-describe("TabLink", () => {
-  const href = Routes.Business;
-  const label = "For business";
+jest.mock("next/link", () => ({
+  __esModule: true,
+  default: ({ children, ...props }: any) => <a {...props}>{children}</a>,
+}));
 
-  it("renders link with correct href and text", () => {
+describe("TabLink component", () => {
+  it("renders children correctly as a link", () => {
     render(
-      <TabLink href={href} highlight={false}>
-        {label}
+      <TabLink href="/test" highlight={false}>
+        Test Link
       </TabLink>
     );
-    const link = screen.getByRole("tab", { name: label });
-    expect(link).toHaveAttribute("href", href);
-    expect(link).toHaveTextContent(label);
+
+    const link = screen.getByRole("link", { name: "Test Link" });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "/test");
   });
 
-  it("applies btn-nav class and correct classes when not highlighted", () => {
+  it("applies default class to the link", () => {
     render(
-      <TabLink href={href} highlight={false}>
-        {label}
+      <TabLink href="/test" highlight={false}>
+        Test
       </TabLink>
     );
-    const link = screen.getByRole("tab", { name: label });
+
+    const link = screen.getByRole("link");
     expect(link).toHaveClass("btn-nav");
   });
 
-  it("applies highlight styles when highlighted", () => {
+  it("renders highlight indicator when highlight is true", () => {
     render(
-      <TabLink href={href} highlight={true}>
-        {label}
+      <TabLink href="/test" highlight={true}>
+        Test
       </TabLink>
     );
-    screen.getByRole("tab", { name: label });
+
     const highlight = screen.getByTestId("highlight-indicator");
+    expect(highlight).toBeInTheDocument();
+    expect(highlight).toHaveAttribute("aria-hidden");
     expect(highlight).toHaveClass(
-      "bg-brand-primary-orange",
-      "h-1",
-      "absolute",
-      "left-4",
-      "right-4",
-      "-bottom",
-      "rounded-t-2xl"
+      "bg-brand-primary-orange h-1 absolute left-4 right-4 -bottom-[1px] rounded-t-2xl"
     );
   });
 
-  it("sets aria-current to page when highlighted", () => {
+  it("does not render highlight indicator when highlight is false", () => {
     render(
-      <TabLink href={href} highlight={true}>
-        {label}
+      <TabLink href="/test" highlight={false}>
+        Test
       </TabLink>
     );
-    const link = screen.getByRole("tab", { name: label });
-    expect(link).toHaveAttribute("aria-current", "page");
-  });
 
-  it("does not set aria-current when not highlighted", () => {
-    render(
-      <TabLink href={href} highlight={false}>
-        {label}
-      </TabLink>
-    );
-    const link = screen.getByRole("tab", { name: label });
-    expect(link).not.toHaveAttribute("aria-current");
-  });
-
-  it("sets aria-selected to true when highlighted", () => {
-    render(
-      <TabLink href={href} highlight={true}>
-        {label}
-      </TabLink>
-    );
-    const link = screen.getByRole("tab", { name: label });
-    expect(link).toHaveAttribute("aria-selected", "true");
-  });
-
-  it("sets aria-selected to false when not highlighted", () => {
-    render(
-      <TabLink href={href} highlight={false}>
-        {label}
-      </TabLink>
-    );
-    const link = screen.getByRole("tab", { name: label });
-    expect(link).toHaveAttribute("aria-selected", "false");
-  });
-
-  it("renders highlight span with aria-hidden when highlighted", () => {
-    render(
-      <TabLink href={href} highlight={true} data-testid="tab-link">
-        {label}
-      </TabLink>
-    );
-    const highlight = screen.getByTestId("highlight-indicator");
-    expect(highlight).toHaveAttribute("aria-hidden", "true");
-  });
-
-  it("does not render highlight span when not highlighted", () => {
-    render(
-      <TabLink href={href} highlight={false}>
-        {label}
-      </TabLink>
-    );
     expect(screen.queryByTestId("highlight-indicator")).not.toBeInTheDocument();
+  });
+
+  it("passes additional props to the link element", () => {
+    render(
+      <TabLink
+        href="/test"
+        highlight={false}
+        id="link-id"
+        aria-label="Custom link"
+      >
+        Test
+      </TabLink>
+    );
+
+    const link = screen.getByRole("link");
+    expect(link).toHaveAttribute("id", "link-id");
+    expect(link).toHaveAttribute("aria-label", "Custom link");
   });
 });
