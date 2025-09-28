@@ -1,17 +1,15 @@
 import { render, screen } from "@testing-library/react";
-import { BusinessList } from "./BusinessList"; // Adjust the import path as needed
+import { BusinessList } from "./BusinessList";
 import getBusinessList from "@/actions/get-business-list";
 import BusinessCard from "../business-card";
 import Pagination from "@/components/pagination";
 import { Routes } from "@/types/enums";
 
-// Mock the action
 jest.mock("@/actions/get-business-list", () => ({
   __esModule: true,
   default: jest.fn(),
 }));
 
-// Mock components with data-testid
 jest.mock("../business-card", () => ({
   __esModule: true,
   default: (props: any) => (
