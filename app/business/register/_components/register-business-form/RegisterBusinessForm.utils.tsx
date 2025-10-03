@@ -21,7 +21,7 @@ export type RegisterBusinessFormValues = z.infer<
   typeof businessRegisterValidationSchema
 >;
 
-const DEFAULT_VALUES: DefaultValues<RegisterBusinessFormValues> = {
+export const DEFAULT_VALUES: DefaultValues<RegisterBusinessFormValues> = {
   [RegisterBusinessFormFields.Name]: "",
   [RegisterBusinessFormFields.Company]: "",
   [RegisterBusinessFormFields.Email]: "",
