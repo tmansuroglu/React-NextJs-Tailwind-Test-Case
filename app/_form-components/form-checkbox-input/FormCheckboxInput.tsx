@@ -52,11 +52,11 @@ export function FormCheckboxInput({
       }}
       inputSuffix={
         !!fieldErrorMessage ? (
-          <Error width={16} height={16} aria-hidden />
+          <Error width={16} height={16} aria-hidden data-testid="error-icon" />
         ) : isChecked ? (
-          <Tick width={16} height={16} aria-hidden />
+          <Tick width={16} height={16} aria-hidden data-testid="tick-icon" />
         ) : (
-          <Plus width={16} height={16} aria-hidden />
+          <Plus width={16} height={16} aria-hidden data-testid="plus-icon" />
         )
       }
       caption={
