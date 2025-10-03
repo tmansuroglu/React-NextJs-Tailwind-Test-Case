@@ -55,9 +55,14 @@ export function FormPhoneInput({
       ref={ref}
       inputSuffix={
         isSuccess ? (
-          <Success width={16} height={16} aria-hidden />
+          <Success
+            width={16}
+            height={16}
+            aria-hidden
+            data-testid="success-icon"
+          />
         ) : !!fieldError ? (
-          <Error width={16} height={16} aria-hidden />
+          <Error width={16} height={16} aria-hidden data-testid="error-icon" />
         ) : null
       }
       caption={!!fieldError && <ErrorText id={errorId}>{fieldError}</ErrorText>}
