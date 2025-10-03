@@ -56,20 +56,42 @@ export function RegisterBusinessForm() {
             aria-required
             name={RegisterBusinessFormFields.Name}
             disabled={isPending}
-            label={<LabeledIcon label="Name" IconComponent={Person} />}
+            label={
+              <LabeledIcon
+                label="Name"
+                IconComponent={Person}
+                IconComponentProps={{
+                  "data-testid": "person-icon",
+                }}
+              />
+            }
           />
           <FormTextInput
             aria-required
             name={RegisterBusinessFormFields.Company}
             disabled={isPending}
-            label={<LabeledIcon IconComponent={Building} label="Company" />}
+            label={
+              <LabeledIcon
+                IconComponent={Building}
+                label="Company"
+                IconComponentProps={{
+                  "data-testid": "building-icon",
+                }}
+              />
+            }
           />
           <FormPhoneInput
             aria-required
             disabled={isPending}
             name={RegisterBusinessFormFields.MobilePhone}
             label={
-              <LabeledIcon IconComponent={Phone} label="Mobile Phone Number" />
+              <LabeledIcon
+                IconComponent={Phone}
+                label="Mobile Phone Number"
+                IconComponentProps={{
+                  "data-testid": "phone-icon",
+                }}
+              />
             }
             defaultCountry="gb"
             forceDialCode
@@ -80,7 +102,15 @@ export function RegisterBusinessForm() {
             disabled={isPending}
             name={RegisterBusinessFormFields.Email}
             type="email"
-            label={<LabeledIcon IconComponent={Mail} label="Email Address" />}
+            label={
+              <LabeledIcon
+                IconComponent={Mail}
+                label="Email Address"
+                IconComponentProps={{
+                  "data-testid": "mail-icon",
+                }}
+              />
+            }
           />
           <FormAutoCompleteComboBox
             InputProps={{
@@ -91,11 +121,22 @@ export function RegisterBusinessForm() {
             name={RegisterBusinessFormFields.PostCode}
             items={POST_CODES}
             LabelProps={{ className: "flex gap-1.5 items-center" }}
-            label={<LabeledIcon IconComponent={House} label="Postcode" />}
+            label={
+              <LabeledIcon
+                IconComponent={House}
+                label="Postcode"
+                IconComponentProps={{
+                  "data-testid": "house-icon",
+                }}
+              />
+            }
           />
           <fieldset>
             <LabeledIcon
               IconComponent={Wrench}
+              IconComponentProps={{
+                "data-testid": "wrench-icon",
+              }}
               label={
                 <legend className="font-sm-bold">
                   What services are you interested in?
@@ -146,7 +187,12 @@ export function RegisterBusinessForm() {
                 />
               )}
               <span>Register</span>
-              <Arrow aria-hidden="true" width={20} height={20} />
+              <Arrow
+                aria-hidden
+                width={20}
+                height={20}
+                data-testid="arrow-icon"
+              />
             </button>
             {!state.success && (
               <ErrorText className="text-center w-full" id={submitErrorId}>
