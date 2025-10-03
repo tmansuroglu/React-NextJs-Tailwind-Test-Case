@@ -1,4 +1,4 @@
 export type RenderErrorProps = {
-  error: Error & { digest?: string };
+  error?: Error & { digest?: string };
   reset: () => void;
 };
