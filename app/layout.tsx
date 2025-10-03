@@ -80,7 +80,7 @@ export default function RootLayout({
                   aria-current={isLoginPage ? "page" : undefined}
                 >
                   <span>{loginText}</span>
-                  <LoginSvg />
+                  <LoginSvg data-testid="login-icon" />
                 </Link>
               </div>
             </div>
@@ -89,6 +89,7 @@ export default function RootLayout({
                 href={isBusiness ? Routes.Business : Routes.Driver}
                 aria-current={isBusinessOrDriverPage ? "page" : undefined}
                 context={logoText}
+                data-testid="logo-icon"
               >
                 {logoText}
               </LogoLink>
